@@ -1,0 +1,62 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="./profile.css" rel="stylesheet" />
+   
+    <title>Perfil</title>
+</head>
+<body>
+    
+        <div id="wrapper">
+                <!-- Sidebar -->
+                <div id="sidebar-wrapper">
+                    
+                  <ul class="sidebar-nav">
+                    <div class="top">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
+                    </div>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Meus Dados</a></li>
+                    <li><a href="#">Rotas</a></li>
+                  </ul>
+                </div>
+                
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <a href="#" class="btn" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" style="color: #008b8b"></span></a>
+                        
+                      </div>
+                      <img src="https://i.pinimg.com/originals/b9/44/41/b944416f888b04c2ab226b8982680460.gif" class="gif">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+                     
+    
+      
+
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../node_modules/popper.js/dist/popper.js"></script>
+
+    <script>
+    $(document).ready(function(){
+    $("#menu-toggle").click(function(e){
+        e.preventDefault();
+        $("#wrapper").toggleClass("menuDisplayed");
+    });
+    });
+    </script>
+    
+
+</body>
+</html>

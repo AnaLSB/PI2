@@ -1,6 +1,6 @@
 body {
     position: relative;
-    background-image: url(./imagens/bg-inicio.jpg);
+    background-image: url(../../imagens/bg-inicio.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
