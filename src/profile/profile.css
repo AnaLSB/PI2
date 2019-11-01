@@ -1,3 +1,9 @@
+.icon {
+  color: rgb(0, 139, 139);
+  font-size: 23px;
+}
+
+
 #sidebar-wrapper{
     z-index:1;
     position: absolute;
@@ -6,9 +12,9 @@
     overflow-y:hidden;
     background: rgb(0, 139, 139);
     opacity:0.9;
-      transition:all .5s;
-      display:flex;
-      align-items:center;
+    transition:all .5s;
+    display:flex;
+    align-items:center;
   }
   
   /* Main Content */
@@ -65,6 +71,23 @@
 
   }
 
+
+    /* Esconde o input */
+  input[type='file'] {
+    display: none
+  }
+
+  /* Aparência que terá o seletor de arquivo */
+  .top label {
+    position: absolute;
+    left: 65px;
+    bottom: 2px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+  }
+
   .img-circle {
       max-width: 90px;
       border-radius: 50%;
@@ -78,6 +101,53 @@
     border-radius: 50%;
     border: 1px solid rgb(126, 179, 179);
     }
+
+  /* Profile Infos */
+
+  .profile-info {
+    position: absolute;
+    left: 30%;
+    top: 200%;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;   
+  }
+
+  .profile-info input {
+    color: #969696;
+  }
+
+  .card h4 {
+    text-decoration: none;
+    color: #969696;
+    font-size: 23px;;
+  }
+
+  .form-group input {
+    text-indent: 5px;
+    margin-top: 10px;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid rgb(126, 179, 179);
+  }
+
+  .form-group label {
+    color: rgb(126, 179, 179);
+  }
+ 
+  .btn-cyan{
+    background-color: rgb(0, 139, 139);
+    color: #FFF;
+  }
+
+  .camp-miniografia {
+    font-size: 14px;
+  }
+  
+  .camp-miniografia label{
+    padding: 15px;
+    background-color: #e2e5e5;
+  }
 
   @media (max-width: 768px) {
 
@@ -98,6 +168,11 @@
     }
 
 
+
   }
+
+  
+
+
 
   
