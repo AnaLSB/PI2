@@ -93,14 +93,6 @@
       border-radius: 50%;
   }
 
-  .gif {
-    margin-top: 100px;
-    margin-left: 30%;
-    max-width: 400px;
-    max-height: 400px;
-    border-radius: 50%;
-    border: 1px solid rgb(126, 179, 179);
-    }
 
   /* Profile Infos */
 
@@ -121,6 +113,7 @@
     text-decoration: none;
     color: #969696;
     font-size: 23px;;
+    font-family: 'Josefin';
   }
 
   .form-group input {
@@ -130,6 +123,7 @@
     border-radius: 5px;
     border: 2px solid rgb(126, 179, 179);
   }
+
 
   .form-group label {
     color: rgb(126, 179, 179);
