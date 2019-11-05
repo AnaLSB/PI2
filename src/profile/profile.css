@@ -134,6 +134,11 @@
     color: #FFF;
   }
 
+  .btn-cyan:hover{
+    background-color: rgb(0, 139, 139);
+    color: rgb(211, 207, 207);
+  }
+
   .camp-miniografia {
     font-size: 14px;
   }

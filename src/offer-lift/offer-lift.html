@@ -21,10 +21,11 @@
                     <label for="photo" class="input-photo"><span class="glyphicon glyphicon-camera"></span></label>
                     <input id="photo" type="file">
                 </div>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Buscar</a></li>
+                <li><a href="../home/inicial.html">Home</a></li>
+                <li><a href="../search-trip/search-trip.html">Buscar</a></li>
+                <li><a href="../offer-lift/offer-lift.html">Oferecer</a></li>
                 <li><a href="#">Rotas</a></li>
-                <li><a href="#">Meus Dados</a></li>
+                <li><a href="../profile/profile.html">Meus Dados</a></li>
                 </ul>
             </div>
             
@@ -46,6 +47,8 @@
                     </div>         
                     <div class="col-8 margin-top container container-offer">
                             <p> Ponto de partida</p>
+
+                            <form action="">
                             <label for="">De onde vai sair?</label>
                             <input id="source" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form" type="text">
                             <label for="">Para onde vai?</label>
@@ -55,15 +58,37 @@
 
                             <p> Data e hora</p>
 
-                            <label for="">Vai sair que horas?</label>
-                            <input id="sourceDate" name="sourceDate" type="date" required="required" class="input-form" type="text">
-                            <label for="">Que horas volta?</label>
-                            <input id="destinyDate" name="destinyDate" type="date" required="required" class="input-form" type="text">
-
                             <label class="container-check">ida e volta
                                 <input type="checkbox" checked="checked">
                                 <span class="checkmark"></span>
                             </label> 
+                            
+                            <label for="">Vai sair que horas?</label>
+                            <input id="sourceDate" name="sourceDate" type="date" required="required" class="input-form">
+                            <label for="">Que horas volta?</label>
+                            <input id="destinyDate" name="destinyDate" type="date" required="required" class="input-form">
+
+                            <hr>
+
+                            <p>Detalhes</p>
+
+                            
+                            <div class="slidecontainer">
+                                <label for="">Preço</label>
+                                <input type="range" min="0" max="100" value="30" class="slider" id="myRange" required="required" >
+                                <p class="price">Valor: R$ <span id="demo"></span></p>
+                            
+                                <label for="">Vagas</label>
+                                <input  class="input-places" type="number"  min="1" value="1" name="places" id="places" required="required" >
+                            
+                            </div>
+                            
+
+
+                            <div class="right margin-top">
+                                <input type="submit" class="btn btn-cyan" value="continuar">    
+                            </div>
+                            </form>
                            
 
                     </div>
@@ -87,6 +112,15 @@
         $("#wrapper").toggleClass("menuDisplayed");
     });
     });
+
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+    output.innerHTML = this.value;
+}
     </script>
     
 
