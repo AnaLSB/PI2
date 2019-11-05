@@ -17,7 +17,6 @@
                 <ul class="sidebar-nav">
                 <div class="top">
                     <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
-                    
                     <label for="photo" class="input-photo"><span class="glyphicon glyphicon-camera"></span></label>
                     <input id="photo" type="file">
                 </div>
@@ -59,14 +58,14 @@
                             <p> Data e hora</p>
 
                             <label class="container-check">ida e volta
-                                <input type="checkbox" checked="checked">
+                                <input id="roundtrip" name="roundtrip" type="checkbox" checked="checked">
                                 <span class="checkmark"></span>
                             </label> 
                             
                             <label for="">Vai sair que horas?</label>
-                            <input id="sourceDate" name="sourceDate" type="date" required="required" class="input-form">
+                            <input id="sourceDate" name="sourceDate" type="datetime-local" required="required" class="input-form">
                             <label for="">Que horas volta?</label>
-                            <input id="destinyDate" name="destinyDate" type="date" required="required" class="input-form">
+                            <input id="destinyDate" name="destinyDate" type="datetime-local" required="required" class="input-form">
 
                             <hr>
 
@@ -75,7 +74,7 @@
                             
                             <div class="slidecontainer">
                                 <label for="">Preço</label>
-                                <input type="range" min="0" max="100" value="30" class="slider" id="myRange" required="required" >
+                                <input type="range" min="0" max="100" value="30" class="slider" id="myRange" name="Price" required="required" >
                                 <p class="price">Valor: R$ <span id="demo"></span></p>
                             
                                 <label for="">Vagas</label>

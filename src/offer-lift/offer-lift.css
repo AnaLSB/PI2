@@ -3,7 +3,6 @@
 ::-webkit-calendar-picker-indicator { background: rgb(255, 255, 255); }
 ::-webkit-input-placeholder { color: rgb(197, 196, 196);}
 
-
 a:hover {
     text-decoration: none;
 }
@@ -18,8 +17,6 @@ a:hover {
 }
 
 
-  
-  
   #sidebar-wrapper{
       z-index:1;
       position: absolute;
