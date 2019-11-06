@@ -8,9 +8,15 @@ a:hover {
 }
 
 .icon {
+    position: fixed;
+    top: 10;
     color: rgb(0, 139, 139);
     font-size: 23px;
-  }
+}
+ hr {
+   border: 1px solid #ddd;
+ }
+
 
 .margin-top{
     margin-top: 40px;
@@ -19,7 +25,7 @@ a:hover {
 
   #sidebar-wrapper{
       z-index:1;
-      position: absolute;
+      position: fixed;
       width:0;
       height:100%;
       overflow-y:hidden;
@@ -33,7 +39,6 @@ a:hover {
     /* Main Content */
     #page-content-wrapper{
       width: 100%;	
-      position: absolute;
       padding:15px;
       transition:all .5s;
     }
@@ -79,7 +84,7 @@ a:hover {
   
     .top{
       position: absolute;
-      top: 40px;
+      top: 20px;
       left: 30%;
   
     }
@@ -115,9 +120,9 @@ a:hover {
   
     .container {
         max-width: 50%;
+        white-space: nowrap;
     }
     .container-title {
-        white-space: nowrap;
         margin-top: 58px;
         margin-bottom: 60px;
         font-size: 32px;
@@ -127,60 +132,73 @@ a:hover {
     }
 
     .container-date {
-        white-space: nowrap;
-        margin-top: 20px;;
-        color: #686767;
-        font-size: 18px;
-        font-family: 'Josefin Sans';
-        font-weight: bold;
+      margin-top: 20px;
+      color: #686767;
+      font-size: 18px;
+      font-family: 'Josefin Sans';
+      font-weight: bold;
     }
 
+    input {
+      font-size: 16px;
+      display: flex;
+      font-weight: bold;
+      font-size: 16px;
+      text-indent: 10px;
+      margin-top: 7px;
+      border: 1px solid rgb(126, 179, 179);
+    }
 
+    input:hover{
+      cursor: pointer;
+    }
+
+    input:focus{
+      outline: 0;
+      cursor: pointer;
+    }
 
     .input-form {
         white-space: nowrap;
         width: 100%;
         height: 40px;
-        display: flex;
-        font-weight: bold;
-        font-size: 16px;
-        text-indent: 10px;
-        margin-top: 7px;
-        border: 1px solid rgb(126, 179, 179);
-        justify-content: center;
-        align-items: center;
     }
 
-    
-
-    .input-form:focus {
-        outline: 0;
-        cursor: pointer;
+    .input-date {
+      color: #ddd;
+      width: 40%;
+      height: 35px;
     }
 
-    .input-form:hover {
-        cursor: pointer;
+
+    .input-hour {
+      margin-left: 45%;
+      margin-top: -35px;
+      color: #ddd;
+      width: 20%;
+      height: 35px;
     }
+
 
     .input-places {
+      position: absolute;
+      bottom: 10px;
+      right: 0;
       width: 50px;
       height: 25px;
       text-indent: 50%;
       background: rgb(0, 139, 139);
       border-radius: 8px;
       border: none;
-      float: right;
       color: rgb(255, 255, 255);
     }
 
-    .input-places:focus {
-      outline: 0;
-      cursor: pointer;
+    .input-label {
+      padding-top: 30px;
     }
-  
-    .input-places:hover {
-      cursor: pointer;
-    }
+
+
+
 
     .container img {
         border-radius: 50%;
@@ -284,6 +302,7 @@ a:hover {
       /* Fin checkbox */
 
       .btn-cyan{
+        margin-bottom: 20px;
         background-color: rgb(0, 139, 139);
         color: #FFF;
       }
@@ -315,7 +334,9 @@ a:hover {
       /* The slider itself */
       .slider {
         -webkit-appearance: none;
-        width: 30%;
+        margin-left: 90px;
+        margin-top: -30px;
+        width: 150px;
         display: block;
         height: 15px;
         border-radius: 5px;  
@@ -353,13 +374,47 @@ a:hover {
     
     @media (max-width: 768px) {
   
-      .btn {
-          position: relative;
-          left: -25px;
-      }
-  
       #wrapper.menuDisplayed #sidebar-wrapper{
           width:220px;
+      }
+
+
+      .container {
+        min-width: 320px;
+      }
+
+      p {
+        font-size: 70%;
+      }
+
+      .container-check {
+        left: 12px;
+      }
+
+      .checkmark {
+        left: 12px;
+        height: 20px;
+        width: 20px;
+      }
+
+      .slider {
+        width: 70px;
+        display: block;
+        height: 10px;
+        border-radius: 5px;  
+        background: #d3d3d3;
+        outline: none;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+
+      .slider::-webkit-slider-thumb {
+        width: 18px;
+        height: 18px;
+      }
+
+      .price  {
+        font-size: 16px;
       }
 
     }
@@ -368,6 +423,7 @@ a:hover {
         .container {
             max-width: 200%;
         }
+
 
     }
 

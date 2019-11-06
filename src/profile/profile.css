@@ -1,4 +1,6 @@
 .icon {
+  position: fixed;
+  top: 10;
   color: rgb(0, 139, 139);
   font-size: 23px;
 }
@@ -6,7 +8,7 @@
 
 #sidebar-wrapper{
     z-index:1;
-    position: absolute;
+    position: fixed;
     width:0;
     height:100%;
     overflow-y:hidden;
@@ -66,7 +68,7 @@
 
   .top{
     position: absolute;
-    top: 40px;
+    top: 20px;
     left: 30%;
 
   }
@@ -113,7 +115,17 @@
     text-decoration: none;
     color: #969696;
     font-size: 23px;;
-    font-family: 'Josefin';
+  }
+
+  .card {
+    white-space: nowrap;
+    position: absolute;
+    left: 40%;
+    top: 100px;
+  }
+
+  .card-body {
+    width: 600px;
   }
 
   .form-group input {
@@ -139,21 +151,12 @@
     color: rgb(211, 207, 207);
   }
 
-  .camp-miniografia {
-    font-size: 14px;
-  }
-  
-  .camp-miniografia label{
-    padding: 15px;
-    background-color: #e2e5e5;
-  }
+  .right {
+    float: right;
+   }
 
   @media (max-width: 768px) {
 
-    .btn {
-        position: relative;
-        left: -25px;
-    }
 
     #wrapper.menuDisplayed #sidebar-wrapper{
         width:220px;
@@ -164,6 +167,27 @@
         max-width: 300px;
         max-height: 300px;
         border-radius: 50%;
+    }
+
+    
+    .card {
+      left: 5px;
+      font-size: 80%;
+    }
+
+    
+
+    .card-body {
+      max-width: 320px;
+    }
+
+
+
+
+    input {
+      margin-left: 60px;
+      max-width: 70%;
+      max-height: 80%;
     }
 
 

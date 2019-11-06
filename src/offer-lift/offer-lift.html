@@ -33,7 +33,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <a href="#" class="btn" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger icon"></span></a>
+                            <a href="#"  id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger icon"></span></a>
                         </div>
                     </div>
 
@@ -62,10 +62,13 @@
                                 <span class="checkmark"></span>
                             </label> 
                             
+                        
                             <label for="">Vai sair que horas?</label>
-                            <input id="sourceDate" name="sourceDate" type="datetime-local" required="required" class="input-form">
+                            <input id="sourceDate" name="sourceDate" type="date" required="required" class="input-date">
+                            <input type="time" name="sourceHour" id="sourceHour" type="time" required="required" class="input-hour">
                             <label for="">Que horas volta?</label>
-                            <input id="destinyDate" name="destinyDate" type="datetime-local" required="required" class="input-form">
+                            <input id="destinyDate" name="destinyDate" type="date" required="required" class="input-date">
+                            <input type="time" name="destinyHour" id="destinyHour" required="required" class="input-hour">
 
                             <hr>
 
@@ -74,10 +77,10 @@
                             
                             <div class="slidecontainer">
                                 <label for="">Preço</label>
-                                <input type="range" min="0" max="100" value="30" class="slider" id="myRange" name="Price" required="required" >
+                                <input type="range" min="10" max="100" value="30" class="slider" id="myRange" name="Price" required="required" >
                                 <p class="price">Valor: R$ <span id="demo"></span></p>
                             
-                                <label for="">Vagas</label>
+                                <label class="input-label"for="">Vagas</label>
                                 <input  class="input-places" type="number"  min="1" value="1" name="places" id="places" required="required" >
                             
                             </div>

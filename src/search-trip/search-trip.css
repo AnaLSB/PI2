@@ -7,19 +7,26 @@ a:hover {
     text-decoration: none;
 }
 
+
 .icon {
-    color: rgb(0, 139, 139);
-    font-size: 23px;
-  }
+  position: fixed;
+  top: 10;
+  color: rgb(0, 139, 139);
+  font-size: 23px;
+}
 
 .margin-top{
     margin-top: 40px;
+}
+
+hr {
+  border: 1px solid #ddd;
 }
   
   
   #sidebar-wrapper{
       z-index:1;
-      position: absolute;
+      position: fixed;
       width:0;
       height:100%;
       overflow-y:hidden;
@@ -79,7 +86,7 @@ a:hover {
   
     .top{
       position: absolute;
-      top: 40px;
+      top: 20px;
       left: 30%;
   
     }
@@ -127,83 +134,56 @@ a:hover {
 
     .container-date {
         white-space: nowrap;
-        margin-top: 20px;;
+        margin-top: 20px;
         color: #686767;
         font-size: 18px;
         font-family: 'Josefin Sans';
         font-weight: bold;
     }
 
-
-
-    .input-form {
-        white-space: nowrap;
-        width: 150%;
-        height: 55px;
-        display: block;
-        font-weight: bold;
-        font-size: 16px;
-        text-indent: 10px;
-        border-radius: 18px;
-        background-color: rgb(240, 236, 236);
-        margin-top: 7px;
-        border: none;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .input-form:focus {
-        outline: 0;
-        cursor: pointer;
-    }
-
-    .input-form:hover {
-        cursor: pointer;
-    }
-
-    .input-date {
-      color: #ddd;
-      width: 30%;
-      height: 35px;
+    input {
+      color: rgb(129, 129, 129);
+      white-space: nowrap;
       font-weight: bold;
       font-size: 16px;
       text-indent: 10px;
       border-radius: 18px;
       background-color: rgb(240, 236, 236);
       margin-top: 7px;
-      border: none;
+      border: 1px solid rgb(126, 179, 179);
+      justify-content: center;
+      align-items: center;
     }
 
-    .input-date:focus {
+    input:focus {
       outline: 0;
       cursor: pointer;
     }
 
-  .input-date:hover {
-      cursor: pointer;
-  }
+    input:hover {
+        cursor: pointer;
+    }
 
-  .input-hour {
-    color: #ddd;
-    width: 20%;
-    height: 35px;
-    font-weight: bold;
-    font-size: 16px;
-    text-indent: 10px;
-    border-radius: 18px;
-    background-color: rgb(240, 236, 236);
-    margin-top: 7px;
-    border: none;
-  }
+    .input-form {       
+        width: 150%;
+        height: 55px;
+        display: block;
+    }
 
-  .input-hour:focus {
-    outline: 0;
-    cursor: pointer;
-  }
+    
 
-  .input-hour:hover {
-      cursor: pointer;
-  }
+    .input-date {
+      width: 30%;
+      height: 35px;
+    }
+
+
+    .input-hour {
+      width: 20%;
+      height: 35px;
+    }
+
+
   
   .container img {
       max-width: 250px;
@@ -234,13 +214,29 @@ a:hover {
     
     @media (max-width: 768px) {
   
-      .btn {
-          position: relative;
-          left: -25px;
-      }
-  
       #wrapper.menuDisplayed #sidebar-wrapper{
           width:220px;
+      }
+
+      .container {
+        min-width: 320px;
+      }
+
+      .container-title img {
+        border-radius: 50%;
+        width: 170px;
+        height: 175px;
+      }
+
+      p {
+        font-size: 70%;
+      }
+
+      .input-date {
+        min-width: 150px;
+      }
+      .input-hour {
+        min-width: 85px;
       }
 
   
