@@ -21,6 +21,15 @@ a:hover {
   font-size: 23px;
 }
 
+.icon-arrow {
+    top: 90;
+    color: rgb(0, 139, 139);
+    font-size: 20px;
+}
+.icon-arrow:hover{
+    color: rgb(126, 179, 179);
+}
+
 .margin-top{
     margin-top: 40px;
 }
@@ -133,6 +142,7 @@ hr {
     .container-title h3 {
         white-space: nowrap;
         margin-top: 58px;
+        margin-left: 40px;
         font-size: 32px;
         color: rgb(1, 78, 78);
         font-weight: bold;
