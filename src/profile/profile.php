@@ -21,11 +21,11 @@
                         <label for="photo" class="input-photo"><span class="glyphicon glyphicon-camera"></span></label>
                         <input id="photo"  name="photo" type="file">
                       </div>
-                    <li><a href="../home/inicial.html">Home</a></li>
-                    <li><a href="../search-trip/search-trip.html">Buscar</a></li>
-                    <li><a href="../offer-lift/offer-lift.html">Oferecer</a></li>
-                    <li><a href="#">Rotas</a></li>
-                    <li><a href="../profile/profile.html">Meus Dados</a></li>
+                      <li><a href="../home/inicial.html">Home</a></li>
+                      <li><a href="../search-trip/search-trip.php">Buscar</a></li>
+                      <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
+                      <li><a href="#">Rotas</a></li>
+                      <li><a href="../profile/profile.php">Meus Dados</a></li>
                   </ul>
                 </div>
                 

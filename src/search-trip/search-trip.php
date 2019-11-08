@@ -4,9 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="./ride-details.css" rel="stylesheet" />
+    <link href="./search-trip.css" rel="stylesheet" />
    
-    <title>Caronas</title>
+    <title>Buscar Caronas</title>
 </head>
 <body>
     
@@ -22,10 +22,10 @@
                     <input id="photo" type="file">
                 </div>
                 <li><a href="../home/inicial.html">Home</a></li>
-                <li><a href="../search-trip/search-trip.html">Buscar</a></li>
-                <li><a href="../offer-lift/offer-lift.html">Oferecer</a></li>
+                <li><a href="../search-trip/search-trip.php">Buscar</a></li>
+                <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
                 <li><a href="#">Rotas</a></li>
-                <li><a href="../profile/profile.html">Meus Dados</a></li>
+                <li><a href="../profile/profile.php">Meus Dados</a></li>
                 </ul>
             </div>
             
@@ -38,49 +38,31 @@
                         </div>
                     </div>
 
-                    <div class="container container-title">
-                        
-                        <div class="container-ride">
-                            <a href="../ride/ride.html" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
-                            <h3>Detalhes da Carona</h3>
+                    <div class="container">
 
-                            <p>Bauru, São Paulo &nbsp; <i class="arrow"></i>
-                                <i class="arrow"></i>
-                                <i class="arrow"></i>       
-                                &nbsp; Avenida das Amoreiras, Campinas </p>
+                        <form action="">
+                            <div class="text-center container-title">
 
-                                <p>12:00 &nbsp;
+                                    <img src="../../imagens/map-pointer-gif.gif" alt="">
 
-                                    <span class="glyphicon glyphicon-time"></span>
+                                    <p> Para onde vamos hoje? </p> 
+                                    <div class="col-8 margin-top">
+                                            <input id="from" name="from" placeholder="Saindo de" required="required" class="input-form" type="text">
+                                            <input id="to" name="to" placeholder="Para" required="required" class="input-form" type="text">
+                                    </div>
+                            </div>         
+                            <div class="container-date">
+                                <hr>
+                                <p> Data e hora </p>     
+                                <input id="Date" name="Date" type="date" class="input-date" required="required" >
+                                <input id="Hour" name="Hour" type="time" class="input-hour" required="required" >
+                                <hr>
+                            </div>   
 
-                            &nbsp; 13:00</p>
-
-                            <hr>
-
-                        </div>  
-
-                        <div class="container-especs">
-                            <p>Valor da passagem</p>
-                            <p class="price">R$ 22,00</p>
-
-                            <hr>
-
-                            <p>Tyler Durden</p>
-                            <span>5 avaliações</span>
-                            <img class="img-circle-ride" src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="">
-                       
-                            <hr>
-
-                            <p style="font-weight: bold;">CHEVROLET Ônix</p>
-                            <span>Cinza-escuro</span>
-
-                        </div>
-                        
-
-
-                        
-                        
-                        
+                            <div class="right margin-top">
+                                    <input type="submit" class="btn btn-cyan" value="continuar">    
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
