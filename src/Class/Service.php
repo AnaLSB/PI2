@@ -3,7 +3,7 @@
 require_once '../Class/Sql.php';
 
 
-class OfferLift {
+class Service {
 
     private $conn;
     private $source;
@@ -11,6 +11,8 @@ class OfferLift {
     private $roundtrip;
     private $sourceDate;
     private $sourceHour;
+    private $destinyDate;
+    private $destinyHour;
     private $price;
     private $places;
     private $idride;
@@ -31,7 +33,7 @@ class OfferLift {
     public function querySelection($data) {
         try {
               $this->idride = $data;
-              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE IDCARONA = :idride");
+              $cst = $this->conn->connect()->prepare("SELECT `ORIGEM`, `DESTINO`, `HORAVOLTA`, `HORARIO`, `PRECO` FROM `carona` WHERE `IDCARONA` = :idride");
               $cst->bindParam(":idride", $this->idride, PDO::PARAM_INT);
               $cst->execute();
               return $cst->fetch();
@@ -42,7 +44,7 @@ class OfferLift {
 
     public function querySelect() {
         try {
-              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE 1");
+              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE 1 ORDER BY `PRECO`");
               $cst->execute();
               return $cst->fetchAll();
         } catch (PDOException $ex){
@@ -60,10 +62,12 @@ class OfferLift {
               $this->sourceHour = $data['sourceHour'];
               $this->price = $data['price'];
               $this->places = $data['places'];
-              $this->iduser = 2;
+              $this->iduser = 1;
+              $this->destinyDate = $data['destinyDate'];
+              $this->destinyHour = $data['destinyHour'];
 
 
-              $cst = $this->conn->connect()->prepare("INSERT INTO `carona`(`ORIGEM`, `DESTINO`, `DATA`, `HORARIO`, `PRECO`, `VAGAS`, `IDAVOLTA`, `IDUSUARIO`) VALUES (:source, :destiny, :sourceDate, :sourceHour, :price, :places, :roundtrip, :iduser)");
+              $cst = $this->conn->connect()->prepare("INSERT INTO `carona`(`ORIGEM`, `DESTINO`, `DATA`, `HORARIO`, `PRECO`, `VAGAS`, `IDAVOLTA`, `IDUSUARIO`, `DATAVOLTA`, `HORAVOLTA`) VALUES (:source, :destiny, :sourceDate, :sourceHour, :price, :places, :roundtrip, :iduser, :destinyDate, :destinyHour)");
               $cst->bindParam(":source", $this->source);
               $cst->bindParam(":destiny", $this->destiny);
               $cst->bindParam(":sourceDate", $this->sourceDate);
@@ -72,6 +76,8 @@ class OfferLift {
               $cst->bindParam(":places", $this->places);
               $cst->bindParam(":roundtrip", $this->roundtrip);
               $cst->bindParam(":iduser", $this->iduser);
+              $cst->bindParam(":destinyDate", $this->destinyDate);
+              $cst->bindParam(":destinyHour", $this->destinyHour);
 
               if($cst->execute()){
                   return 'ok';

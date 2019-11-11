@@ -1,12 +1,12 @@
 <?php
 
-require_once 'offer-service.php';
+require_once '../Class/Service.php';
 
-$carona = new OfferLift();
+$service = new Service();
 
 if (isset($_POST['submit'])){
-    if($carona->queryInsert($_POST) == 'ok'){
-        header("location: /PI2.0/PI2/src/search-trip/search-trip.html");
+    if($service->queryInsert($_POST) == 'ok'){
+        header("location: /PI2.0/PI2/src/search-trip/search-trip.php");
     } else {
         echo '<script type="text/javascript"> alert("Erro ao cadastrar")</script>';
     }
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])){
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <a href="#"  id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger icon"></span></a>
+                            <a href="#" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger icon"></span></a>
                         </div>
                     </div>
 

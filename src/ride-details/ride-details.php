@@ -1,10 +1,20 @@
+<?php
+
+require_once '../Class/Service.php';
+
+$service = new Service();
+
+$id = $_GET['id'];
+
+?>
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="./ride-details.css" rel="stylesheet" />
+    <link href="./ride-details.css?t=<?php echo date('his'); ?>" rel="stylesheet" />
    
     <title>Caronas</title>
 </head>
@@ -40,42 +50,49 @@
 
                     <div class="container container-title">
                         
-                        <div class="container-ride">
-                            <a href="../ride/ride.html" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
-                            <h3>Detalhes da Carona</h3>
 
-                            <p>Bauru, São Paulo &nbsp; <i class="arrow"></i>
-                                <i class="arrow"></i>
-                                <i class="arrow"></i>       
-                                &nbsp; Avenida das Amoreiras, Campinas </p>
-
-                                <p>12:00 &nbsp;
-
-                                    <span class="glyphicon glyphicon-time"></span>
-
-                            &nbsp; 13:00</p>
-
-                            <hr>
-
-                        </div>  
-
-                        <div class="container-especs">
-                            <p>Valor da passagem</p>
-                            <p class="price">R$ 22,00</p>
-
-                            <hr>
-
-                            <p>Tyler Durden</p>
-                            <span>5 avaliações</span>
-                            <img class="img-circle-ride" src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="">
+                       <?php 
+                       $value = $service->querySelection($id);
                        
-                            <hr>
+                       if ( $value > 0 )  { ?>
+                            <div class="container-ride">
+                                <a href="../ride/ride.php" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
+                                <h3>Detalhes da Carona</h3>
 
-                            <p style="font-weight: bold;">CHEVROLET Ônix</p>
-                            <span>Cinza-escuro</span>
+                                <p> <?= $value['ORIGEM']?> &nbsp; <i class="arrow"></i>
+                                    <i class="arrow"></i>
+                                    <i class="arrow"></i>       
+                                    &nbsp;<?= $value['DESTINO']?> </p>
 
-                        </div>
+                                    <p><?= $value['HORARIO']?> &nbsp;
+
+                                        <span class="glyphicon glyphicon-time"></span>
+
+                                &nbsp; <?= $value['HORAVOLTA']?></p>
+
+                                <hr>
+
+                            </div>  
+
+                            <div class="container-especs">
+                                <p>Valor da passagem</p>
+                                <p class="price"><?= $value['PRECO']?></p>
+
+                                <hr>
+
+                                <p>Tyler Durden</p>
+                                <span>5 avaliações</span>
+                                <img class="img-circle-ride" src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="">
                         
+                                <hr>
+
+                                <p style="font-weight: bold;">CHEVROLET Ônix</p>
+                                <span>Cinza-escuro</span>
+
+                                
+
+                            </div>
+                        <?php  }?>
 
 
                         

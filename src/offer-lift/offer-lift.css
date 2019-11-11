@@ -9,7 +9,7 @@ a:hover {
 
 .icon {
     position: fixed;
-    top: 10;
+    top: 10px;
     color: rgb(0, 139, 139);
     font-size: 23px;
 }

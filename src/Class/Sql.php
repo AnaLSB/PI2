@@ -10,7 +10,7 @@ class Sql {
 
     public function __construct() {
         $this->host = "localhost";
-        $this->dbname = "projeto2";
+        $this->dbname = "integrador";
         $this->user = "root";
         $this->PW = "";
     }

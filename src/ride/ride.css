@@ -12,6 +12,10 @@ a:hover {
     text-decoration: none;
 }
 
+.wpp {
+  width: 20px;
+  height: 20px;
+}
 
 
 .icon {
@@ -261,6 +265,7 @@ hr {
     margin-right: 40px;
   }
 
+  
 
 
     

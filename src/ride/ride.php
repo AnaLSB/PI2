@@ -1,3 +1,14 @@
+<?php
+
+require_once '../Class/Service.php';
+
+$service = new Service();
+
+
+
+?>
+
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -47,81 +58,45 @@
                     </form>
                         <a href="#" class="right filter" style="color: rgb(0, 139, 139)">Filtros</a>
                         
+
+                        <?php foreach($service->querySelect() as $value ) { 
+                           
+                            
+                            ?>
                         
                             <div class="container-ride">
-                                <a href="../ride-details/ride-details.html">
-                                <p class="price right">R$ 1000,00</p>
+                                <a href="../ride-details/ride-details.php?id=<?=$value['IDCARONA']?>">
+
+                                <p class="price right">R$ <?= $value['PRECO'] ?></p>
 
                                 <img src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="" class="img-ride">
-                                <p>São Paulo &nbsp; <i class="arrow"></i>
+                                <p><?= $value['ORIGEM'] ?> &nbsp; <i class="arrow"></i>
                                 <i class="arrow"></i>
                                 <i class="arrow"></i>       
-                                &nbsp; Campinas </p>
+                                &nbsp; <?= $value['DESTINO'] ?> </p>
 
-                                <p>12:00 &nbsp;
+                                <a class="right" style="position: absolute; top: -10px; left: 10px;" href="https://api.whatsapp.com/send?phone=5533999078936&text=Olá">
+                                    <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
+                                </a>
+
+                                <p><?= $value['HORARIO']?> &nbsp;
 
                                     <span class="glyphicon glyphicon-time"></span>
 
-                                &nbsp; 13:00</p>
+                                &nbsp; <?= $value['HORAVOLTA'] ?></p>
+                               
+
                                 </a>
+
+                                
                             </div>
+
+                        <?php } ?>
 
                             <!--Containers estaticos-->
 
-                            <div class="container-ride">
-                                    <a href="../search-trip/search-trip.html">
-                                    <p class="price right">R$ 22,00</p>
-        
-                                    <img src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="" class="img-ride">
-                                    <p>São Paulo &nbsp; <i class="arrow"></i>
-                                    <i class="arrow"></i>
-                                    <i class="arrow"></i>       
-                                    &nbsp; Campinas </p>
-        
-                                    <p>12:00 &nbsp;
-        
-                                        <span class="glyphicon glyphicon-time"></span>
-        
-                                    &nbsp; 13:00</p>
-                                    </a>
-                            </div>
 
-                            <div class="container-ride">
-                                    <a href="../search-trip/search-trip.html">
-                                    <p class="price right">R$ 22,00</p>
-        
-                                    <img src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="" class="img-ride">
-                                    <p>Paulo &nbsp; <i class="arrow"></i>
-                                    <i class="arrow"></i>
-                                    <i class="arrow"></i>       
-                                    &nbsp; Campinas </p>
-        
-                                    <p>12:00 &nbsp;
-        
-                                        <span class="glyphicon glyphicon-time"></span>
-        
-                                    &nbsp; 13:00</p>
-                                    </a>
-                            </div>
-
-                            <div class="container-ride">
-                                    <a href="../search-trip/search-trip.html">
-                                    <p class="price right">R$ 22,00</p>
-        
-                                    <img src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="" class="img-ride">
-                                    <p>São Paulo &nbsp; <i class="arrow"></i>
-                                    <i class="arrow"></i>
-                                    <i class="arrow"></i>       
-                                    &nbsp; Campinas </p>
-        
-                                    <p>12:00 &nbsp;
-        
-                                        <span class="glyphicon glyphicon-time"></span>
-        
-                                    &nbsp; 13:00</p>
-                                    </a>
-                            </div>
-
+                            
                         
 
 
