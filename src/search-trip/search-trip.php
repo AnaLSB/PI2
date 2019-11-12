@@ -79,8 +79,8 @@ if(isset($_POST['submit'])){
                             <div class="container-date">
                                 <hr>
                                 <p> Data e hora </p>     
-                                <input id="Date" name="Date" type="date" class="input-date" required="required" >
-                                <input id="Hour" name="Hour" type="time" class="input-hour" required="required" >
+                                <input id="Date" name="Date" type="date" class="input-date">
+                                <input id="Hour" name="Hour" type="time" class="input-hour">
                                 <hr>
                             </div>   
 

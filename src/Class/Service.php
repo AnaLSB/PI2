@@ -33,7 +33,7 @@ class Service {
     public function querySelection($data) {
         try {
               $this->idride = $data;
-              $cst = $this->conn->connect()->prepare("SELECT `ORIGEM`, `DESTINO`, `HORAVOLTA`, `HORARIO`, `PRECO`, `IDAVOLTA` FROM `carona` WHERE `IDCARONA` = :idride");
+              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `IDCARONA` = :idride");
               $cst->bindParam(":idride", $this->idride, PDO::PARAM_INT);
               $cst->execute();
               return $cst->fetch();
@@ -54,7 +54,16 @@ class Service {
 
     public function queryInsert($data) {
         try {
-            
+
+            if ($data['roundtrip'] ==  NULL ){
+                $this->destinyDate = NULL;
+                $this->destinyHour = NULL;
+            } else {
+                $this->destinyDate = $data['destinyDate'];
+                $this->destinyHour = $data['destinyHour'];
+            }
+
+
               $this->source = $data['source'];
               $this->destiny = $data['destiny'];
               $this->roundtrip = $data['roundtrip'];
@@ -63,8 +72,9 @@ class Service {
               $this->price = $data['price'];
               $this->places = $data['places'];
               $this->iduser = 1;
-              $this->destinyDate = $data['destinyDate'];
-              $this->destinyHour = $data['destinyHour'];
+              
+
+              
 
 
               $cst = $this->conn->connect()->prepare("INSERT INTO `carona`(`ORIGEM`, `DESTINO`, `DATA`, `HORARIO`, `PRECO`, `VAGAS`, `IDAVOLTA`, `IDUSUARIO`, `DATAVOLTA`, `HORAVOLTA`) VALUES (:source, :destiny, :sourceDate, :sourceHour, :price, :places, :roundtrip, :iduser, :destinyDate, :destinyHour)");
@@ -189,6 +199,7 @@ class Service {
         
 
     }
+
 
 
 

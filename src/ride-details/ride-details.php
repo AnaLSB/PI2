@@ -57,7 +57,10 @@ $id = $_GET['id'];
 
                        $value = $service->querySelection($id);
                        
-                       if ( $value > 0 )  { ?>
+                       if ( $value > 0 )  { 
+                           
+                       
+                       ?>
                             <div class="container-ride">
                                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                 <h3>Detalhes da Carona</h3>
@@ -77,7 +80,8 @@ $id = $_GET['id'];
 
                                 &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
 
-                                <span style="color: rgb(126, 179, 179);"><?=$roundTrip = $format->roundTripFormat($value['IDAVOLTA'])?></span>
+                                <span style="color: rgb(126, 179, 179);"><?=$validateRoundTrip = $format->roundTripValidate($value['IDAVOLTA'], $value['DATA'], $value['DATAVOLTA'], $value['HORAVOLTA']);
+                                ?></span>
 
                                 <hr>
 
@@ -91,7 +95,7 @@ $id = $_GET['id'];
 
                                 <p>Tyler Durden</p>
                                 <span>5 avaliações</span>
-                                <img class="img-circle-ride" src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="">
+                                <img class="img-circle-ride" src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="">
                         
                                
 

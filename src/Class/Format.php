@@ -5,6 +5,10 @@ class Format {
 
     public function formatDate($data) {
 
+        if ($data == NULL){
+            return NULL;
+        }
+
         $originalDate = $data;
 
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -12,10 +16,16 @@ class Format {
         return strftime('%A, %d de %B de %Y', strtotime($originalDate));
 
         
+
+        
         
     }
 
     public function formatTime($data) {
+
+        if ($data == NULL){
+            return NULL;
+        }
 
         $originalTime = $data;
         $newTime = date("H:i", strtotime($originalTime));
@@ -29,6 +39,16 @@ class Format {
             return $data;
         }
 
+    }
+
+    public function roundTripValidate($data, $sourceDate, $destinyDate, $destinyHour) {
+
+        if ($sourceDate == $destinyDate) {
+            $data = "Volta no mesmo dia.";
+            return $data;
+        } else {
+            return $this->roundTripFormat($data);
+        }
     }
 
 
