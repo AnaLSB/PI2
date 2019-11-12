@@ -1,3 +1,28 @@
+<?php
+
+require_once '../Class/Service.php';
+
+$service = new Service();
+
+
+if(isset($_POST['submit'])){
+
+    $from = $_POST['from'];
+    $to = $_POST['to'];
+
+
+    header("location: /PI2.0/PI2/src/ride/ride.php?from=$from&to=$to");
+
+}
+
+
+
+
+
+
+
+?>
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -40,7 +65,7 @@
 
                     <div class="container">
 
-                        <form action="">
+                        <form  method="post" action="search-trip.php">
                             <div class="text-center container-title">
 
                                     <img src="../../imagens/map-pointer-gif.gif" alt="">
@@ -60,9 +85,12 @@
                             </div>   
 
                             <div class="right margin-top">
-                                    <input type="submit" class="btn btn-cyan" value="continuar">    
+                                    <input type="submit" name="submit" class="btn btn-cyan" value="continuar">    
                             </div>
                         </form>
+
+                    
+                       
                     </div>
                 </div>
             </div>

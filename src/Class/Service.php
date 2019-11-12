@@ -33,7 +33,7 @@ class Service {
     public function querySelection($data) {
         try {
               $this->idride = $data;
-              $cst = $this->conn->connect()->prepare("SELECT `ORIGEM`, `DESTINO`, `HORAVOLTA`, `HORARIO`, `PRECO` FROM `carona` WHERE `IDCARONA` = :idride");
+              $cst = $this->conn->connect()->prepare("SELECT `ORIGEM`, `DESTINO`, `HORAVOLTA`, `HORARIO`, `PRECO`, `IDAVOLTA` FROM `carona` WHERE `IDCARONA` = :idride");
               $cst->bindParam(":idride", $this->idride, PDO::PARAM_INT);
               $cst->execute();
               return $cst->fetch();
@@ -44,7 +44,7 @@ class Service {
 
     public function querySelect() {
         try {
-              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE 1 ORDER BY `PRECO`");
+              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE 1 ORDER BY `DATA`");
               $cst->execute();
               return $cst->fetchAll();
         } catch (PDOException $ex){
@@ -140,6 +140,54 @@ class Service {
         } catch (PDOException $ex ) {
             return 'erro' . $ex->getMessage();
         }
+    }
+
+    public function querySearch($from, $to) {
+        try {
+
+            $this->source = $from;
+            $this->destiny = $to;
+            
+            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `ORIGEM` =:source AND `DESTINO` =:destiny ORDER BY `DATA`");
+            $cst->bindParam(":source", $this->source);
+            $cst->bindParam(":destiny", $this->destiny);
+
+            $cst->execute();
+
+            return $cst->fetchAll();
+
+            
+            
+
+
+
+        } catch (PDOException $ex ) {
+            return 'erro' . $ex->getMessage();
+        }
+    }
+
+
+    public function queryFilter($from, $to) {
+
+        try {
+
+            $this->source = $from;
+            $this->destiny = $to;
+
+            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `ORIGEM` LIKE :source AND `DESTINO` LIKE :destiny ");
+            $cst->bindParam(":source", $this->source);
+            $cst->bindParam(":destiny", $this->destiny);
+            
+
+            $cst->execute();
+            return $cst->fetchAll();
+
+
+        } catch (PDOException $ex ) {
+            return 'erro' . $ex->getMessage();
+        }
+        
+
     }
 
 

@@ -1,9 +1,22 @@
 <?php
 
 require_once '../Class/Service.php';
+require_once '../Class/Format.php';
 
 $service = new Service();
+$format = new Format();
 
+if(isset($_GET['search'])){
+    $search = $_GET['search'];
+    echo $search;
+}
+
+if (isset($_GET['from'])){
+    
+    $from = $_GET['from'];
+    $to = $_GET['to'];
+
+}
 
 
 ?>
@@ -53,14 +66,29 @@ $service = new Service();
                         
                     <form class="search-form form-inline md-form form-sm mt-0">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
-                                aria-label="Buscar">
+                            <a href="../search-trip/search-trip.php" name="search" class="form-control form-control-sm ml-3 w-75"
+                                aria-label="Buscar"> </a>
                     </form>
                         <a href="#" class="right filter" style="color: rgb(0, 139, 139)">Filtros</a>
                         
 
-                        <?php foreach($service->querySelect() as $value ) { 
-                           
+                        <?php 
+                        
+                        
+                        if(!isset($_GET['from']) && !isset($_GET['to'])){
+                                    
+                            echo "
+                                <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
+                                <h4 style='margin-left: 10%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'( Pesquise por uma carona!</h4>
+                                  
+                            ";
+                        }
+                        
+                            if(isset($_GET['from']) && isset($_GET['to'])){
+                            foreach($service->querySearch($from, $to) as $value ) { 
+
+                                
+                               
                             
                             ?>
                         
@@ -79,21 +107,39 @@ $service = new Service();
                                     <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
-                                <p><?= $value['HORARIO']?> &nbsp;
+                                <p><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
 
                                     <span class="glyphicon glyphicon-time"></span>
 
-                                &nbsp; <?= $value['HORAVOLTA'] ?></p>
+                                &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
+
+
+                                
                                
+                                
+                        
+                                <p style="position: absolute; bottom: -10px; left: 22%; color: rgb(126, 179, 179);">                             
+                                    <?= $data = $format->formatDate($value['DATA']); ?>
+                                </p>
+                               
+                                    
 
                                 </a>
 
                                 
                             </div>
 
-                        <?php } ?>
+                        <?php
+                    
+                            }
+                        
+                        } 
+                        ?>
 
-                            <!--Containers estaticos-->
+                       
+
+
+                        
 
 
                             

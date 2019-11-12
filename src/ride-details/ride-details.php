@@ -1,8 +1,10 @@
 <?php
 
 require_once '../Class/Service.php';
+require_once '../Class/Format.php';
 
 $service = new Service();
+$format = new Format();
 
 $id = $_GET['id'];
 
@@ -52,23 +54,30 @@ $id = $_GET['id'];
                         
 
                        <?php 
+
                        $value = $service->querySelection($id);
                        
                        if ( $value > 0 )  { ?>
                             <div class="container-ride">
-                                <a href="../ride/ride.php" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
+                                <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                 <h3>Detalhes da Carona</h3>
+
+                                <a class="right" href="https://api.whatsapp.com/send?phone=5533999078936&text=Olá">
+                                    <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
+                                </a>
 
                                 <p> <?= $value['ORIGEM']?> &nbsp; <i class="arrow"></i>
                                     <i class="arrow"></i>
                                     <i class="arrow"></i>       
                                     &nbsp;<?= $value['DESTINO']?> </p>
 
-                                    <p><?= $value['HORARIO']?> &nbsp;
+                                    <p><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
 
                                         <span class="glyphicon glyphicon-time"></span>
 
-                                &nbsp; <?= $value['HORAVOLTA']?></p>
+                                &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
+
+                                <span style="color: rgb(126, 179, 179);"><?=$roundTrip = $format->roundTripFormat($value['IDAVOLTA'])?></span>
 
                                 <hr>
 
@@ -84,10 +93,7 @@ $id = $_GET['id'];
                                 <span>5 avaliações</span>
                                 <img class="img-circle-ride" src="https://i.ytimg.com/vi/EvuRPLKc1JQ/maxresdefault.jpg" alt="">
                         
-                                <hr>
-
-                                <p style="font-weight: bold;">CHEVROLET Ônix</p>
-                                <span>Cinza-escuro</span>
+                               
 
                                 
 
