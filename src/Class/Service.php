@@ -164,7 +164,15 @@ class Service {
 
             $cst->execute();
 
+            $count = $cst->rowCount();
+
+            if ($count == 0){
+                return "count 0";
+            }
+
             return $cst->fetchAll();
+
+            
 
             
             
@@ -175,6 +183,8 @@ class Service {
             return 'erro' . $ex->getMessage();
         }
     }
+
+    
 
 
     public function queryFilter($from, $to) {

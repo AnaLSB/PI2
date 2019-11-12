@@ -85,10 +85,17 @@ if (isset($_GET['from'])){
                         }
                         
                             if(isset($_GET['from']) && isset($_GET['to'])){
-                            foreach($service->querySearch($from, $to) as $value ) { 
+                            
+                                if ($service->querySearch($from, $to) == 0){
+                                    echo "
+                                        <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
+                                        <h4 style='margin-left: 35%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
+                                        <h5 style='text-align: center; color: rgb(0, 139, 139); white-space: nowrap; '> Não há caronas de $from para $to hoje!</h5>
+                                        
+                                    ";
+                                } else {
 
-                                
-                               
+                                foreach($service->querySearch($from, $to) as $value ) { 
                             
                             ?>
                         
@@ -130,6 +137,8 @@ if (isset($_GET['from'])){
                             </div>
 
                         <?php
+
+                                }
                     
                             }
                         
