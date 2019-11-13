@@ -65,9 +65,9 @@ if (isset($_GET['from'])){
                     <div class="container">
                         
                     <form class="search-form form-inline md-form form-sm mt-0">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            
                             <a href="../search-trip/search-trip.php" name="search" class="form-control form-control-sm ml-3 w-75"
-                                aria-label="Buscar"> </a>
+                                aria-label="Buscar"><span style="position: fixed; top: 2%;" class="glyphicon glyphicon-search"></span></a>
                     </form>
                         
 

@@ -43,10 +43,14 @@ if(isset($_POST['submit'])){
 
         .autocomplete-items {
         max-height: 70px;
-        overflow-y: hidden;
+        overflow-y: auto;
         font-size: 20px;
         color: #999;
 
+        }
+
+        .autocomplete-items::-webkit-scrollbar { 
+        display: none;
         }
 
 
@@ -101,7 +105,7 @@ if(isset($_POST['submit'])){
                                     <img src="../../imagens/map-pointer-gif.gif" alt="">
 
                                     <p> Para onde vamos hoje? </p> 
-                                    <div class="autocomplete" style="text-align: left; width:440px; margin-left: -230px;" class="col-8 margin-top">
+                                    <div class="autocomplete" style="text-align: left; width:70%; margin-left: -230px;" class="col-8 margin-top">
                                             <input id="from" name="from" placeholder="Saindo de" required="required" class="input-form" type="text">
                                             <input id="to" name="to" placeholder="Para" required="required" class="input-form" type="text">
                                     </div>

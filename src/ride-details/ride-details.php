@@ -66,7 +66,7 @@ $id = $_GET['id'];
                                 <h3>Detalhes da Carona</h3>
 
                                 <a class="right" href="https://api.whatsapp.com/send?phone=5533999078936&text=Olá">
-                                    <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
+                                    <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
                                 <p> <?= $value['ORIGEM']?> &nbsp; <i class="arrow"></i>
@@ -89,11 +89,11 @@ $id = $_GET['id'];
 
                             <div class="container-especs">
                                 <p>Valor da passagem</p>
-                                <p class="price"><?= $value['PRECO']?></p>
+                                <p style="font-size: 20px;" class="price"><?= $value['PRECO']?></p>
 
                                 <hr>
 
-                                <p>Tyler Durden</p>
+                                <p style="font-size: 20px;">Tyler Durden</p>
                                 <span>5 avaliações</span>
                                 <img class="img-circle-ride" src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="">
                         
