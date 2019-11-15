@@ -3,6 +3,8 @@
 require_once '../Class/Service.php';
 require_once '../Class/Format.php';
 
+
+
 $service = new Service();
 $format = new Format();
 
@@ -31,6 +33,16 @@ if (isset($_GET['from'])){
     <link href="./ride.css" rel="stylesheet" />
    
     <title>Caronas</title>
+
+    <style>
+    
+        @media (max-width: 768px) {
+            .date {
+                font-size: 80%;
+            }
+        }
+
+    </style>
 </head>
 <body>
     
@@ -67,7 +79,7 @@ if (isset($_GET['from'])){
                     <form class="search-form form-inline md-form form-sm mt-0">
                             
                             <a href="../search-trip/search-trip.php" name="search" class="form-control form-control-sm ml-3 w-75"
-                                aria-label="Buscar"><span style="position: fixed; top: 2%;" class="glyphicon glyphicon-search"></span></a>
+                                aria-label="Buscar"><span  style="position: absolute; top: 15;" class="glyphicon glyphicon-search"></span></a>
                     </form>
                         
 
@@ -90,7 +102,7 @@ if (isset($_GET['from'])){
                                     echo "
                                         <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
                                         <h4 style='margin-left: 35%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
-                                        <h5 style='text-align: center; color: rgb(0, 139, 139); white-space: nowrap; '> Não há caronas de $from para $to hoje!</h5>
+                                        <h5 style='text-align: center; color: rgb(0, 139, 139); white-space: nowrap; '> Não há caronas de $from para $to!</h5>
                                         
                                     ";
                                 } else {
@@ -104,13 +116,13 @@ if (isset($_GET['from'])){
 
                                 <p class="price right">R$ <?= $value['PRECO'] ?></p>
 
-                                <img src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" class="img-ride">
+                                <img src="../../imagens/profile-pic.png" alt="" class="img-ride">
                                 <p><?= $value['ORIGEM'] ?> &nbsp; <i class="arrow"></i>
                                 <i class="arrow"></i>
                                 <i class="arrow"></i>       
                                 &nbsp; <?= $value['DESTINO'] ?> </p>
 
-                                <a class="right" style="position: absolute; top: -10px; left: 10px;" href="https://api.whatsapp.com/send?phone=5533999078936&text=Olá">
+                                <a class="right" style="position: absolute; top: -10px; left: 10px;" target="_blank" href="https://api.whatsapp.com/send?phone=5533988975430&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
                                     <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
@@ -125,7 +137,7 @@ if (isset($_GET['from'])){
                                
                                 
                         
-                                <p style="position: absolute; bottom: -10px; left: 22%; color: rgb(126, 179, 179);">                             
+                                <p class="date" style="position: absolute; bottom: -10px; left: 22%; color: rgb(126, 179, 179);">                             
                                     <?= $data = $format->formatDate($value['DATA']); ?>
                                 </p>
                                

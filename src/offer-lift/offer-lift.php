@@ -58,6 +58,13 @@ if (isset($_POST['submit'])){
         background-color: #f1f1f1; 
         }
 
+        @media (max-width: 768px) {
+
+            .autocomplete input {
+                width: 120% !important;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -103,9 +110,9 @@ if (isset($_POST['submit'])){
 
                                 <div class="autocomplete">
                                     <label for="">De onde vai sair?</label>
-                                    <input style="width:440px;" id="source" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form" type="text">
-                                    <label style="width:440px;" for="">Para onde vai?</label>
-                                    <input id="destiny" name="destiny" placeholder="Exemplo: Virgem da Lapa" required="required" class="input-form" type="text">
+                                    <input style="width: 444px;" id="source" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form" type="text">
+                                    <label for="">Para onde vai?</label>
+                                    <input style="width: 444px;" id="destiny" name="destiny" placeholder="Exemplo: Virgem da Lapa" required="required" class="input-form" type="text">
                                 </div>
                                 <hr>
 
@@ -200,7 +207,7 @@ if (isset($_POST['submit'])){
               }  
               
         }
-    </script>7
+    </script>
 
     <script>
     function autocomplete(inp, arr) {

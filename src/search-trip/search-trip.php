@@ -65,6 +65,17 @@ if(isset($_POST['submit'])){
         .autocomplete-items div:hover {
         background-color: #fff; 
         }
+
+        @media (max-width: 768px) {
+
+            .autocomplete input {
+                margin-left: 60px !important;
+            }
+
+            .autocomplete-items {
+                margin-left: 60px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -115,7 +126,7 @@ if(isset($_POST['submit'])){
                                 <p> Data e hora </p>     
                                 <input id="Date" name="Date" type="date" class="input-date">
                                 <input id="Hour" name="Hour" type="time" class="input-hour">
-                                <hr>
+                                
                             </div>   
 
                             <div class="right margin-top">

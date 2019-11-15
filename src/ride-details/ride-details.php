@@ -19,6 +19,17 @@ $id = $_GET['id'];
     <link href="./ride-details.css?t=<?php echo date('his'); ?>" rel="stylesheet" />
    
     <title>Caronas</title>
+
+    
+    <style>
+    
+        @media (max-width: 768px) {
+            .container-ride p {
+                font-size: 100%;
+            }
+        }
+
+    </style>
 </head>
 <body>
     
@@ -62,10 +73,11 @@ $id = $_GET['id'];
                        
                        ?>
                             <div class="container-ride">
+                            
                                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                 <h3>Detalhes da Carona</h3>
 
-                                <a class="right" href="https://api.whatsapp.com/send?phone=5533999078936&text=Olá">
+                                <a target="_blank" class="right" href="https://api.whatsapp.com/send?phone=5533988975430&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
@@ -79,6 +91,10 @@ $id = $_GET['id'];
                                         <span class="glyphicon glyphicon-time"></span>
 
                                 &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
+
+                                <p style="color: rgb(126, 179, 179);">                             
+                                    <?= $data = $format->formatDate($value['DATA']); ?>
+                                </p>
 
                                 <span style="color: rgb(126, 179, 179);"><?=$validateRoundTrip = $format->roundTripValidate($value['IDAVOLTA'], $value['DATA'], $value['DATAVOLTA'], $value['HORAVOLTA']);
                                 ?></span>
@@ -95,7 +111,7 @@ $id = $_GET['id'];
 
                                 <p style="font-size: 20px;">Tyler Durden</p>
                                 <span>5 avaliações</span>
-                                <img class="img-circle-ride" src="https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="">
+                                <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
                         
                                
 

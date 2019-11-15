@@ -158,7 +158,7 @@ class Service {
             $this->source = $from;
             $this->destiny = $to;
             
-            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `ORIGEM` =:source AND `DESTINO` =:destiny ORDER BY `DATA`");
+            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `ORIGEM` =:source AND `DESTINO` =:destiny ORDER BY `DATA` DESC");
             $cst->bindParam(":source", $this->source);
             $cst->bindParam(":destiny", $this->destiny);
 
