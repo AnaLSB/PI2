@@ -51,6 +51,15 @@ class Format {
         }
     }
 
+    public function formatEvaluation($data) {
+        if ($data == 0 || $data == NULL){
+            return "0 avaliações";
+        } elseif ($data == 1) {
+            return $data . " avaliação";
+        } else {
+            return $data . " avaliações";
+        }
+    }
 
 
 

@@ -6,6 +6,8 @@ require_once '../Class/Format.php';
 $service = new Service();
 $format = new Format();
 
+
+
 $id = $_GET['id'];
 
 ?>
@@ -27,7 +29,16 @@ $id = $_GET['id'];
             .container-ride p {
                 font-size: 100%;
             }
+
+            #star, #star-empty {
+                
+                position: absolute; 
+                top: 93.6%; 
+                left: 23.2% !important; 
+
+            }
         }
+
 
     </style>
 </head>
@@ -68,11 +79,13 @@ $id = $_GET['id'];
 
                        $value = $service->querySelection($id);
                        
+                       
                        if ( $value > 0 )  { 
                            
                        
                        ?>
                             <div class="container-ride">
+                       
                             
                                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                 <h3>Detalhes da Carona</h3>
@@ -109,8 +122,18 @@ $id = $_GET['id'];
 
                                 <hr>
 
-                                <p style="font-size: 20px;">Tyler Durden</p>
-                                <span>5 avaliações</span>
+
+
+                                <p style="font-size: 20px;"><?=$value['NOME']?></p>
+
+                                <span style="font-size: 20px;"><?= $format->formatEvaluation($value['AVALIACAO'])?>
+
+                                <span id="star-empty" onclick="setStar()" class="glyphicon glyphicon-star-empty" style="position: absolute; top: 93.6%; left: 40.2%;  color: rgb(1, 248, 112); font-size: 22px;"></span>
+                                <span id="star" onclick="setStarEmpty()" class="glyphicon glyphicon-star" style="display: none;  font-size: 22px;"></span>
+                                 
+                                 
+                                </span>
+
                                 <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
                         
                                
@@ -118,7 +141,7 @@ $id = $_GET['id'];
                                 
 
                             </div>
-                        <?php  }?>
+                        
 
 
                         
@@ -146,6 +169,28 @@ $id = $_GET['id'];
     });
     });
     </script>
+
+    <script>
+
+        function setStarEmpty() {
+            
+            document.getElementById("star").style = "display: none";
+            document.getElementById("star-empty").style = "position: absolute; top: 93.6%; left: 40.2%;  display: block; color: rgb(1, 248, 112); font-size: 22px;";
+    
+            <?=  $service->queryUpdateEvaluate($evaluate = $service->querySelectEvaluate($value['IDUSUARIO']), $value['IDUSUARIO']) ?>
+        }
+
+        function setStar (){
+           
+            document.getElementById("star-empty").style = "display: none";
+            document.getElementById("star").style = "position: absolute; top: 93.6%; left: 40.2%;  color: rgb(1, 248, 112); font-size: 22px;";
+       
+            <?=  $service->queryDeleteEvaluate($evaluate = $service->querySelectEvaluate($value['IDUSUARIO']), $value['IDUSUARIO']) ?>
+       
+        }
+    </script>
+
+<?php  }?>
     
 
 </body>

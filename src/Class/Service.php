@@ -33,7 +33,7 @@ class Service {
     public function querySelection($data) {
         try {
               $this->idride = $data;
-              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `IDCARONA` = :idride");
+              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO WHERE `IDCARONA` = :idride");
               $cst->bindParam(":idride", $this->idride, PDO::PARAM_INT);
               $cst->execute();
               return $cst->fetch();
@@ -71,7 +71,7 @@ class Service {
               $this->sourceHour = $data['sourceHour'];
               $this->price = $data['price'];
               $this->places = $data['places'];
-              $this->iduser = 1;
+              $this->iduser = 3;
               
 
               
@@ -210,6 +210,71 @@ class Service {
 
     }
 
+    public function querySelectEvaluate($id){
+
+        $iduser = $id;
+
+        try{
+            $cst = $this->conn->connect()->prepare("SELECT `AVALIACAO` from  `usuario` WHERE `IDUSUARIO` = :iduser");
+            $cst->bindParam(":iduser", $iduser);
+
+            $cst->execute();
+
+            return $cst->fetchColumn();
+
+            
+
+        } catch (PDOException $ex ) {
+            return 'erro' . $ex->getMessage();
+        }
+        
+
+    }
+
+    public function queryUpdateEvaluate($data, $id){
+
+       $iduser = $id;
+
+       
+        try{
+
+            $evaluate = $data;
+
+            $evaluate += 1;
+            
+            $cst = $this->conn->connect()->prepare("UPDATE `usuario` SET `AVALIACAO` =:evaluate WHERE `IDUSUARIO` =:iduser ");
+            $cst->bindParam(":evaluate", $evaluate);
+            $cst->bindParam(":iduser", $iduser);
+            $cst->execute();
+
+        } catch (PDOException $ex ) {
+            return 'erro' . $ex->getMessage();
+        }
+
+    }
+
+    public function queryDeleteEvaluate($data, $id){
+
+        $iduser = $id;
+ 
+        
+         try{
+ 
+             $evaluate = $data;
+ 
+             $evaluate -= 1;
+             
+             $cst = $this->conn->connect()->prepare("UPDATE `usuario` SET `AVALIACAO` =:evaluate WHERE `IDUSUARIO` =:iduser ");
+             $cst->bindParam(":evaluate", $evaluate);
+             $cst->bindParam(":iduser", $iduser);
+             $cst->execute();
+ 
+         } catch (PDOException $ex ) {
+             return 'erro' . $ex->getMessage();
+         }
+ 
+         
+     }
 
 
 
