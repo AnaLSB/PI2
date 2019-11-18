@@ -1,0 +1,94 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="./offer-lift.css" rel="stylesheet" />
+   
+    <title>Perfil</title>
+</head>
+<body>
+    
+        <div id="wrapper">
+                <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                
+                <ul class="sidebar-nav">
+                <div class="top">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
+                    
+                    <label for="photo" class="input-photo"><span class="glyphicon glyphicon-camera"></span></label>
+                    <input id="photo" type="file">
+                </div>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Buscar</a></li>
+                <li><a href="#">Rotas</a></li>
+                <li><a href="#">Meus Dados</a></li>
+                </ul>
+            </div>
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#" class="btn" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger icon"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="container text-center container-title">
+
+                            <img src="../../imagens/ride.gif" alt="">
+
+                            <p class="text-center"> Vamos dar aquela carona! </p> 
+                           
+                    </div>         
+                    <div class="col-8 margin-top container container-offer">
+                            <p> Ponto de partida</p>
+                            <label for="">De onde vai sair?</label>
+                            <input id="source" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form" type="text">
+                            <label for="">Para onde vai?</label>
+                            <input id="destiny" name="destiny" placeholder="Exemplo: Virgem da Lapa" required="required" class="input-form" type="text">
+                           
+                            <hr>
+
+                            <p> Data e hora</p>
+
+                            <label for="">Vai sair que horas?</label>
+                            <input id="sourceDate" name="sourceDate" type="date" required="required" class="input-form" type="text">
+                            <label for="">Que horas volta?</label>
+                            <input id="destinyDate" name="destinyDate" type="date" required="required" class="input-form" type="text">
+
+                            <label class="container-check">ida e volta
+                                <input type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label> 
+                           
+
+                    </div>
+                </div>
+            </div>
+        </div>
+               
+                     
+    
+      
+
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../../node_modules/popper.js/dist/popper.js"></script>
+
+    <script>
+    $(document).ready(function(){
+    $("#menu-toggle").click(function(e){
+        e.preventDefault();
+        $("#wrapper").toggleClass("menuDisplayed");
+    });
+    });
+    </script>
+    
+
+</body>
+</html>
