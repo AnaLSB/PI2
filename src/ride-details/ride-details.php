@@ -90,7 +90,7 @@ $id = $_GET['id'];
                                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                 <h3>Detalhes da Carona</h3>
 
-                                <a target="_blank" class="right" href="https://api.whatsapp.com/send?phone=5533988975430&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
+                                <a target="_blank" class="right" href="https://api.whatsapp.com/send?phone=<?= $value['TELEFONE']?>&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
@@ -126,27 +126,19 @@ $id = $_GET['id'];
 
                                 <p style="font-size: 20px;"><?=$value['NOME']?></p>
 
-                                <span style="font-size: 20px;"><?= $format->formatEvaluation($value['AVALIACAO'])?>
-
-                                <span id="star-empty" onclick="setStar()" class="glyphicon glyphicon-star-empty" style="position: absolute; top: 93.6%; left: 40.2%;  color: rgb(1, 248, 112); font-size: 22px;"></span>
-                                <span id="star" onclick="setStarEmpty()" class="glyphicon glyphicon-star" style="display: none;  font-size: 22px;"></span>
-                                 
-                                 
-                                </span>
+                                <span style="font-size: 20px;"><?= $format->formatEvaluation($value['AVALIACAO'])?></span>
+                                
 
                                 <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
                         
                                
 
-                                
+                               
 
                             </div>
                         
+                            
 
-
-                        
-                        
-                        
                     </div>
                 </div>
             </div>
@@ -170,25 +162,7 @@ $id = $_GET['id'];
     });
     </script>
 
-    <script>
-
-        function setStarEmpty() {
-            
-            document.getElementById("star").style = "display: none";
-            document.getElementById("star-empty").style = "position: absolute; top: 93.6%; left: 40.2%;  display: block; color: rgb(1, 248, 112); font-size: 22px;";
-    
-            <?=  $service->queryUpdateEvaluate($evaluate = $service->querySelectEvaluate($value['IDUSUARIO']), $value['IDUSUARIO']) ?>
-        }
-
-        function setStar (){
-           
-            document.getElementById("star-empty").style = "display: none";
-            document.getElementById("star").style = "position: absolute; top: 93.6%; left: 40.2%;  color: rgb(1, 248, 112); font-size: 22px;";
-       
-            <?=  $service->queryDeleteEvaluate($evaluate = $service->querySelectEvaluate($value['IDUSUARIO']), $value['IDUSUARIO']) ?>
-       
-        }
-    </script>
+   
 
 <?php  }?>
     

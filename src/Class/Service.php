@@ -158,7 +158,7 @@ class Service {
             $this->source = $from;
             $this->destiny = $to;
             
-            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `ORIGEM` =:source AND `DESTINO` =:destiny ORDER BY `DATA` DESC");
+            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO  WHERE `ORIGEM` =:source AND `DESTINO` =:destiny ORDER BY `DATA` DESC");
             $cst->bindParam(":source", $this->source);
             $cst->bindParam(":destiny", $this->destiny);
 
@@ -247,6 +247,8 @@ class Service {
             $cst->bindParam(":iduser", $iduser);
             $cst->execute();
 
+
+
         } catch (PDOException $ex ) {
             return 'erro' . $ex->getMessage();
         }
@@ -255,14 +257,20 @@ class Service {
 
     public function queryDeleteEvaluate($data, $id){
 
+        
         $iduser = $id;
  
         
          try{
  
              $evaluate = $data;
+
  
              $evaluate -= 1;
+
+             if ($evaluate < 0){
+                $evaluate = 0;
+            }
              
              $cst = $this->conn->connect()->prepare("UPDATE `usuario` SET `AVALIACAO` =:evaluate WHERE `IDUSUARIO` =:iduser ");
              $cst->bindParam(":evaluate", $evaluate);

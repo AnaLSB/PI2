@@ -122,7 +122,7 @@ if (isset($_GET['from'])){
                                 <i class="arrow"></i>       
                                 &nbsp; <?= $value['DESTINO'] ?> </p>
 
-                                <a class="right" style="position: absolute; top: -10px; left: 10px;" target="_blank" href="https://api.whatsapp.com/send?phone=5533988975430&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
+                                <a class="right" style="position: absolute; top: -10px; left: 10px;" target="_blank" href="https://api.whatsapp.com/send?phone=<?= $value['TELEFONE'] ?>&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
                                     <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
