@@ -3,6 +3,7 @@
 Class Usuario{ 
     private $pdo; 
     public $msgErro = "";
+    private $id;
 
     public function conectar($nome, $host, $usuario, $senha){
         global $pdo;
@@ -50,20 +51,25 @@ Class Usuario{
         $sql->execute();
 
         if($sql->rowCount() > 0){
+            global $id;
             //Se sim, entrar no sistema (Sessão)
             $dado = $sql->fetch();
             session_start();
             $_SESSION['IDUSUARIO'] = $dado['IDUSUARIO'];
-            echo $_SESSION;
+            $id = $_SESSION['IDUSUARIO'];
             return true; // Logado Com Sucesso
         }
         else{
             return false; // Nao foi possivel logar
             echo "Erro";
         }
-
-         
     }
+
+    public function getId(){
+        return $this->id;
+    }
+
+
 
    
 

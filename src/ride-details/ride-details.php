@@ -90,7 +90,7 @@ $id = $_GET['id'];
                                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                 <h3>Detalhes da Carona</h3>
 
-                                <a target="_blank" class="right" href="https://api.whatsapp.com/send?phone=<?= $value['TELEFONE']?>&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
+                                <a target="_blank" class="right" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
@@ -112,6 +112,8 @@ $id = $_GET['id'];
                                 <span style="color: rgb(126, 179, 179);"><?=$validateRoundTrip = $format->roundTripValidate($value['IDAVOLTA'], $value['DATA'], $value['DATAVOLTA'], $value['HORAVOLTA']);
                                 ?></span>
 
+                                <p style="color: rgb(126, 179, 179); font-size: 18px;"><?= $format->formatPlaces($value['VAGAS'])?></p>
+
                                 <hr>
 
                             </div>  
@@ -119,6 +121,7 @@ $id = $_GET['id'];
                             <div class="container-especs">
                                 <p>Valor da passagem</p>
                                 <p style="font-size: 20px;" class="price"><?= $value['PRECO']?></p>
+                               
 
                                 <hr>
 
@@ -126,7 +129,7 @@ $id = $_GET['id'];
 
                                 <p style="font-size: 20px;"><?=$value['NOME']?></p>
 
-                                <span style="font-size: 20px;"><?= $format->formatEvaluation($value['AVALIACAO'])?></span>
+                                <span style="font-size: 20px;"><?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
                                 
 
                                 <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">

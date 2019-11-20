@@ -18,6 +18,8 @@ if (isset($_GET['from'])){
     $from = $_GET['from'];
     $to = $_GET['to'];
 
+    
+
 }
 
 
@@ -99,6 +101,8 @@ if (isset($_GET['from'])){
                             if(isset($_GET['from']) && isset($_GET['to'])){
                             
                                 if ($service->querySearch($from, $to) == 0){
+                                    $from = $format->formatUcWords($from);
+                                    $to = $format->formatUcWords($to);
                                     echo "
                                         <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
                                         <h4 style='margin-left: 35%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
@@ -122,7 +126,7 @@ if (isset($_GET['from'])){
                                 <i class="arrow"></i>       
                                 &nbsp; <?= $value['DESTINO'] ?> </p>
 
-                                <a class="right" style="position: absolute; top: -10px; left: 10px;" target="_blank" href="https://api.whatsapp.com/send?phone=<?= $value['TELEFONE'] ?>&text=Olá,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
+                                <a class="right" style="position: absolute; top: -10px; left: 10px;" target="_blank" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
                                     <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
