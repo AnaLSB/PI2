@@ -11,17 +11,11 @@ $requestService = new RequestService();
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-}
-
-
-
-echo var_dump($_POST['idUser']) . " " . var_dump($_POST['idRide']);
-
-if (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser'])){
+} elseif (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser'])){
     
     
     if($requestService->setSolicit($_POST) == 'ok'){
-        echo '<script type="text/javascript"> alert("Solicitacao enviada.")</script>';
+        $_SERVER['HTTP_REFERER'];
     } else {
         echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
     }
@@ -75,7 +69,7 @@ if (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser']
                 <li><a href="../home/inicial.html">Home</a></li>
                 <li><a href="../search-trip/search-trip.php">Buscar</a></li>
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
-                <li><a href="#">Rotas</a></li>
+                <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                 <li><a href="../profile/profile.php">Meus Dados</a></li>
                 </ul>
             </div>
@@ -94,7 +88,7 @@ if (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser']
 
                        <?php
 
-
+                       if(isset($id)){
                        $value = $service->querySelection($id);
                        
                        
@@ -154,6 +148,8 @@ if (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser']
                         
                                
 
+                        
+                           
                                <form action="ride-details.php" method="post">
                                     <div class="right margin-top">
                                         <input type="hidden" name="idUser" value="<?=$value['IDUSUARIO']?>">
@@ -161,11 +157,13 @@ if (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser']
                                         <input name="submit" type="submit" class="btn btn-cyan" value="solicitar carona">    
                                     </div>
                                </form>
+                          
+                         
 
                             </div>
                         
                             
-
+                           
                     </div>
                 </div>
             </div>
@@ -191,7 +189,11 @@ if (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser']
 
    
 
-<?php  }?>
+<?php 
+                       }
+ }
+
+?>
     
 
 </body>

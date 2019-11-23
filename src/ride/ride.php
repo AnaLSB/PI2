@@ -62,7 +62,7 @@ if (isset($_GET['from'])){
                 <li><a href="../home/inicial.html">Home</a></li>
                 <li><a href="../search-trip/search-trip.php">Buscar</a></li>
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
-                <li><a href="#">Rotas</a></li>
+                <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                 <li><a href="../profile/profile.php">Meus Dados</a></li>
                 </ul>
             </div>

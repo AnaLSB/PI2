@@ -9,33 +9,35 @@ $format = new Format();
 $requestService = new RequestService();
 
 
+if(isset($_POST['accept']) || isset($_POST['reject'])){
+  
+    if ($_POST['accept'] == 'aceitar'){
+        $_POST['accept'] = 1;
+    } 
 
-if ($_POST['accept'] == 'aceitar'){
-    $_POST['accept'] = 1;
+    if ($_POST['reject'] == 'rejeitar'){
+      $_POST['reject'] = 0;
+    } 
+
 }
 
-if ($_POST['reject'] == 'rejeitar'){
-  $_POST['reject'] = 0;
-}
-
-echo var_dump($_POST['accept']) . " " . var_dump($_POST['reject']);
-
-
-if (isset($_POST['accept']) && isset($_POST['id'])){
-     
-    if($requestService->acceptSolicit($_POST['accept'], $_POST['id']) == 'ok'){
-        echo '<script type="text/javascript"> alert("Solicitacao aceita.")</script>';
-    } else {
-        echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+    if (isset($_POST['accept']) && isset($_POST['id'])){
+        
+        if($requestService->acceptSolicit($_POST['accept'], $_POST['id']) == 'ok'){
+           $_SERVER['HTTP_REFERER'];
+        } else {
+            echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+        }
+    } else if (isset($_POST['reject']) && isset($_POST['id'])){
+        
+      if($requestService->acceptSolicit($_POST['reject'], $_POST['id'])  == 'ok'){
+         $_SERVER['HTTP_REFERER'];
+      } else {
+          echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+      }
     }
-} else if (isset($_POST['reject']) && isset($_POST['id'])){
-     
-  if($requestService->acceptSolicit($_POST['reject'], $_POST['id'])  == 'ok'){
-      echo '<script type="text/javascript"> alert("Solicitacao recusada.")</script>';
-  } else {
-      echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
-  }
-}
+
+
 
 
 ?>
@@ -50,6 +52,11 @@ if (isset($_POST['accept']) && isset($_POST['id'])){
         <title>Perfil</title>
 
         <style>
+
+        h4{
+          margin-top: 10px;
+          margin-left: 30px;
+        }
     
         .name {
               color: rgb(126, 179, 179);
@@ -77,7 +84,23 @@ if (isset($_POST['accept']) && isset($_POST['id'])){
           background-color: rgb(30, 255, 0);
           color: #FFF;
         }
-          
+
+        a {
+          font-size: 14px;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+
+        .icon-arrow {
+            top: 30;
+            color: rgb(0, 139, 139);
+            font-size: 20px;
+        }
+        .icon-arrow:hover{
+            color: rgb(126, 179, 179);
+        }
+              
 
 
         </style>
@@ -98,7 +121,7 @@ if (isset($_POST['accept']) && isset($_POST['id'])){
                           <li><a href="../home/inicial.html">Home</a></li>
                           <li><a href="../search-trip/search-trip.php">Buscar</a></li>
                           <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
-                          <li><a href="#">Rotas</a></li>
+                          <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                           <li><a href="../profile/profile.php">Meus Dados</a></li>
                       </ul>
                     </div>
@@ -119,6 +142,7 @@ if (isset($_POST['accept']) && isset($_POST['id'])){
                                   <div class="card-body">
                                       <div class="row">
                                           <div class="col-md-12">
+                                              <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                               <h4>Solicitações de carona</h4>
                                               <hr>
                                           </div>
@@ -131,7 +155,8 @@ if (isset($_POST['accept']) && isset($_POST['id'])){
                                             <?php
 
                                          
-                                          if($_GET['id']){
+                                          
+                                          if(isset($_GET['id'])){
                                             $id = $_GET['id'];
                                           
 

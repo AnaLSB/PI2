@@ -86,21 +86,22 @@ class RequestService {
         }
     }
 
+    /* TODO metodo para verificar se o usuario ja solicitou a carona e entao bloquear botao
     public function verifySolicit(){
         try {
 
-            session_start();
-    
-            $id = $_SESSION['IDUSUARIO'];
+             if(isset($_SESSION)){
+                 $id = $_SESSION;
+             }
 
-              $cst = $this->conn->connect()->prepare("SELECT `ESTADO` FROM `solicitacao` AS s WHERE `IDUSUARIO` = :id");
+              $cst = $this->conn->connect()->prepare("SELECT `ESTADO` FROM `solicitacao` WHERE `IDSOLICITANTE` =:id");
               $cst->bindParam(":id", $id);
               $cst->execute();
               return $cst->fetch();
         } catch (PDOException $ex ) {
             return 'error ' . $ex->getMessage();
         }
-    }
-
+    } */
+ 
 
 }

@@ -37,6 +37,11 @@ if (isset($_GET['from'])){
     <title>Caronas</title>
 
     <style>
+
+        h3{
+            margin-top: 100px;
+            color: rgb(0, 139, 139);
+        }
     
         @media (max-width: 768px) {
             .date {
@@ -101,9 +106,6 @@ if (isset($_GET['from'])){
                                 <i class="arrow"></i>       
                                 &nbsp; <?= $value['DESTINO'] ?> </p>
 
-                                <a class="right" style="position: absolute; top: -10px; left: 10px;" target="_blank" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
-                                    <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
-                                </a>
 
                                 <p><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
 
