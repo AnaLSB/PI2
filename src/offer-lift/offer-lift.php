@@ -67,7 +67,7 @@ if (isset($_POST['submit'])){
 
     </style>
 </head>
-<body>
+<body style="background: #F9F9F9;">
     
         <div id="wrapper">
                 <!-- Sidebar -->

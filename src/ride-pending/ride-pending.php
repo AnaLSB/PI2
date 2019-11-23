@@ -1,5 +1,44 @@
+<?php
+
+require_once '../Class/Service.php';
+require_once '../Class/Format.php';
+require_once '../Class/RequestService.php';
+
+$service = new Service();
+$format = new Format();
+$requestService = new RequestService();
 
 
+
+if ($_POST['accept'] == 'aceitar'){
+    $_POST['accept'] = 1;
+}
+
+if ($_POST['reject'] == 'rejeitar'){
+  $_POST['reject'] = 0;
+}
+
+echo var_dump($_POST['accept']) . " " . var_dump($_POST['reject']);
+
+
+if (isset($_POST['accept']) && isset($_POST['id'])){
+     
+    if($requestService->acceptSolicit($_POST['accept'], $_POST['id']) == 'ok'){
+        echo '<script type="text/javascript"> alert("Solicitacao aceita.")</script>';
+    } else {
+        echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+    }
+} else if (isset($_POST['reject']) && isset($_POST['id'])){
+     
+  if($requestService->acceptSolicit($_POST['reject'], $_POST['id'])  == 'ok'){
+      echo '<script type="text/javascript"> alert("Solicitacao recusada.")</script>';
+  } else {
+      echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+  }
+}
+
+
+?>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -9,6 +48,39 @@
         <link href="./ride-pending.css" rel="stylesheet" />
        
         <title>Perfil</title>
+
+        <style>
+    
+        .name {
+              color: rgb(126, 179, 179);
+              font-size: 18px;
+        }
+
+        .img-circle-ride {
+          margin-top: -50px;
+          float: right;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+        }
+
+        .btn {
+          border-radius: 5px;
+        }
+
+        .btn-reject {
+          background-color: rgb(248, 1, 1);
+          color: #FFF;
+        }
+
+        .btn-accept {
+          background-color: rgb(30, 255, 0);
+          color: #FFF;
+        }
+          
+
+
+        </style>
     </head>
     <body>
         
@@ -54,35 +126,39 @@
                                       <div class="row ">
                                           <div class="col-md-12">
 
-                                            // <br>
-                                              &nbsp; &nbsp *TODO* Assim que o usuario for aceito a parte de avaliação pode ser feita
-                                            <br>//
-                                            <div>
-                                                <p>Breno</p>
+                                        
 
-                                                <form> 
-                                                    <div>
-                                                        <button name="accept" type="submit" class="btn btn-accept" >Aceitar</button>
+                                            <?php
+
+                                         
+                                          if($_GET['id']){
+                                            $id = $_GET['id'];
+                                          
+
+                                            foreach($requestService->querySelection($id) as $value ) { 
                                                 
-                                                        <button name="reject" type="submit" class="btn btn-reject">Recusar</button>
+
+                                            ?>
+
+                                            <div>
+                                                <p class="name"><?=$value['NOME']?></p>
+                                                <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
+
+                                                <form method="post"> 
+                                                    <div>
+                                                        <input name="id" type="hidden" value="<?=$value['IDUSUARIO']?>">   
+                                                        <input class="btn btn-accept" type="submit" name="accept" value="aceitar">
+                                                        <input class="btn btn-reject" type="submit" name="reject" value="rejeitar">
                                                     </div>
                                                     
                                                 </form>
                                                 <hr>
                                             </div>
 
-                                            <div>
-                                                    <p>Well</p>
-                                                    
-                                                    <form> 
-                                                        <div>
-                                                            <button name="accept" type="submit" class="btn btn-accept" >Aceitar</button>
-                                                    
-                                                            <button name="reject" type="submit" class="btn btn-reject">Recusar</button>
-                                                        </div>
-                                                        
-                                                    </form>
-                                            </div>
+                                           <?php
+                                             }
+                                            }
+                                           ?>
 
                                           </div>
     

@@ -32,7 +32,7 @@ if (isset($_GET['from'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="./ride.css" rel="stylesheet" />
+    <link href="./my-routes.css" rel="stylesheet" />
    
     <title>Caronas</title>
 
@@ -78,45 +78,20 @@ if (isset($_GET['from'])){
 
                     <div class="container">
                         
-                    <form class="search-form form-inline md-form form-sm mt-0">
-                            
-                            <a href="../search-trip/search-trip.php" name="search" class="form-control form-control-sm ml-3 w-75"
-                                aria-label="Buscar"><span  style="position: absolute; top: 15;" class="glyphicon glyphicon-search"></span></a>
-                    </form>
+                    <h3>Minhas Rotas</h3>
                         
 
                         <?php 
                         
-                        
-                        if(!isset($_GET['from']) && !isset($_GET['to'])){
-                                    
-                            echo "
-                                <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
-                                <h4 style='margin-left: 35%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
-                                <h5 style='margin-left: 25%; color: rgb(0, 139, 139); white-space: nowrap; '> Pesquise por uma carona!</h5>
-                                  
-                            ";
-                        }
-                        
-                            if(isset($_GET['from']) && isset($_GET['to'])){
-                            
-                                if ($service->querySearch($from, $to) == 0){
-                                    $from = $format->formatUcWords($from);
-                                    $to = $format->formatUcWords($to);
-                                    echo "
-                                        <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
-                                        <h4 style='margin-left: 35%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
-                                        <h5 style='text-align: center; color: rgb(0, 139, 139); white-space: nowrap; '> Não há caronas de $from para $to!</h5>
-                                        
-                                    ";
-                                } else {
+                    
+                    
 
-                                foreach($service->querySearch($from, $to) as $value ) { 
+                                foreach($service->querySelect() as $value ) { 
                             
                             ?>
                         
                             <div class="container-ride" style="background: #FFF;">
-                                <a href="../ride-details/ride-details.php?id=<?=$value['IDCARONA']?>">
+                                <a href="../ride-pending/ride-pending.php?id=<?=$value['IDCARONA']?>">
 
                                 <p class="price right">R$ <?= $value['PRECO'] ?></p>
 
@@ -156,9 +131,7 @@ if (isset($_GET['from'])){
 
                                 }
                     
-                            }
-                        
-                        } 
+                            
                         ?>
 
                        

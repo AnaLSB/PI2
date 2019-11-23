@@ -49,7 +49,13 @@ class Service {
 
     public function querySelect() {
         try {
-              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE 1 ORDER BY `DATA`");
+
+            session_start();
+    
+            $id = $_SESSION['IDUSUARIO'];
+
+              $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `IDUSUARIO` =:id");
+              $cst->bindParam(":id", $id);
               $cst->execute();
               return $cst->fetchAll();
         } catch (PDOException $ex){
@@ -109,7 +115,13 @@ class Service {
     }
 
     public function queryUpdate($data) {
+        
         try {
+
+            session_start();
+    
+            $id = $_SESSION['IDUSUARIO'];
+
             $this->source = $data['source'];
             $this->destiny = $data['destiny'];
             $this->roundtrip = $data['roundtrip'];
@@ -117,7 +129,7 @@ class Service {
             $this->sourceHour = $data['sourceHour'];
             $this->price = $data['price'];
             $this->places = $data['places'];
-            $this->iduser = 1;
+            $this->iduser = $id;
 
             $cst = $this->conn->connect()->prepare("UPDATE `carona` SET `ORIGEM`=:source,`DESTINO`=:destiny,`DATA`=:sourceDate,`HORARIO`=sourceHour,`PRECO`=:price,`VAGAS`=:places,`IDAVOLTA`=:roundtrip WHERE `IDUSUARIO` =:iduser");
             $cst->bindParam(":source", $this->source);
@@ -142,7 +154,12 @@ class Service {
 
     public function queryDelete($data) {
         try {
-            $this->iduser = 1;
+
+            session_start();
+    
+            $id = $_SESSION['IDUSUARIO'];
+
+            $this->iduser = $id;
 
             $cst = $this->conn->connect()->prepare("DELETE FROM `carona` WHERE `IDUSUARIO` =:iduser");
             $cst->bindParam(":iduser", $this->iduser);

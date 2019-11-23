@@ -2,13 +2,30 @@
 
 require_once '../Class/Service.php';
 require_once '../Class/Format.php';
+require_once '../Class/RequestService.php';
 
 $service = new Service();
 $format = new Format();
+$requestService = new RequestService();
+
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+}
 
 
 
-$id = $_GET['id'];
+echo var_dump($_POST['idUser']) . " " . var_dump($_POST['idRide']);
+
+if (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser'])){
+    
+    
+    if($requestService->setSolicit($_POST) == 'ok'){
+        echo '<script type="text/javascript"> alert("Solicitacao enviada.")</script>';
+    } else {
+        echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+    }
+}
 
 ?>
 
@@ -42,7 +59,7 @@ $id = $_GET['id'];
 
     </style>
 </head>
-<body>
+<body style="background: #F9F9F9;">
     
         <div id="wrapper">
                 <!-- Sidebar -->
@@ -75,7 +92,8 @@ $id = $_GET['id'];
                     <div class="container container-title">
                         
 
-                       <?php 
+                       <?php
+
 
                        $value = $service->querySelection($id);
                        
@@ -136,7 +154,13 @@ $id = $_GET['id'];
                         
                                
 
-                               
+                               <form action="ride-details.php" method="post">
+                                    <div class="right margin-top">
+                                        <input type="hidden" name="idUser" value="<?=$value['IDUSUARIO']?>">
+                                        <input type="hidden" name="idRide" value="<?=$value['IDCARONA']?>">
+                                        <input name="submit" type="submit" class="btn btn-cyan" value="solicitar carona">    
+                                    </div>
+                               </form>
 
                             </div>
                         
