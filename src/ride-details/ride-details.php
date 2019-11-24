@@ -16,9 +16,9 @@ if(isset($_GET['id'])){
     $places = $requestService->getPlaces($_POST['idRide']);
     
     if($requestService->setSolicit($_POST, $places) == 'ok'){
-        echo "<a href='../search-trip/search-trip.php'><span style='color: rgb(0, 139, 139); font-size: 100px; position: absolute; top: 30%; left: 50%;' class='glyphicon glyphicon-ok'></span></a>";
+        header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.html");
     } else {
-        echo "<span style='color: rgb(0, 139, 139); font-size: 100px; position: absolute; top: 30%; left: 50%;' class='glyphicon glyphicon-remove'></span>";
+        header("location: /PI2.0/PI2/src/SucessErrorPage/Error.html");
     }
 }
 
@@ -26,6 +26,7 @@ if(isset($_GET['id'])){
 session_start();
 
 $idUser = $_SESSION['IDUSUARIO'];
+
 
 $stateRequest = $requestService->verifySolicit($idUser, $id);
 
