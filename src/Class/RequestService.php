@@ -102,22 +102,30 @@ class RequestService {
         }
     }
 
-    public function acceptSolicit($StateReq, $id, $places){
+    public function acceptSolicit($StateReq, $id, $places, $idRide){
         try {
 
             
             $stateRequest = $StateReq;
             $idUser = $id;
+            $ride = $idRide;
+ 
 
            if($stateRequest == 1){
-                $places -= 1;
+               if($places > 0){
+                  $nPlaces = $places - 1;
+               } else {
+                    return 'erro';
+                }
+            } elseif ($stateRequest == 0){
                 $nPlaces = $places;
             }
 
-            $cst = $this->conn->connect()->prepare("UPDATE `solicitacao` AS s JOIN `carona`AS c ON s.IDCARONA = c.IDCARONA SET `ESTADO`=:stateRequest, `VAGAS`=:nPlaces WHERE `IDSOLICITANTE` =:iduser");
+            $cst = $this->conn->connect()->prepare("UPDATE `solicitacao` AS s JOIN `carona`AS c ON s.IDCARONA = c.IDCARONA SET `ESTADO`=:stateRequest, `VAGAS`=:nPlaces WHERE `IDSOLICITANTE` =:iduser AND c.IDCARONA =:idRide");
             $cst->bindParam(":stateRequest", $stateRequest);
             $cst->bindParam(":nPlaces", $nPlaces);
             $cst->bindParam(":iduser", $idUser);
+            $cst->bindParam(":idRide", $ride);
 
             if($cst->execute()){
                 return 'ok';
@@ -130,22 +138,26 @@ class RequestService {
         }
     }
 
-    /* TODO metodo para verificar se o usuario ja solicitou a carona e entao bloquear botao
-    public function verifySolicit(){
+    
+    public function verifySolicit($data, $idRide){
         try {
 
-             if(isset($_SESSION)){
-                 $id = $_SESSION;
-             }
+            
+            $id = $data;
 
-              $cst = $this->conn->connect()->prepare("SELECT `ESTADO` FROM `solicitacao` WHERE `IDSOLICITANTE` =:id");
+            $ride = $idRide;
+             
+
+              $cst = $this->conn->connect()->prepare("SELECT `ESTADO` FROM `solicitacao` WHERE `IDSOLICITANTE` =:id AND `IDCARONA` =:idRide");
               $cst->bindParam(":id", $id);
+              $cst->bindParam(":idRide", $ride);
               $cst->execute();
-              return $cst->fetch();
+              $value = $cst->fetch();
+              return $value[0];
         } catch (PDOException $ex ) {
             return 'error ' . $ex->getMessage();
         }
-    } */
+    } 
 
 
    

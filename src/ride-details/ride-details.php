@@ -16,11 +16,19 @@ if(isset($_GET['id'])){
     $places = $requestService->getPlaces($_POST['idRide']);
     
     if($requestService->setSolicit($_POST, $places) == 'ok'){
-        var_dump($places);
+        echo "<a href='../search-trip/search-trip.php'><span style='color: rgb(0, 139, 139); font-size: 100px; position: absolute; top: 30%; left: 50%;' class='glyphicon glyphicon-ok'></span></a>";
     } else {
-        echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+        echo "<span style='color: rgb(0, 139, 139); font-size: 100px; position: absolute; top: 30%; left: 50%;' class='glyphicon glyphicon-remove'></span>";
     }
 }
+
+
+session_start();
+
+$idUser = $_SESSION['IDUSUARIO'];
+
+$stateRequest = $requestService->verifySolicit($idUser, $id);
+
 
 ?>
 
@@ -86,8 +94,10 @@ if(isset($_GET['id'])){
 
                     <div class="container container-title">
                         
+                       
 
                        <?php
+
 
                        if(isset($id)){
                        $value = $service->querySelection($id);
@@ -150,7 +160,7 @@ if(isset($_GET['id'])){
                                
                             <?php
 
-                                if($value['VAGAS'] > 0){
+                                if($value['VAGAS'] > 0 && $stateRequest < 2){
 
                             ?>
                         
@@ -164,6 +174,19 @@ if(isset($_GET['id'])){
                                </form>
 
                             <?php 
+                                }
+                            ?>
+
+                            <?php 
+                                if($stateRequest == 2){
+
+                            ?>
+
+                            <div class="right margin-top">
+                                <span style="color: rgb(126, 179, 179); font-size: 18px; font-weight: bold">Solicitação Pendente</span>
+                            </div>
+
+                            <?php
                                 }
                             ?>
                           

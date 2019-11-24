@@ -18,26 +18,29 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
     if ($_POST['reject'] == 'rejeitar'){
       $_POST['reject'] = 0;
     } 
+  }
 
-}
 
+  $id = $_GET['id'];
+  
 
-    if (isset($_POST['accept']) && isset($_POST['id'])){
+    if (isset($_POST['accept']) && isset($_POST['id']) && isset($_POST['places'])){
 
       $places = $requestService->getPlaces($_POST['places']);
-      var_dump($places);
-        if($requestService->acceptSolicit($_POST['accept'], $_POST['id'], $places) == 'ok'){
-          header("location: /PI2.0/PI2/src/my-routes/my-routes.php");
+
+        if($requestService->acceptSolicit($_POST['accept'], $_POST['id'], $places, $id) == 'ok'){
+          echo "<span style='color: rgb(0, 139, 139); font-size: 100px; position: absolute; top: 10%; left: 50%;' class='glyphicon glyphicon-ok'></span>";
+          header("location: /PI2.0/PI2/src/ride-pending/ride-pending.php");
         } else {
-            echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+          echo "<span style='color: rgb(0, 139, 139); font-size: 100px; position: absolute; top: 10%; left: 50%;' class='glyphicon glyphicon-remove'></span>";
         }
-    } else if (isset($_POST['reject']) && isset($_POST['id'])){
+    } else if (isset($_POST['reject']) && isset($_POST['id']) && isset($_POST['places'])){
       
       $places = $requestService->getPlaces($_POST['places']);
-      if($requestService->acceptSolicit($_POST['reject'], $_POST['id'], $places)  == 'ok'){
+      if($requestService->acceptSolicit($_POST['reject'], $_POST['id'], $places, $id)  == 'ok'){
         header("location: /PI2.0/PI2/src/my-routes/my-routes.php");
       } else {
-          echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
+        echo "<span style='color: rgb(0, 139, 139); font-size: 100px; position: absolute; top: 10%; left: 50%;' class='glyphicon glyphicon-remove'></span>";
       }
     }
 
