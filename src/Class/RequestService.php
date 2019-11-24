@@ -36,10 +36,30 @@ class RequestService {
         }
     }
 
-
-    public function setSolicit($data){
+    public function querySelectNumRows($data) {
         try {
 
+            $idRide = $data;
+        
+
+              $cst = $this->conn->connect()->prepare("SELECT * FROM `solicitacao` AS s INNER JOIN `usuario` AS u ON s.IDSOLICITANTE = u.IDUSUARIO WHERE `ESTADO` = 2 AND s.IDCARONA = $idRide");
+              $cst->bindParam(":id", $id);
+              $cst->execute();
+
+              return $cst->rowCount();
+
+        } catch (PDOException $ex ) {
+            return 'error ' . $ex->getMessage();
+        }
+    }
+
+
+    public function setSolicit($data, $places){
+        try {
+
+            if ($places > 0){
+                
+            
             session_start();
     
             $id = $_SESSION['IDUSUARIO'];
@@ -59,20 +79,44 @@ class RequestService {
                 return 'erro';
             }
 
+        }
+
       } catch (PDOException $ex ) {
           return 'error ' . $ex->getMessage();
       }
     }
 
-    public function acceptSolicit($StateReq, $id){
+    public function getPlaces($data) {
+        try {
+
+            $idRide = $data;
+        
+
+              $cst = $this->conn->connect()->prepare("SELECT `VAGAS` FROM `carona` WHERE `IDCARONA` =:idRide");
+              $cst->bindParam(":idRide", $idRide);
+              $cst->execute();
+              $places = $cst->fetch();
+              return $places[0];
+        } catch (PDOException $ex ) {
+            return 'error ' . $ex->getMessage();
+        }
+    }
+
+    public function acceptSolicit($StateReq, $id, $places){
         try {
 
             
             $stateRequest = $StateReq;
             $idUser = $id;
 
-            $cst = $this->conn->connect()->prepare("UPDATE `solicitacao` SET `ESTADO`=:stateRequest  WHERE `IDSOLICITANTE` =:iduser");
+           if($stateRequest == 1){
+                $places -= 1;
+                $nPlaces = $places;
+            }
+
+            $cst = $this->conn->connect()->prepare("UPDATE `solicitacao` AS s JOIN `carona`AS c ON s.IDCARONA = c.IDCARONA SET `ESTADO`=:stateRequest, `VAGAS`=:nPlaces WHERE `IDSOLICITANTE` =:iduser");
             $cst->bindParam(":stateRequest", $stateRequest);
+            $cst->bindParam(":nPlaces", $nPlaces);
             $cst->bindParam(":iduser", $idUser);
 
             if($cst->execute()){
@@ -102,6 +146,8 @@ class RequestService {
             return 'error ' . $ex->getMessage();
         }
     } */
- 
+
+
+   
 
 }

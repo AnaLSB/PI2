@@ -21,17 +21,21 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
 
 }
 
+
     if (isset($_POST['accept']) && isset($_POST['id'])){
-        
-        if($requestService->acceptSolicit($_POST['accept'], $_POST['id']) == 'ok'){
-           $_SERVER['HTTP_REFERER'];
+
+      $places = $requestService->getPlaces($_POST['places']);
+      var_dump($places);
+        if($requestService->acceptSolicit($_POST['accept'], $_POST['id'], $places) == 'ok'){
+          header("location: /PI2.0/PI2/src/my-routes/my-routes.php");
         } else {
             echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
         }
     } else if (isset($_POST['reject']) && isset($_POST['id'])){
-        
-      if($requestService->acceptSolicit($_POST['reject'], $_POST['id'])  == 'ok'){
-         $_SERVER['HTTP_REFERER'];
+      
+      $places = $requestService->getPlaces($_POST['places']);
+      if($requestService->acceptSolicit($_POST['reject'], $_POST['id'], $places)  == 'ok'){
+        header("location: /PI2.0/PI2/src/my-routes/my-routes.php");
       } else {
           echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
       }
@@ -105,7 +109,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
 
         </style>
     </head>
-    <body>
+    <body style="background: #F9F9F9;">
         
             <div id="wrapper">
                     <!-- Sidebar -->
@@ -144,7 +148,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                           <div class="col-md-12">
                                               <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
                                               <h4>Solicitações de carona</h4>
-                                              <hr>
+                                              
                                           </div>
                                       </div>
                                       <div class="row ">
@@ -169,9 +173,11 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                                 <p class="name"><?=$value['NOME']?></p>
                                                 <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
 
+                                              
                                                 <form method="post"> 
                                                     <div>
                                                         <input name="id" type="hidden" value="<?=$value['IDUSUARIO']?>">   
+                                                        <input name="places" type="hidden" value="<?=$value['IDCARONA']?>"> 
                                                         <input class="btn btn-accept" type="submit" name="accept" value="aceitar">
                                                         <input class="btn btn-reject" type="submit" name="reject" value="rejeitar">
                                                     </div>

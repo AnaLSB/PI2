@@ -2,11 +2,13 @@
 
 require_once '../Class/Service.php';
 require_once '../Class/Format.php';
+require_once '../Class/RequestService.php';
 
 
 
 $service = new Service();
 $format = new Format();
+$reqService = new RequestService();
 
 if(isset($_GET['search'])){
     $search = $_GET['search'];
@@ -41,6 +43,27 @@ if (isset($_GET['from'])){
         h3{
             margin-top: 100px;
             color: rgb(0, 139, 139);
+        }
+
+        .NumSolicit {
+            margin-right: -18px;
+            width: 35px;
+            height: 35px;
+            font-size: 25px;
+            color: #FFF !important;
+            background: rgb(126, 179, 179);
+            border-radius: 50%;
+        }
+
+        .NumSolicit:hover {
+            margin-right: -22px;
+            width: 40px;
+            height: 40px;
+            font-size: 27px;
+        }
+
+        .container-ride:hover {
+            margin-left: 6px;
         }
     
         @media (max-width: 768px) {
@@ -96,11 +119,11 @@ if (isset($_GET['from'])){
                             ?>
                         
                             <div class="container-ride" style="background: #FFF;">
-                                <a href="../ride-pending/ride-pending.php?id=<?=$value['IDCARONA']?>">
+                                <a href="../ride-pending/ride-pending.php?id=<?=$value['IDCARONA']?>"><p class="NumSolicit right"><?=$reqService->querySelectNumRows($value['IDCARONA']);?></p></a>
 
                                 <p class="price right">R$ <?= $value['PRECO'] ?></p>
 
-                                <img src="../../imagens/profile-pic.png" alt="" class="img-ride">
+                                
                                 <p><?= $value['ORIGEM'] ?> &nbsp; <i class="arrow"></i>
                                 <i class="arrow"></i>
                                 <i class="arrow"></i>       
@@ -124,7 +147,7 @@ if (isset($_GET['from'])){
                                
                                     
 
-                                </a>
+                                
 
                                 
                             </div>

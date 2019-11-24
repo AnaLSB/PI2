@@ -37,6 +37,10 @@ if (isset($_GET['from'])){
     <title>Caronas</title>
 
     <style>
+
+        .container-ride:hover {
+            margin-left: 8px;
+        }
     
         @media (max-width: 768px) {
             .date {

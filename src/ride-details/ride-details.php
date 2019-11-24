@@ -13,9 +13,10 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
 } elseif (isset($_POST['submit']) && isset($_POST['idRide']) && isset($_POST['idUser'])){
     
+    $places = $requestService->getPlaces($_POST['idRide']);
     
-    if($requestService->setSolicit($_POST) == 'ok'){
-        $_SERVER['HTTP_REFERER'];
+    if($requestService->setSolicit($_POST, $places) == 'ok'){
+        var_dump($places);
     } else {
         echo '<script type="text/javascript"> alert("Erro ao solicitar carona.")</script>';
     }
@@ -147,7 +148,11 @@ if(isset($_GET['id'])){
                                 <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
                         
                                
+                            <?php
 
+                                if($value['VAGAS'] > 0){
+
+                            ?>
                         
                            
                                <form action="ride-details.php" method="post">
@@ -157,6 +162,10 @@ if(isset($_GET['id'])){
                                         <input name="submit" type="submit" class="btn btn-cyan" value="solicitar carona">    
                                     </div>
                                </form>
+
+                            <?php 
+                                }
+                            ?>
                           
                          
 
