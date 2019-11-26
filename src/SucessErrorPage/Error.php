@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,18 +8,13 @@
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
     
     <title>Caronas</title>
-
     <style>
-        span:hover{
-            font-size: 220px !important;
-        }
+            span:hover{
+                font-size: 220px !important;
+            }
     </style>
 </head>
 <body>
-    <a href='../my-routes/my-routes.php'><span style='color: rgb(0, 139, 139); font-size: 200px; position: absolute; top: 30%; left: 45%;' class='glyphicon glyphicon-ok'></span>
+    <a href='<?=$_SERVER['HTTP_REFERER']?>'><span style='color: #7DFBFF; font-size: 200px; position: absolute; top: 30%; left: 45%;' class='glyphicon glyphicon-remove'></span>
 </body>
 </html>
-
-
-
-   

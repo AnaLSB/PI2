@@ -29,17 +29,17 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
       $places = $requestService->getPlaces($_POST['places']);
 
         if($requestService->acceptSolicit($_POST['accept'], $_POST['id'], $places, $id) == 'ok'){
-          header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.html");
+          header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.php");
         } else {
-          header("location: /PI2.0/PI2/src/SucessErrorPage/Error.html");
+          header("location: /PI2.0/PI2/src/SucessErrorPage/Error.php");
          }
     } else if (isset($_POST['reject']) && isset($_POST['id']) && isset($_POST['places'])){
       
       $places = $requestService->getPlaces($_POST['places']);
       if($requestService->acceptSolicit($_POST['reject'], $_POST['id'], $places, $id)  == 'ok'){
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.html");
+        header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.php");
       } else {
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Error.html");
+        header("location: /PI2.0/PI2/src/SucessErrorPage/Error.php");
        }
     }
 
@@ -60,8 +60,10 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
         <style>
 
         h4{
+          color: #657F80 !important;
           margin-top: 10px;
           margin-left: 30px;
+          margin-bottom: 50px;
         }
     
         .name {
@@ -70,7 +72,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
         }
 
         .img-circle-ride {
-          margin-top: -50px;
+          margin-top: -20px;
           float: right;
           border-radius: 50%;
           width: 50px;
@@ -82,12 +84,12 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
         }
 
         .btn-reject {
-          background-color: rgb(248, 1, 1);
+          background-color: rgb(243, 37, 18);
           color: #FFF;
         }
 
         .btn-accept {
-          background-color: rgb(30, 255, 0);
+          background-color: rgb(29, 167, 114);
           color: #FFF;
         }
 

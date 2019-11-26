@@ -16,9 +16,9 @@ if(isset($_GET['id'])){
     $places = $requestService->getPlaces($_POST['idRide']);
     
     if($requestService->setSolicit($_POST, $places) == 'ok'){
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.html");
+        header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.php");
     } else {
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Error.html");
+        header("location: /PI2.0/PI2/src/SucessErrorPage/Error.php");
     }
 }
 
@@ -39,7 +39,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="./ride-details.css?t=<?php echo date('his'); ?>" rel="stylesheet" />
+    <link href="./ride-details.css" rel="stylesheet" />
    
     <title>Caronas</title>
 
@@ -129,14 +129,14 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                                 &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
 
-                                <p style="color: rgb(126, 179, 179);">                             
+                                <p style="color: #657F80;">                             
                                     <?= $data = $format->formatDate($value['DATA']); ?>
                                 </p>
 
-                                <span style="color: rgb(126, 179, 179);"><?=$validateRoundTrip = $format->roundTripValidate($value['IDAVOLTA'], $value['DATA'], $value['DATAVOLTA'], $value['HORAVOLTA']);
+                                <span style="color: #657F80;"><?=$validateRoundTrip = $format->roundTripValidate($value['IDAVOLTA'], $value['DATA'], $value['DATAVOLTA'], $value['HORAVOLTA']);
                                 ?></span>
 
-                                <p style="color: rgb(126, 179, 179); font-size: 18px;"><?= $format->formatPlaces($value['VAGAS'])?></p>
+                                <p style="color: #657F80; font-size: 18px;"><?= $format->formatPlaces($value['VAGAS'])?></p>
 
                                 <hr>
 
@@ -144,7 +144,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                             <div class="container-especs">
                                 <p>Valor da passagem</p>
-                                <p style="font-size: 20px;" class="price"><?= $value['PRECO']?></p>
+                                <p style="font-size: 20px;" class="price">R$<?= $value['PRECO']?></p>
                                
 
                                 <hr>
@@ -154,6 +154,9 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                 <p style="font-size: 20px;"><?=$value['NOME']?></p>
 
                                 <span style="font-size: 20px;"><?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
+
+                                
+                               
                                 
 
                                 <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
@@ -161,7 +164,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                
                             <?php
 
-                                if($value['VAGAS'] > 0 && $stateRequest < 2){
+                                if($value['VAGAS'] > 0 && $stateRequest  == null){
 
                             ?>
                         
@@ -179,17 +182,14 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                             ?>
 
                             <?php 
-                                if($stateRequest == 2){
+                                
+                                $format->verifyState($stateRequest);
 
                             ?>
 
-                            <div class="right margin-top">
-                                <span style="color: rgb(126, 179, 179); font-size: 18px; font-weight: bold">Solicitação Pendente</span>
-                            </div>
+                            
 
-                            <?php
-                                }
-                            ?>
+
                           
                          
 
@@ -220,7 +220,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
     });
     </script>
 
-   
+
 
 <?php 
                        }

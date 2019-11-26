@@ -42,7 +42,7 @@ if (isset($_GET['from'])){
 
         h3{
             margin-top: 100px;
-            color: rgb(0, 139, 139);
+            color: #468D8F;
         }
 
         .NumSolicit {
@@ -51,7 +51,7 @@ if (isset($_GET['from'])){
             height: 35px;
             font-size: 25px;
             color: #FFF !important;
-            background: rgb(126, 179, 179);
+            background: #64C9CC;
             border-radius: 50%;
         }
 
@@ -90,7 +90,7 @@ if (isset($_GET['from'])){
                 <li><a href="../home/inicial.html">Home</a></li>
                 <li><a href="../search-trip/search-trip.php">Buscar</a></li>
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
-                <li><a href="#">Rotas</a></li>
+                <li><a href="../my-houtes/my-routes.php">Rotas</a></li>
                 <li><a href="../profile/profile.php">Meus Dados</a></li>
                 </ul>
             </div>
@@ -141,7 +141,7 @@ if (isset($_GET['from'])){
                                
                                 
                         
-                                <p class="date" style="position: absolute; bottom: -10px; left: 22%; color: rgb(126, 179, 179);">                             
+                                <p class="date" style="position: absolute; bottom: -10px; left: 22%;" >                             
                                     <?= $data = $format->formatDate($value['DATA']); ?>
                                 </p>
                                

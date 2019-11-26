@@ -10,7 +10,7 @@ a:hover {
 .icon {
     position: fixed;
     top: 10px;
-    color: rgb(0, 139, 139);
+    color: #64C9CC;
     font-size: 23px;
 }
  hr {
@@ -29,7 +29,7 @@ a:hover {
       width:0;
       height:100%;
       overflow-y:hidden;
-      background: rgb(0, 139, 139);
+      background: #64C9CC;
       opacity:0.9;
       transition:all .5s;
       display:flex;
@@ -79,7 +79,7 @@ a:hover {
     }
     
     .sidebar-nav li:hover{
-      background:rgb(126, 179, 179);
+      background:#7DFBFF;
     }
   
     .top{
@@ -114,7 +114,7 @@ a:hover {
   
    
     .btn-cyan{
-      background-color: rgb(0, 139, 139);
+      background-color: #64C9CC;
       color: #FFF;
     }
   
@@ -126,7 +126,7 @@ a:hover {
         margin-top: 58px;
         margin-bottom: 60px;
         font-size: 32px;
-        color: rgb(1, 78, 78);
+        color: #468D8F;
         font-family: 'Josefin Sans';
         font-weight: bold;
     }
@@ -146,7 +146,7 @@ a:hover {
       font-size: 16px;
       text-indent: 10px;
       margin-top: 7px;
-      border: 1px solid rgb(126, 179, 179);
+      border: 1px solid #64C9CC;
     }
 
     input:hover{
@@ -187,7 +187,7 @@ a:hover {
       width: 50px;
       height: 25px;
       text-indent: 50%;
-      background: rgb(0, 139, 139);
+      background: #64C9CC;
       border-radius: 8px;
       border: none;
       color: rgb(255, 255, 255);
@@ -213,7 +213,7 @@ a:hover {
         font-weight: bold;
         margin-top: 10px;
         font-size: 18px;
-        color: rgb(126, 179, 179);
+        color: #7DFBFF;
     }
 
     .container-offer {
@@ -271,7 +271,7 @@ a:hover {
       
       /* When the checkbox is checked, add a blue background */
       .container-check input:checked ~ .checkmark {
-        background-color: rgb(0, 139, 139);
+        background-color: #64C9CC;
       }
       
       /* Create the checkmark/indicator (hidden when not checked) */
@@ -303,12 +303,12 @@ a:hover {
 
       .btn-cyan{
         margin-bottom: 20px;
-        background-color: rgb(0, 139, 139);
+        background-color: #64C9CC;
         color: #FFF;
       }
 
       .btn-cyan:hover{
-        background-color: rgb(0, 139, 139);
+        background-color: #64C9CC;
         color: rgb(211, 207, 207);
       }
 
@@ -325,7 +325,7 @@ a:hover {
 
       .slidecontainer {
         width: 100%; /* Width of the outside container */
-        color: rgb(126, 179, 179);
+        color: #7DFBFF;
       }
 
       
@@ -352,7 +352,7 @@ a:hover {
         width: 25px;
         height: 25px;
         border-radius: 50%; 
-        background: rgb(0, 139, 139);
+        background: #64C9CC;
         cursor: pointer;
       }
       
@@ -360,7 +360,7 @@ a:hover {
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background: rgb(0, 139, 139);
+        background: #64C9CC;
         cursor: pointer;
       }
 

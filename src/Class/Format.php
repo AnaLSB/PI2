@@ -77,6 +77,28 @@ class Format {
         }
     }
 
+    public function verifyState($data){
+
+        if ($data == 2){
+
+           echo "<div class='right margin-top'>
+                 <span style='color: rgb(126, 179, 179); font-size: 18px; font-weight: bold'>Solicitação Pendente</span>
+                </div>";
+
+        } elseif($data == 1){
+            echo "<div class='right margin-top'>
+                 <span style='color: rgb(126, 179, 179); font-size: 18px; font-weight: bold'>Solicitação Aceita</span>
+                </div>";
+
+        } elseif($data == 0 && $data != null) {
+                
+            echo "<div class='right margin-top'>
+                    <span style='color: rgb(126, 179, 179); font-size: 18px; font-weight: bold'>Solicitação Recusada</span>
+                </div>";
+
+        }
+    }
+
 
 
 }

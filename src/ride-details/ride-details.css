@@ -23,7 +23,7 @@ a:hover {
 
 .icon-arrow {
     top: 90;
-    color: rgb(0, 139, 139);
+    color: #64C9CC;
     font-size: 20px;
 }
 .icon-arrow:hover{
@@ -144,7 +144,7 @@ hr {
         margin-top: 58px;
         margin-left: 40px;
         font-size: 32px;
-        color: rgb(1, 78, 78);
+        color: #468D8F;
         font-weight: bold;
     }
 
@@ -153,14 +153,14 @@ hr {
     .container-ride p {
       font-size: 20px;
       font-weight: bold;
-      color: rgb(0, 139, 139);
+      color: #657F80;
     }
 
     .container-ride span {
       text-align: center;
     }
     .img-ride {
-      border: 0.9px solid rgb(0, 139, 139);
+      border: 0.9px solid #657F80;
       margin: 30px 0 0 46%;
       border-radius: 50%;
       width: 55px;
@@ -202,12 +202,12 @@ hr {
    }
 
    .btn-cyan{
-    background-color: rgb(0, 139, 139);
+    background-color: #64C9CC;
     color: #FFF;
   }
 
   .btn-cyan:hover{
-    background-color: rgb(0, 139, 139);
+    background-color: #64C9CC;
     color: rgb(211, 207, 207);
   }
 
@@ -235,6 +235,7 @@ hr {
     height: 50px;
   }
 
+  
 
 
     

@@ -96,8 +96,8 @@ if (isset($_GET['from'])){
                                     
                             echo "
                                 <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
-                                <h4 style='margin-left: 35%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
-                                <h5 style='margin-left: 25%; color: rgb(0, 139, 139); white-space: nowrap; '> Pesquise por uma carona!</h5>
+                                <h4 style='margin-left: 35%; color: #657F80; margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
+                                <h5 style='margin-left: 25%; color: #657F80; white-space: nowrap; '> Pesquise por uma carona!</h5>
                                   
                             ";
                         }
@@ -109,8 +109,8 @@ if (isset($_GET['from'])){
                                     $to = $format->formatUcWords($to);
                                     echo "
                                         <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
-                                        <h4 style='margin-left: 35%; color: rgb(0, 139, 139); margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
-                                        <h5 style='text-align: center; color: rgb(0, 139, 139); white-space: nowrap; '> Não há caronas de $from para $to!</h5>
+                                        <h4 style='margin-left: 35%; color: #657F80; margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
+                                        <h5 style='text-align: center; color: #657F80; white-space: nowrap; '> Não há caronas de $from para $to!</h5>
                                         
                                     ";
                                 } else {
@@ -145,7 +145,7 @@ if (isset($_GET['from'])){
                                
                                 
                         
-                                <p class="date" style="position: absolute; bottom: -10px; left: 22%; color: rgb(126, 179, 179);">                             
+                                <p class="date" style="position: absolute; bottom: -10px; left: 22%; color: #657F80;">                             
                                     <?= $data = $format->formatDate($value['DATA']); ?>
                                 </p>
                                
