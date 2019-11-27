@@ -6,6 +6,6 @@
   <img src="https://img.shields.io/static/v1?label=BUILT%20FOR&message=PHP&color=blueviolet">
   <a href="https://github.com/Laralum/Customization/releases"><img src="https://poser.pugx.org/laralum/customization/v/stable.svg"          alt="License"></a>
   <br><br><br><br>
-  <img src="https://user-images.githubusercontent.com/46490801/69739639-d2b12980-1116-11ea-863b-2a7137ee4c87.PNG">
+  <img src="https://user-images.githubusercontent.com/46490801/69740184-c37eab80-1117-11ea-8176-badc39479350.PNG">
 <p>
 
