@@ -9,16 +9,19 @@
 <head>
 	<meta charset="utf-8">
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilo.css">
+	<link rel="stylesheet" type="text/css" href="CSS/css.css">
 </head> 
 
 
 <body>
 	<div class="overlay"></div>
-	<div class="login">
+	<div class="login animated fadeInRight" id="login">
 		<div id="corpo-form">
 			<form method="POST">
 				<h1 style="color: rgb(0, 139, 139);">Login</h1>
+				<h3 align="center" style="color: black;">Não tem uma conta? 
+					<span style="color: rgb(0, 139, 139); cursor: pointer;" onclick="document.getElementById('cadastro').style.display='block'; document.getElementById('login').style.display='none' ">Cadastre-se</span>
+				</h3>
 				<input type="email" placeholder="E-mail" name="lemail">
 				<input type="password" placeholder="Senha" name="lsenha">
 				<input type="submit" value="Acessar" name="login">
@@ -59,10 +62,13 @@
 	        }
         ?>
 	</div>
-	<div class="cadastro">
+	<div class="cadastro animated fadeInRight" id="cadastro" >
 		<div id="corpo-form" style="margin-top: 70px">
 			<form method="POST">
 				<h1 style="color: rgb(0, 139, 139);">Cadastro</h1>
+				<h3 align="center" style="color: black;">Já tem uma conta? 
+					<span style="color: rgb(0, 139, 139); cursor: pointer;" onclick="document.getElementById('login').style.display='block'; document.getElementById('cadastro').style.display='none' ">Faça login</span>
+				</h3>
 				<input type="name" placeholder="Nome Completo" name="nome" maxlength="100" required>
 				<input placeholder="Data de Nascimento" class="textbox-n" type="text" onfocus="(this.type='date')" name="data" style="width: 12.5em;" required>
 				<table>

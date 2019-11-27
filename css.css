@@ -1,0 +1,165 @@
+body{
+	background-image: url(../Imagens/bg.jpg);
+	background-size: 100%;
+} 
+input{
+	display: block;
+	height: 1.5625em;
+	width: 25em;
+	margin: 0.625em;
+	border-radius: 0.7em;
+	border: 0.0625em solid black;
+	font-size: 1em;
+	padding: 0.625em;
+	background-color: rgba(255, 255, 255, 0.363);
+	color: black;
+	outline: none;
+	
+}
+input[type=submit]{
+	height: 2.1875em;
+	width: 26.25em;
+	background-color: rgb(0, 139, 139);
+	color: white;
+	cursor: pointer;
+	font-size: 1em;
+	border-radius: 1.875em;
+}
+input[type=date]{
+	height: 2em;
+	width: 12.5em;
+	color: black;
+	cursor: pointer;
+	font-size: 1em;
+}
+
+div#corpo-form{
+	padding: 0.25em;
+	width: 28.125em;
+	margin: 9.375em auto 0px auto;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 1.25em;
+}
+
+div#corpo-form-Cad{
+	width: 28.125em;
+	margin: 5em auto 0px auto;
+	
+}
+
+div#corpo-form h1, div#corpo-form-Cad h1{
+	text-align: center;
+	padding: 1em;
+}
+
+a{
+	display: block;
+	color: blue;
+	text-align: center;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+::-webkit-input-placeholder { 
+	color:black; 
+}
+input::placeholder{
+	color: black;
+}
+input[type=date]:invalid::-webkit-datetime-edit {
+    color: black;
+}
+input:-moz-placeholder{ 
+	color:black; 
+}
+textarea:-moz-placeholder{ 
+	color: black; 
+}
+
+.login{
+	position: absolute;
+	left: 50%;
+	height: 100%;
+	width: 50%;
+	z-index: 1;
+}
+
+.cadastro{
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 50%;
+	height: 100%;
+	width: 50%;
+	z-index: 1;
+}
+
+.overlay{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0%;
+	left: 0%;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 0;
+}
+
+.msg-sucesso{
+	width: 28.125em;
+	margin: 10px auto;
+	padding: 10px;
+	background-color: rgba(50, 205, 50, 0.7);
+	border: 1px solid rgb(134, 139, 34);
+}
+
+.msg-erro{
+	width: 28.125em;
+	margin: 10px auto;
+	padding: 10px;
+	background-color: rgba(250, 128, 114, 0.7);
+	border: 1px solid rgb(165, 42, 42);
+}
+
+/*Animate CSS*/
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
