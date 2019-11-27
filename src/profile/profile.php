@@ -4,9 +4,7 @@
     $u->conectar("integrador","localhost","root", "");
     session_start();
     
-    $conexao = new PDO("mysql:host=localhost;dbname=projeto_lori", "root", "");
-    $conexao->exec('SET CHARACTER SET utf8');
-  
+
 ?>
 <html lang="pt-br">
 <head>
