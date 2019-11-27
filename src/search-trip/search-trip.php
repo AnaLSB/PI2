@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
             border: 1px solid rgb(126, 179, 179);
             margin-left: 25px;
             font-size: 26px;
-            width: 70px;
+            width: 50%;
             height: 45px;
         }
 
@@ -126,26 +126,35 @@ if(isset($_POST['submit'])){
 
 
 
-                            
-                                    <input type="text" id="estado1" class="input-form-state"/>
-                                    <input placeholder="Saindo de" required="required" class="input-form" type="text" name="from" id="cidade1"/>
-                                    <script language="JavaScript" type="text/javascript" charset="utf-8">
-                                    new dgCidadesEstados({
-                                        cidade: document.getElementById('cidade1'),
-                                        estado: document.getElementById('estado1'),
-                                        change: true
-                                    })
-                                    </script>
+                                    <table style="width: 100%">
+                                        <tr>
+                                        <td>
+                                            <input style="display: inline;  width: 30%; font-size: 18px" type="text" id="estado1" class="input-form-state"/>
+                                        <input style="display: inline; width: 50%; font-size: 18px" placeholder="Saindo de" required="required" class="input-form" type="text" name="from" id="cidade1"/>
+                                        </td>
+                                        <script language="JavaScript" type="text/javascript" charset="utf-8">
+                                        new dgCidadesEstados({
+                                            cidade: document.getElementById('cidade1'),
+                                            estado: document.getElementById('estado1'),
+                                            change: true
+                                        })
+                                        </script>
+                                        </tr>
 
-                                    <input type="text" id="estado2" class="input-form-state"/>
-                                    <input name="to" placeholder="Para" required="required" class="input-form" type="text" id="cidade2"/>
-                                    <script language="JavaScript" type="text/javascript" charset="utf-8">
-                                    new dgCidadesEstados({
-                                        cidade: document.getElementById('cidade2'),
-                                        estado: document.getElementById('estado2'),
-                                        change: true
-                                    })
-                                    </script>
+                                        <tr>
+                                        <td>
+
+                                        <input style="display: inline;  width: 30%; font-size: 18px" type="text" id="estado2" class="input-form-state"/>
+                                        <input style="display: inline; width: 50%; font-size: 18px" name="to" placeholder="Para" required="required" class="input-form" type="text" id="cidade2"/></td>
+                                        <script language="JavaScript" type="text/javascript" charset="utf-8">
+                                        new dgCidadesEstados({
+                                            cidade: document.getElementById('cidade2'),
+                                            estado: document.getElementById('estado2'),
+                                            change: true
+                                        })
+                                        </script>
+                                        </tr>
+                                    </table>
 
                                 
                                     
@@ -159,7 +168,7 @@ if(isset($_POST['submit'])){
                             </div>   
 
                             <div class="right margin-top">
-                                    <input type="submit" name="submit" class="btn btn-cyan" value="continuar">    
+                                    <input style="width: 200px;" type="submit" name="submit" class="btn btn-cyan" value="Continuar">    
                             </div>
                         </form>
 
