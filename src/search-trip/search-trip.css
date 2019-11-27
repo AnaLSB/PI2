@@ -135,7 +135,7 @@ hr {
     .container-date {
         white-space: nowrap;
         margin-top: 20px;
-        color: #686767;
+        color: rgb(0, 139, 139);
         font-size: 18px;
         font-family: 'Josefin Sans';
         font-weight: bold;
