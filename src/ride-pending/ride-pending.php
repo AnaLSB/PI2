@@ -108,6 +108,54 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
         .icon-arrow:hover{
             color: rgb(126, 179, 179);
         }
+
+        .wpp-icon{
+          float: right;
+        }
+
+        @media (max-width: 768px) {
+  
+        #wrapper.menuDisplayed #sidebar-wrapper{
+            width:220px;
+        }
+
+        .container {
+          margin-left: -20px;
+          min-width: 340px;
+        }
+        .container-ride {
+          white-space: nowrap;
+          margin-left: 0px;
+          max-width: 340px;
+        }
+
+        .card{ 
+          margin-left: -120px;
+        }
+        .card-body{
+          max-width: 340px;
+        }
+        .price {
+          font-size: 14px;
+        }
+
+
+        .search-form input {
+          margin-top: 60px;
+          min-width: 260px;
+        }
+
+        .search-form span {
+          margin-left: 10px;
+          margin-top: 60px;
+        }
+
+
+
+
+
+}
+
               
 
 
@@ -155,8 +203,8 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                               
                                           </div>
                                       </div>
-                                      <div class="row ">
-                                          <div class="col-md-12">
+                                      <div class="container">
+                                          <div class="container-ride">
 
                                         
 
@@ -181,7 +229,9 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
 
                                             <div>
                                                 <p class="name"><?=$value['NOME']?></p>
-                                                <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
+                                                <a target="_blank" class="wpp-icon" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Recebi%20sua%20solicitação%20para%20a%20carona!">
+                                                    <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
+                                                </a>
 
                                               
                                                 <form method="post"> 

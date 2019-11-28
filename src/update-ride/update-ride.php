@@ -90,6 +90,44 @@ if(isset($_POST['delete'])){
         .icon-arrow:hover{
             color: rgb(126, 179, 179);
         }
+
+        @media (max-width: 768px) {
+  
+        #wrapper.menuDisplayed #sidebar-wrapper{
+            width:220px;
+        }
+
+        .container {
+          margin-left: -20px;
+          min-width: 340px;
+        }
+        .container-ride {
+          white-space: nowrap;
+          margin-left: 0px;
+          max-width: 340px;
+        }
+
+        .card{
+          margin-left: -120px;
+        }
+
+        .card-body{
+          max-width: 340px;
+        }
+        .price {
+          font-size: 14px;
+        }
+
+
+        .search-form input {
+          margin-top: 60px;
+          min-width: 260px;
+        }
+
+        .search-form span {
+          margin-left: 10px;
+          margin-top: 60px;
+        }
               
 
 
