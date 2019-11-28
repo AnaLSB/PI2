@@ -16,9 +16,9 @@ if(isset($_GET['id'])){
     $places = $requestService->getPlaces($_POST['idRide']);
     
     if($requestService->setSolicit($_POST, $places) == 'ok'){
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.php");
+        header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
     } else {
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Error.php");
+        header("location: /PI2-profile_branch/src/SucessErrorPage/Error.php");
     }
 }
 

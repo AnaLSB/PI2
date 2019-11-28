@@ -6,7 +6,7 @@ $service = new Service();
 
 if (isset($_POST['submit'])){
     if($service->queryInsert($_POST) == 'ok'){
-        header("location: /PI2.0/PI2/src/search-trip/search-trip.php");
+        header("location: /PI2-profile_branch/src/search-trip/search-trip.php");
     } else {
         echo '<script type="text/javascript"> alert("Erro ao cadastrar")</script>';
     }

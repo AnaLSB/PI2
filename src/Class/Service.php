@@ -47,12 +47,10 @@ class Service {
         }
     }
 
-    public function querySelect() {
+    public function querySelect($id) {
         try {
 
-            session_start();
-    
-            $id = $_SESSION['IDUSUARIO'];
+            
 
               $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` WHERE `IDUSUARIO` =:id");
               $cst->bindParam(":id", $id);
@@ -63,7 +61,7 @@ class Service {
         }
     }
 
-    public function queryInsert($data) {
+    public function queryInsert($data, $id) {
         try {
 
             if ($data['roundtrip'] ==  NULL ){
@@ -74,9 +72,7 @@ class Service {
                 $this->destinyHour = $data['destinyHour'];
             }
 
-            session_start();
-    
-            $id = $_SESSION['IDUSUARIO'];
+            
 
               $this->source = $data['source'];
               $this->destiny = $data['destiny'];
@@ -114,13 +110,11 @@ class Service {
         }
     }
 
-    public function queryUpdate($data) {
+    public function queryUpdate($data, $id) {
         
         try {
 
-            session_start();
-    
-            $id = $_SESSION['IDUSUARIO'];
+            
 
             $this->source = $data['source'];
             $this->destiny = $data['destiny'];
@@ -152,24 +146,23 @@ class Service {
         
     }
 
-    public function queryDelete($data) {
+    public function queryDelete($data, $id) {
         try {
 
-            session_start();
-    
-            $id = $_SESSION['IDUSUARIO'];
-
-            $this->iduser = $id;
-
-            $cst = $this->conn->connect()->prepare("DELETE FROM `carona` WHERE `IDUSUARIO` =:iduser");
-            $cst->bindParam(":iduser", $this->iduser);
-
-            if($cst->execute()){
-                return 'ok';
-            } else {
-                return 'erro';
-            }
+            if($data == 1){
             
+                echo $id . $data;
+                $this->idRide = $id;
+
+                $cst = $this->conn->connect()->prepare("DELETE * FROM `carona` WHERE `IDCARONA` =:idRide");
+                $cst->bindParam(":idRide", $this->idRide);
+
+                if($cst->execute()){
+                    return 'ok';
+                } else {
+                    return 'erro';
+                }
+            }
 
         
         } catch (PDOException $ex ) {
@@ -177,15 +170,19 @@ class Service {
         }
     }
 
-    public function querySearch($from, $to) {
+    public function querySearch($from, $to, $id) {
         try {
 
             $this->source = $from;
             $this->destiny = $to;
+
+
+            $this->iduser = $id;
             
-            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO  WHERE `ORIGEM` =:source AND `DESTINO` =:destiny ORDER BY `DATA` ASC");
+            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO  WHERE `ORIGEM` =:source AND `DESTINO` =:destiny AND c.IDUSUARIO <> :idUser ORDER BY `DATA` ASC");
             $cst->bindParam(":source", $this->source);
             $cst->bindParam(":destiny", $this->destiny);
+            $cst->bindParam(":idUser", $this->iduser);
 
             $cst->execute();
 

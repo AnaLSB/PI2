@@ -29,17 +29,17 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
       $places = $requestService->getPlaces($_POST['places']);
 
         if($requestService->acceptSolicit($_POST['accept'], $_POST['id'], $places, $id) == 'ok'){
-          header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.php");
+          header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
         } else {
-          header("location: /PI2.0/PI2/src/SucessErrorPage/Error.php");
+          header("location: /PI2-profile_branch/src/SucessErrorPage/Error.php");
          }
     } else if (isset($_POST['reject']) && isset($_POST['id']) && isset($_POST['places'])){
       
       $places = $requestService->getPlaces($_POST['places']);
       if($requestService->acceptSolicit($_POST['reject'], $_POST['id'], $places, $id)  == 'ok'){
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Sucess.php");
+        header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
       } else {
-        header("location: /PI2.0/PI2/src/SucessErrorPage/Error.php");
+        header("location: /PI2-profile_branch/SucessErrorPage/Error.php");
        }
     }
 
@@ -166,9 +166,15 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                           
                                           if(isset($_GET['id'])){
                                             $id = $_GET['id'];
-                                          
 
-                                            foreach($requestService->querySelection($id) as $value ) { 
+                                            if($requestService->querySelection($id) == 0){
+
+                                                echo "
+                                                      <span style='color: rgb(126, 179, 179); font-size: 20px; text-align: center;'>Ainda não há solicitaçoes!<span>
+                                                ";
+                                            } else { 
+
+                                                foreach($requestService->querySelection($id) as $value ) { 
                                                 
 
                                             ?>
@@ -191,6 +197,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                             </div>
 
                                            <?php
+                                              }
                                              }
                                             }
                                            ?>

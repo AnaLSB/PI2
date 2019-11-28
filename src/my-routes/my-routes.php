@@ -4,7 +4,9 @@ require_once '../Class/Service.php';
 require_once '../Class/Format.php';
 require_once '../Class/RequestService.php';
 
-
+session_start();
+    
+$id = $_SESSION['IDUSUARIO'];
 
 $service = new Service();
 $format = new Format();
@@ -114,43 +116,46 @@ if (isset($_GET['from'])){
                     
                     
 
-                                foreach($service->querySelect() as $value ) { 
+                                foreach($service->querySelect($id) as $value ) { 
                             
                             ?>
+
+                   
                         
                             <div class="container-ride" style="background: #FFF;">
-                                <a href="../ride-pending/ride-pending.php?id=<?=$value['IDCARONA']?>"><p class="NumSolicit right"><?=$reqService->querySelectNumRows($value['IDCARONA']);?></p></a>
-
-                                <p class="price right">R$ <?= $value['PRECO'] ?></p>
 
                                 
-                                <p><?= $value['ORIGEM'] ?> &nbsp; <i class="arrow"></i>
-                                <i class="arrow"></i>
-                                <i class="arrow"></i>       
-                                &nbsp; <?= $value['DESTINO'] ?> </p>
+                                    <a href="../ride-pending/ride-pending.php?id=<?=$value['IDCARONA']?>"><p class="NumSolicit right"><?=$reqService->querySelectNumRows($value['IDCARONA']);?></p></a>
+
+                                    <a href="../update-ride/update-ride.php?id=<?=$value['IDCARONA']?>">
+                                        <p class="price right">R$ <?= $value['PRECO'] ?></p>
+
+                                        
+                                        <p><?= $value['ORIGEM'] ?> &nbsp; <i class="arrow"></i>
+                                        <i class="arrow"></i>
+                                        <i class="arrow"></i>       
+                                        &nbsp; <?= $value['DESTINO'] ?> </p>
 
 
-                                <p><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
+                                        <p><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
 
-                                    <span class="glyphicon glyphicon-time"></span>
+                                            <span class="glyphicon glyphicon-time"></span>
 
-                                &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
+                                        &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
 
 
-                                
-                               
-                                
-                        
-                                <p class="date" style="position: absolute; bottom: -10px; left: 22%;" >                             
-                                    <?= $data = $format->formatDate($value['DATA']); ?>
-                                </p>
-                               
+                                        
                                     
-
+                                        
                                 
+                                        <p class="date" style="position: absolute; bottom: -10px; left: 22%;" >                             
+                                            <?= $data = $format->formatDate($value['DATA']); ?>
+                                        </p>
+                                   </a>
 
-                                
+                              
                             </div>
+ 
 
                         <?php
 

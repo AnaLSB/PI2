@@ -30,7 +30,16 @@ class RequestService {
               $cst = $this->conn->connect()->prepare("SELECT * FROM `solicitacao` AS s INNER JOIN `usuario` AS u ON s.IDSOLICITANTE = u.IDUSUARIO WHERE `ESTADO` = 2 AND s.IDCARONA = $idRide");
               $cst->bindParam(":id", $id);
               $cst->execute();
+
+              $count = $cst->rowCount();
+
+              if($count == 0){
+                  $cst = 0;
+              } else {
+            
               return $cst->fetchAll();
+              }
+
         } catch (PDOException $ex ) {
             return 'error ' . $ex->getMessage();
         }

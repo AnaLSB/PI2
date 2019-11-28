@@ -8,6 +8,10 @@ require_once '../Class/Format.php';
 $service = new Service();
 $format = new Format();
 
+session_start();
+    
+$id = $_SESSION['IDUSUARIO'];
+
 if(isset($_GET['search'])){
     $search = $_GET['search'];
     echo $search;
@@ -16,9 +20,7 @@ if(isset($_GET['search'])){
 if (isset($_GET['from'])){
     
     $from = $_GET['from'];
-    $to = $_GET['to'];
-
-    
+    $to = $_GET['to'];   
 
 }
 
@@ -95,7 +97,7 @@ if (isset($_GET['from'])){
                         if(!isset($_GET['from']) && !isset($_GET['to'])){
                                     
                             echo "
-                                <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
+                                <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='../../imagens/broken.gif' >
                                 <h4 style='margin-left: 35%; color: #657F80; margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
                                 <h5 style='margin-left: 25%; color: #657F80; white-space: nowrap; '> Pesquise por uma carona!</h5>
                                   
@@ -104,18 +106,18 @@ if (isset($_GET['from'])){
                         
                             if(isset($_GET['from']) && isset($_GET['to'])){
                             
-                                if ($service->querySearch($from, $to) == 0){
+                                if ($service->querySearch($from, $to, $id) == 0){
                                     $from = $format->formatUcWords($from);
                                     $to = $format->formatUcWords($to);
                                     echo "
-                                        <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='https://i.pinimg.com/originals/5b/27/01/5b270123bd7f65a53d4f889baa8609d7.gif' >
+                                        <img style='border-radius: 50%; width: 160px; margin-left: 30%; margin-top: 30%' src='../../imagens/broken.gif' >
                                         <h4 style='margin-left: 35%; color: #657F80; margin-top: 10%; white-space: nowrap; '> OOPS :'(</h4>
                                         <h5 style='text-align: center; color: #657F80; white-space: nowrap; '> Não há caronas de $from para $to!</h5>
                                         
                                     ";
                                 } else {
 
-                                foreach($service->querySearch($from, $to) as $value ) { 
+                                foreach($service->querySearch($from, $to, $id) as $value ) { 
                             
                             ?>
                         
