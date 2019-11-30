@@ -26,10 +26,11 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
 
     if (isset($_POST['accept']) && isset($_POST['id']) && isset($_POST['places'])){
 
+      $sendMessage = $_POST['link'];
       $places = $requestService->getPlaces($_POST['places']);
 
         if($requestService->acceptSolicit($_POST['accept'], $_POST['id'], $places, $id) == 'ok'){
-          header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
+          header("Location: $sendMessage");
         } else {
           header("location: /PI2-profile_branch/src/SucessErrorPage/Error.php");
          }
@@ -37,11 +38,15 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
       
       $places = $requestService->getPlaces($_POST['places']);
       if($requestService->acceptSolicit($_POST['reject'], $_POST['id'], $places, $id)  == 'ok'){
-        header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
+        header("Location: $sendMessage");
       } else {
         header("location: /PI2-profile_branch/SucessErrorPage/Error.php");
        }
     }
+
+ 
+     
+    
 
 
 
@@ -238,6 +243,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                                     <div>
                                                         <input name="id" type="hidden" value="<?=$value['IDUSUARIO']?>">   
                                                         <input name="places" type="hidden" value="<?=$value['IDCARONA']?>"> 
+                                                        <input type="hidden" name="link" value="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Solicitação%20Respondida!">
                                                         <input class="btn btn-accept" type="submit" name="accept" value="aceitar">
                                                         <input class="btn btn-reject" type="submit" name="reject" value="rejeitar">
                                                     </div>

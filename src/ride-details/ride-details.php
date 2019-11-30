@@ -23,6 +23,13 @@ if(isset($_GET['id'])){
 }
 
 
+
+if(isset($_POST['submit'])){       
+    $sendMessage = $_POST['link'];
+    header("Location: $sendMessage");
+}
+
+
 session_start();
 
 $idUser = $_SESSION['IDUSUARIO'];
@@ -173,6 +180,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                     <div class="right margin-top">
                                         <input type="hidden" name="idUser" value="<?=$value['IDUSUARIO']?>">
                                         <input type="hidden" name="idRide" value="<?=$value['IDCARONA']?>">
+                                        <input type="hidden" name="link" value="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Solicitação%20Enviada!">
                                         <input name="submit" type="submit" class="btn btn-cyan" value="solicitar carona">    
                                     </div>
                                </form>
