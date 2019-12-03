@@ -187,7 +187,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                                 <p style="font-size: 20px;"><?=$value['NOME']?></p>
 
-                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal"><?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
+                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal">sua avaliação é <?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
 
                                 
                                

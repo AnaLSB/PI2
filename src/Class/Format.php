@@ -52,12 +52,12 @@ class Format {
     }
 
     public function formatEvaluation($data) {
-        if ($data <= 0 || $data == NULL){
-            return "0 avaliações";
-        } elseif ($data == 1) {
-            return $data . " avaliação";
-        } else {
-            return $data . " avaliações";
+        if ($data < 20 || $data == NULL){
+            return "ruim";
+        } elseif ($data >= 20) {
+            return "boa";
+        } elseif($data >= 50) {
+            return "ótima";
         }
     }
 

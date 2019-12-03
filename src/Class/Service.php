@@ -274,8 +274,23 @@ class Service {
     public function setEvaluate($value, $id, $nEvaluate){
         try{
 
-            $mEvaluate = $value + $nEvaluate;
-            $evaluate = $value + ( $mEvaluate / $nEvaluate);
+            switch ($value) {
+                case 1:
+                    $evaluate = $nEvaluate - 3;
+                    break;
+                case 2:
+                    $evaluate = $nEvaluate - 1;
+                    break;
+                case 3: 
+                    $evaluate = $nEvaluate + 1;
+                    break;
+                case 4: 
+                    $evaluate = $nEvaluate + 3;
+                    break;
+                case 5: 
+                    $evaluate = $nEvaluate + 5;
+                    break;
+            }
             $id = $id; 
             
     
