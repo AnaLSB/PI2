@@ -13,6 +13,10 @@
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="./profile.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/b1a932bc63.js" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" type="text/css" href="../../CSS/global.css">
    
     <title>Perfil</title>
@@ -64,88 +68,68 @@
                             $select = $pdo->query("SELECT NOME, DATANASC, EMAIL, DDD, TELEFONE FROM usuario WHERE IDUSUARIO = ".$_SESSION['IDUSUARIO']."");
                             $res = $select->fetch();
                           ?>
-                          <form method="POST" action="profile.php">
-                            <div class="form-group row">
-                              <label for="nome" class="col-4 col-form-label">Nome Completo</label> 
-                              <div class="col-8">
-                                <input id="name" name="nome" value="<?php echo $res['NOME'] ?>" class="form-control here" type="text">
+                          <div class="form-group row">
+                            <label for="nome" class="col-4 col-form-label">Nome Completo</label> 
+                            <div class="col-8">
+                              <h5 style="display: inline" id="name"><?php echo $res['NOME'] ?></h5>
+                              <div class="right">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltNome">
+                                  <i style="display: inline" class="far fa-edit">Editar</i>
+                                </button>
                               </div>
                             </div>
-                            <div class="form-group row">
-                              <label for="dataNasc" class="col-4 col-form-label">Data de nascimento</label> 
-                              <div class="col-8">
-                                <input id="dataNasc" name="data" value="<?php echo $res['DATANASC'] ?>" class="form-control here" required="required" type="date">
+                          </div>
+                          <div class="form-group row">
+                            <label for="dataNasc" class="col-4 col-form-label">Data de nascimento</label> 
+                            <div class="col-8">
+                              <h5 style="display: inline" id="name"><?php echo $res['DATANASC'] ?></h5>
+                              <div class="right">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltData">
+                                  <i style="display: inline" class="far fa-edit">Editar</i>
+                                </button>
                               </div>
                             </div>
-                            <div class="form-group row">
-                              <label for="email" class="col-4 col-form-label">Email</label> 
-                              <div class="col-8">
-                                <input id="email" name="email" value="<?php echo $res['EMAIL'] ?>" required="required" class="form-control here" type="email">
+                          </div>
+                          <div class="form-group row">
+                            <label for="email" class="col-4 col-form-label">Email</label> 
+                            <div class="col-8">
+                              <h5 style="display: inline" id="name"><?php echo $res['EMAIL'] ?></h5>
+                              <div class="right">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltEmail">
+                                  <i style="display: inline" class="far fa-edit">Editar</i>
+                                </button>
                               </div>
                             </div>
-                            <div class="form-group row">
-                              <label for="tel" class="col-4 col-form-label">DDD</label> 
-                              <div class="col-8">
-                                <input id="tel" name="ddd" value="<?php echo $res['DDD'] ?>" class="form-control here" type="number">
+                          </div>
+                          <div class="form-group row">
+                            <label for="tel" class="col-4 col-form-label">DDD</label> 
+                            <div class="col-8">
+                              <h5 style="display: inline" id="name"><?php echo $res['DDD'] ?></h5>
+                              <div class="right">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltDDD">
+                                  <i style="display: inline" class="far fa-edit">Editar</i>
+                                </button>
                               </div>
                             </div>
-                            <div class="form-group row">
-                              <label for="tel" class="col-4 col-form-label">Telefone</label> 
-                              <div class="col-8">
-                                <input id="tel" name="telefone" value="<?php echo $res['TELEFONE'] ?>" class="form-control here" type="number">
+                          </div>
+                          <div class="form-group row">
+                            <label for="tel" class="col-4 col-form-label">Telefone</label> 
+                            <div class="col-8">
+                              <h5 style="display: inline" id="name"><?php echo $res['TELEFONE'] ?></h5>
+                              <div class="right">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltTel">
+                                  <i style="display: inline" class="far fa-edit">Editar</i>
+                                </button>
                               </div>
                             </div>
-                            <div class="left">
-                              <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltSenha">
-                                Alterar Senha
-                              </button>
-                            </div>
-                            <div class="right">
-                              <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
-                            </div>
-                          </form>
-                          <?php
-                                // Verificar se clicou no botao de cadastro
-                                if(isset($_POST['nome'])){
-                                    $nome = addslashes($_POST['nome']);
-                                    $data = addslashes($_POST['data']);
-                                    $email = addslashes($_POST['email']);
-                                    $ddd = addslashes($_POST['ddd']);
-                                    $telefone = addslashes($_POST['telefone']);
-
-                                    //Verificar se está preenchido
-                                    if(!empty($nome) && !empty($data) && !empty($ddd) && !empty($telefone) && !empty($email)){
-                                        if($u->msgErro == ""){
-                                          if($u->alterarDados($nome, $data, $email, $ddd, $telefone, $_SESSION['IDUSUARIO'])){
-                                              ?>
-                                              <div class="msg-sucesso">
-                                                Dados Atualizados com sucesso!
-                                            </div>
-                                            <?php
-                                          }
-                                          else{
-                                            ?>
-                                              <div class="msg-erro">
-                                                E-mail já cadastrado.
-                                              </div>
-                                            <?php
-                                          }
-                                        }
-                                        else{
-                                            echo "Erro: ".$u->msgErro;
-                                        }
-                                    }
-                                    else{
-                                        ?>
-                                        <div class="msg-erro">
-                                          Preencha todos os campos.
-                                      </div>
-                                      <?php
-                                    }
-                                }
-                                
-                            ?>
-
+                          </div>
+                          <div class="left">
+                            <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltSenha">
+                              Alterar Senha
+                            </button>
+                          </div>
+                          
+                          <!--Modal Aterar Senha-->
                           <div class="modal fade" id="AltSenha" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                               <div class="modal-content">
@@ -176,15 +160,14 @@
                                       </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
-                                  <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
-                                </div>
-                                </form>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                      <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
+                                    </div>
+                                  </form>
                               </div>
                             </div>
                           </div>
-
                           <?php
                                 // Verificar se clicou no botao de salvar
                                 if(isset($_POST['oldsenha'])){
@@ -234,6 +217,327 @@
                                 }
                                 
                             ?>
+
+                          <!--Modal Alterar Nome-->
+
+                          <div class="modal fade" id="AltNome" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="TituloModalCentralizado">Alteração de Nome</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form method="POST">
+                                    <div class="form-group row">
+                                      <label for="nome" class="col-4 col-form-label">Novo Nome</label> 
+                                      <div class="col-8">
+                                        <input id="name" name="newNome" class="form-control here" type="text">
+                                      </div>
+                                    </div>
+                                </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                      <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+
+                          <?php
+                            if(isset($_POST['newNome'])){
+                              $nome = addslashes($_POST['newNome']);
+                              if(!empty($nome)){
+                                if($u->msgErro == ""){
+                                  if($u->alterarNome($nome, $_SESSION['IDUSUARIO'])){
+                                    ?>
+                                    <div class="msg-sucesso">
+                                      Nome Atualizado com sucesso!
+                                    </div>
+                                  <?php
+                                  }
+                                  else{
+                                    ?>
+                                    <div class="msg-erro">
+                                      Erro ao atualizar o nome.
+                                    </div>
+                                  <?php
+                                  }
+                                }
+                                else{
+                                  echo "Erro: ".$u->msgErro;
+                                }
+                              }
+                              else{
+                                  ?>
+                                  <div class="msg-erro">
+                                    Preencha o campo.
+                                </div>
+                                <?php
+                              }
+                            }
+                            
+                          ?>
+
+                          <!--Modal Alterar Data de Nascimento-->
+                          <div class="modal fade" id="AltData" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="TituloModalCentralizado">Alteração de Data de Nascimento</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form method="POST">
+                                    <div class="form-group row">
+                                      <label for="nome" class="col-4 col-form-label">Nova Data</label> 
+                                      <div class="col-8">
+                                        <input id="name" name="newData" class="form-control here" type="date">
+                                      </div>
+                                    </div>
+                                </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                      <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+
+                          <?php
+                            if(isset($_POST['newData'])){
+                              $data = addslashes($_POST['newData']);
+                              if(!empty($data)){
+                                if($u->msgErro == ""){
+                                  if($u->alterarData($data, $_SESSION['IDUSUARIO'])){
+                                    ?>
+                                    <div class="msg-sucesso">
+                                      Data de Nascimento atualizada com sucesso!
+                                    </div>
+                                  <?php
+                                  }
+                                  else{
+                                    ?>
+                                    <div class="msg-erro">
+                                      Erro ao atualizar a data.
+                                    </div>
+                                  <?php
+                                  }
+                                }
+                                else{
+                                  echo "Erro: ".$u->msgErro;
+                                }
+                              }
+                              else{
+                                  ?>
+                                  <div class="msg-erro">
+                                    Preencha o campo.
+                                </div>
+                                <?php
+                              }
+                            }
+                            
+                          ?>
+
+
+                          <!--Modal Alterar Email-->
+                          <div class="modal fade" id="AltEmail" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="TituloModalCentralizado">Alteração de E-mail</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form method="POST">
+                                    <div class="form-group row">
+                                      <label for="nome" class="col-4 col-form-label">Novo E-mail</label> 
+                                      <div class="col-8">
+                                        <input id="name" name="newEmail" class="form-control here" type="email">
+                                      </div>
+                                    </div>
+                                </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                      <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+
+                          <?php
+                            if(isset($_POST['newEmail'])){
+                              $email = addslashes($_POST['newEmail']);
+                              if(!empty($email)){
+                                if($u->msgErro == ""){
+                                  if($u->alterarEmail($email, $_SESSION['IDUSUARIO'])){
+                                    ?>
+                                    <div class="msg-sucesso">
+                                      E-mail atualizado com sucesso!
+                                    </div>
+                                  <?php
+                                  }
+                                  else{
+                                    ?>
+                                    <div class="msg-erro">
+                                      E-mail já cadastrado. Tente um diferente.
+                                    </div>
+                                  <?php
+                                  }
+                                }
+                                else{
+                                  echo "Erro: ".$u->msgErro;
+                                }
+                              }
+                              else{
+                                  ?>
+                                  <div class="msg-erro">
+                                    Preencha o campo.
+                                </div>
+                                <?php
+                              }
+                            }
+                            
+                          ?>
+
+                          
+
+                          <!--Modal Alterar DDD-->
+                          <div class="modal fade" id="AltDDD" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="TituloModalCentralizado">Alteração de DDD</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form method="POST">
+                                    <div class="form-group row">
+                                      <label for="nome" class="col-4 col-form-label">Novo DDD</label> 
+                                      <div class="col-8">
+                                        <input id="name" name="newDDD" class="form-control here" type="number">
+                                      </div>
+                                    </div>
+                                </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                      <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+
+                          <?php
+                            if(isset($_POST['newDDD'])){
+                              $ddd = addslashes($_POST['newDDD']);
+                              if(!empty($ddd)){
+                                if($u->msgErro == ""){
+                                  if($u->alterarDDD($ddd, $_SESSION['IDUSUARIO'])){
+                                    ?>
+                                    <div class="msg-sucesso">
+                                      DDD atualizado com sucesso!
+                                    </div>
+                                  <?php
+                                  }
+                                  else{
+                                    ?>
+                                    <div class="msg-erro">
+                                      Erro ao atualizar o DDD.
+                                    </div>
+                                  <?php
+                                  }
+                                }
+                                else{
+                                  echo "Erro: ".$u->msgErro;
+                                }
+                              }
+                              else{
+                                  ?>
+                                  <div class="msg-erro">
+                                    Preencha o campo.
+                                </div>
+                                <?php
+                              }
+                            }
+                            
+                          ?>
+
+                          <!--Modal Alterar Telefone-->
+                          <div class="modal fade" id="AltTel" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="TituloModalCentralizado">Alteração de Telefone</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form method="POST">
+                                    <div class="form-group row">
+                                      <label for="nome" class="col-4 col-form-label">Novo Telefone</label> 
+                                      <div class="col-8">
+                                        <input id="name" name="newTel" class="form-control here" type="number">
+                                      </div>
+                                    </div>
+                                </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+                                      <input style="color: white" type="submit" value="Salvar" name="submit" class="btn btn-cyan">
+                                    </div>
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+
+                          <?php
+                            if(isset($_POST['newTel'])){
+                              $tel = addslashes($_POST['newTel']);
+                              if(!empty($tel)){
+                                if($u->msgErro == ""){
+                                  if($u->alterarTelefone($tel, $_SESSION['IDUSUARIO'])){
+                                    ?>
+                                    <div class="msg-sucesso">
+                                      Telefone atualizado com sucesso!
+                                    </div>
+                                  <?php
+                                  }
+                                  else{
+                                    ?>
+                                    <div class="msg-erro">
+                                      Erro ao atualizar o Telefone.
+                                    </div>
+                                  <?php
+                                  }
+                                }
+                                else{
+                                  echo "Erro: ".$u->msgErro;
+                                }
+                              }
+                              else{
+                                  ?>
+                                  <div class="msg-erro">
+                                    Preencha o campo.
+                                </div>
+                                <?php
+                              }
+                            }
+                            
+                          ?>
+
+                          
 
 
                         </div>
