@@ -255,6 +255,46 @@ class Service {
 
     }
 
+    public function getEvaluate($data){
+        try {
+
+              $idUser = $data;
+        
+
+              $cst = $this->conn->connect()->prepare("SELECT `AVALIACAO` FROM `usuario` WHERE `IDUSUARIO` =:idUser");
+              $cst->bindParam(":idUser", $idUser);
+              $cst->execute();
+              $value = $cst->fetch();
+              return $value[0];
+        } catch (PDOException $ex ) {
+            return 'error ' . $ex->getMessage();
+        }
+    }
+
+    public function setEvaluate($value, $id, $nEvaluate){
+        try{
+
+            $mEvaluate = $value + $nEvaluate;
+            $evaluate = $value + ( $mEvaluate / $nEvaluate);
+            $id = $id; 
+            
+    
+            $cst = $this->conn->connect()->prepare("UPDATE `usuario` SET `AVALIACAO`=:evaluate where `IDUSUARIO` = :id");
+            $cst->bindParam(":evaluate", $evaluate);
+            $cst->bindParam(":id", $id);
+    
+            
+            if($cst->execute()){
+                return 'ok';
+            } else {
+                return 'erro';
+            }
+    
+        } catch (PDOException $ex ) {
+            return 'error ' . $ex->getMessage();
+        }
+    }
+
 
     
 

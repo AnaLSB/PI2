@@ -8,6 +8,22 @@ $service = new Service();
 $format = new Format();
 $requestService = new RequestService();
 
+session_start();
+
+$idUser = $_SESSION['IDUSUARIO'];
+
+
+if(isset($_POST['rating'])){
+    $nEvaluate = $service->getEvaluate($_POST['idUser']);
+    
+    if($service->setEvaluate($_POST['rating'], $_POST['idUser'], $nEvaluate) == 'ok'){
+        header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
+    } else {
+        header("location: /PI2-profile_branch/src/SucessErrorPage/Error.php");
+    }
+}
+
+
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -30,11 +46,6 @@ if(isset($_POST['submit'])){
 }
 
 
-session_start();
-
-$idUser = $_SESSION['IDUSUARIO'];
-
-
 $stateRequest = $requestService->verifySolicit($idUser, $id);
 
 
@@ -52,6 +63,12 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
     
     <style>
+
+    .evaluate:hover{
+        cursor: pointer;
+    }
+
+    
     
         @media (max-width: 768px) {
             .container-ride p {
@@ -170,7 +187,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                                 <p style="font-size: 20px;"><?=$value['NOME']?></p>
 
-                                <span style="font-size: 20px;"><?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
+                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal"><?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
 
                                 
                                
@@ -205,8 +222,57 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                             ?>
 
-                            
+                                                        
 
+                            <!-- Modal Avaliação -->
+                         
+                            <div class="container">
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h4 class="modal-title" style="color: rgb(126, 179, 179)">Avaliar</h4>
+                                    <button type="button" class="close right" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                    
+                                        <div class="rating"  style="color: rgb(126, 179, 179)">
+                                        <form method="post">
+                                            <input type="hidden" name="idUser" value="<?=$value['IDUSUARIO']?>">
+                                            <input type="radio" id="star5" name="rating" value="1" /><label for="star5">  1&nbsp;</label>
+                                            <input type="radio" id="star4" name="rating" value="2" /><label for="star4"> 2&nbsp;</label>
+                                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3"> 3&nbsp;</label>
+                                            <input type="radio" id="star2" name="rating" value="4" /><label for="star2"> 4&nbsp;</label>
+                                            <input type="radio" id="star1" name="rating" value="5" /><label for="star1">  5&nbsp;</label>
+                                            <input type="submit" class="btn btn-cyan margin-top right" value="OK">
+                                        </form>
+                                        </div>
+
+                                    </div>
+                                   
+                                    
+                                    
+                                </div>
+                                
+                                </div>
+                            </div>
+                            
+                            </div>
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+                            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+                            <script type="text/javascript">
+                            $(window).load(function()
+                            {
+                                $('#myModal').modal('');
+                            });
+                            </script>
 
                           
                          
