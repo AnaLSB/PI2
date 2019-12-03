@@ -136,6 +136,16 @@ if (isset($_GET['from'])){
                                     <img style="width: 40px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
+                                <?php
+                                if($value['FACEBOOK'] != null){
+                                ?>
+                                <a class="right" style="position: absolute; top: -5px; left: 60px;" target="_blank" href="https://www.facebook.com/<?=$value['FACEBOOK']?>">
+                                  <img style="width: 26px; border-radius: 6px;" src="../../imagens/facebook.png" alt="">
+                                </a>
+                                <?php
+                                }
+                                ?>
+
                                 <p><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
 
                                     <span class="glyphicon glyphicon-time"></span>

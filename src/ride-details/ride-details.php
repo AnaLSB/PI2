@@ -125,6 +125,16 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                 </a>
 
+                                <?php
+                                if($value['FACEBOOK'] != null){
+                                ?>
+                                <a class="right" target="_blank" href="https://www.facebook.com/<?=$value['FACEBOOK']?>">
+                                  <img style="width: 32; border-radius: 6px; margin-top: 9px;" src="../../imagens/facebook.png" alt="">
+                                </a>
+                                <?php
+                                }
+                                ?>
+
                                 <p> <?= $value['ORIGEM']?> &nbsp; <i class="arrow"></i>
                                     <i class="arrow"></i>
                                     <i class="arrow"></i>       

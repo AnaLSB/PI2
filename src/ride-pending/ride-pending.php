@@ -223,7 +223,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                             if($requestService->querySelection($id) == 0){
 
                                                 echo "
-                                                      <span style='color: rgb(126, 179, 179); font-size: 20px; text-align: center;'>Ainda não há solicitaçoes!<span>
+                                                      <span style='color: rgb(126, 179, 179); font-size: 20px; text-align: center;'>Ainda não há solicitações!<span>
                                                 ";
                                             } else { 
 

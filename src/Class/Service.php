@@ -232,6 +232,29 @@ class Service {
 
     }
 
+    public function insertFacebookUser($data, $idUser){
+
+    try{
+        $fbName = $data;
+        $id = $idUser;
+
+        $cst = $this->conn->connect()->prepare("UPDATE `usuario` SET `FACEBOOK`=:fbName where `IDUSUARIO` = :id");
+        $cst->bindParam(":fbName", $fbName);
+        $cst->bindParam(":id", $id);
+
+        
+        if($cst->execute()){
+            return 'ok';
+        } else {
+            return 'erro';
+        }
+
+    } catch (PDOException $ex ) {
+        return 'error ' . $ex->getMessage();
+    }
+
+    }
+
 
     
 

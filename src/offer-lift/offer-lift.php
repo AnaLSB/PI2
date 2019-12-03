@@ -4,13 +4,23 @@ require_once '../Class/Service.php';
 
 $service = new Service();
 
+session_start();
+$id = $_SESSION['IDUSUARIO'];
+
+if (isset($_POST['fb'])){
+    $service->insertFacebookUser($_POST['fb'], $id);
+    $_SESSION['fb'] = $_POST['fb'];
+}
+
 if (isset($_POST['submit'])){
-    if($service->queryInsert($_POST) == 'ok'){
+    if($service->queryInsert($_POST, $id) == 'ok'){
         header("location: /PI2-profile_branch/src/search-trip/search-trip.php");
     } else {
         echo '<script type="text/javascript"> alert("Erro ao cadastrar")</script>';
     }
 }
+
+
 
 ?>
 
@@ -68,6 +78,53 @@ if (isset($_POST['submit'])){
     </style>
 </head>
 <body style="background: #F9F9F9;">
+
+<?php 
+
+if (!isset($_SESSION['fb'])){
+
+?>
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: rgb(126, 179, 179)">Só mais uma coisa :)</h4>
+          <button type="button" class="close right" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+        <form action="offer-lift.php" method="post">
+          <p>Informe o link do seu facebook.</p>
+          <input type="text" name="fb" required="required" placeholder="ex: breno.cota.39">
+          <input type="submit" class="btn btn-cyan margin-top right" value="OK">
+        </form>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+  $(window).load(function()
+{
+    $('#myModal').modal('show');
+});
+</script>
+
+<?php
+}
+?>
     
         <div id="wrapper">
                 <!-- Sidebar -->
