@@ -16,11 +16,8 @@ $idUser = $_SESSION['IDUSUARIO'];
 if(isset($_POST['rating'])){
     $nEvaluate = $service->getEvaluate($_POST['idUser']);
     
-    if($service->setEvaluate($_POST['rating'], $_POST['idUser'], $nEvaluate) == 'ok'){
-        header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
-    } else {
-        header("location: /PI2-profile_branch/src/SucessErrorPage/Error.php");
-    }
+    $service->setEvaluate($_POST['rating'], $_POST['idUser'], $nEvaluate);
+      
 }
 
 
@@ -187,7 +184,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                                 <p style="font-size: 20px;"><?=$value['NOME']?></p>
 
-                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal">sua avaliação é <?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
+                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal">avaliação <?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
 
                                 
                                
