@@ -53,11 +53,11 @@ class Format {
 
     public function formatEvaluation($data) {
         if ($data < 20 || $data == NULL){
-            return "ruim";
+            return "ALTA";
         } elseif ($data >= 20) {
-            return "boa";
+            return "MÉDIA";
         } elseif($data >= 50) {
-            return "ótima";
+            return "ALTA";
         }
     }
 

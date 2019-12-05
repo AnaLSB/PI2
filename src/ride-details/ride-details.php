@@ -28,11 +28,7 @@ if(isset($_GET['id'])){
     
     $places = $requestService->getPlaces($_POST['idRide']);
     
-    if($requestService->setSolicit($_POST, $places) == 'ok'){
-        header("location: /PI2-profile_branch/src/SucessErrorPage/Sucess.php");
-    } else {
-        header("location: /PI2-profile_branch/src/SucessErrorPage/Error.php");
-    }
+    $requestService->setSolicit($_POST, $places);
 }
 
 
@@ -62,6 +58,21 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
     <style>
 
     .evaluate:hover{
+        cursor: pointer;
+    }
+
+    input[type='radio']{
+        display: none;
+    }
+
+    .star {
+        color: rgb(246, 244, 105);
+        font-size: 32px;
+    }
+
+    .star:hover {
+        color:rgb(250, 246, 0);
+        font-size: 36px;
         cursor: pointer;
     }
 
@@ -184,7 +195,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                                 <p style="font-size: 20px;"><?=$value['NOME']?></p>
 
-                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal">avaliação <?= $format->formatEvaluation($value['AVALIACAO']) ?></span>
+                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal">nivel de avaliação <p style="color: rgb(0, 139, 139); font-weight: bold;"><?= $format->formatEvaluation($value['AVALIACAO']) ?></p></span>
 
                                 
                                
@@ -240,11 +251,11 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                         <div class="rating"  style="color: rgb(126, 179, 179)">
                                         <form method="post">
                                             <input type="hidden" name="idUser" value="<?=$value['IDUSUARIO']?>">
-                                            <input type="radio" id="star5" name="rating" value="1" /><label for="star5">  1&nbsp;</label>
-                                            <input type="radio" id="star4" name="rating" value="2" /><label for="star4"> 2&nbsp;</label>
-                                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3"> 3&nbsp;</label>
-                                            <input type="radio" id="star2" name="rating" value="4" /><label for="star2"> 4&nbsp;</label>
-                                            <input type="radio" id="star1" name="rating" value="5" /><label for="star1">  5&nbsp;</label>
+                                            <input type="radio" id="star5" name="rating" value="1" /><label for="star5" class="glyphicon glyphicon-star star"></label>
+                                            <input type="radio" id="star4" name="rating" value="2" /><label for="star4" class="glyphicon glyphicon-star star"></label>
+                                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" class="glyphicon glyphicon-star star"></label>
+                                            <input type="radio" id="star2" name="rating" value="4" /><label for="star2" class="glyphicon glyphicon-star star"></label>
+                                            <input type="radio" id="star1" name="rating" value="5" /><label for="star1" class="glyphicon glyphicon-star star"></label>
                                             <input type="submit" class="btn btn-cyan margin-top right" value="OK">
                                         </form>
                                         </div>
