@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="./search-trip.css" rel="stylesheet" />
-    <script language="JavaScript" type="text/javascript" src="cidades-estados.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../cidades-estados.js"></script>
    
     <title>Buscar Caronas</title>
 
@@ -90,12 +90,6 @@ if(isset($_POST['submit'])){
             <div id="sidebar-wrapper">
                 
                 <ul class="sidebar-nav">
-                <div class="top">
-                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
-                    
-                    <label for="photo" class="input-photo"><span class="glyphicon glyphicon-camera"></span></label>
-                    <input id="photo" type="file">
-                </div>
                 <li><a href="../home/inicial.html">Home</a></li>
                 <li><a href="../search-trip/search-trip.php">Buscar</a></li>
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>

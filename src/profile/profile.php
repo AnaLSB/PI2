@@ -28,12 +28,6 @@
           <div id="sidebar-wrapper">
               
             <ul class="sidebar-nav">
-              <div class="top">
-                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
-                  
-                  <label for="photo" class="input-photo"><span class="glyphicon glyphicon-camera"></span></label>
-                  <input id="photo"  name="photo" type="file">
-                </div>
                 <li><a href="../home/inicial.html">Home</a></li>
                 <li><a href="../search-trip/search-trip.php">Buscar</a></li>
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>

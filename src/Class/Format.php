@@ -52,8 +52,10 @@ class Format {
     }
 
     public function formatEvaluation($data) {
-        if ($data < 20 || $data == NULL){
-            return "ALTA";
+        if( $data == 0 || $data == null){
+            return "Não há avaliações";
+        } elseif ($data < 20 || $data == NULL){
+            return "BAIXA";
         } elseif ($data >= 20) {
             return "MÉDIA";
         } elseif($data >= 50) {

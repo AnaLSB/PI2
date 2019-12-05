@@ -34,48 +34,10 @@ if (isset($_POST['submit'])){
     <link href="./offer-lift.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script language="JavaScript" type="text/javascript" src="../cidades-estados.js"></script>
    
     <title>Oferecer Carona</title>
 
-    <style>
-
-
-    /*the container must be positioned relative:*/
-        .autocomplete {
-
-        position: relative;
-        display: inline-block;
-        }
-
-        .autocomplete-items {
-        max-height: 70px;
-        overflow-y: hidden;
-        font-size: 20px;
-        color: #999;
-        
-        }
-
-    
-
-        .autocomplete-items div {
-        padding: 5px;
-        cursor: pointer;
-        background-color: #fff; 
-        }
-
-        /*when hovering an item:*/
-        .autocomplete-items div:hover {
-        background-color: #f1f1f1; 
-        }
-
-        @media (max-width: 768px) {
-
-            .autocomplete input {
-                width: 120% !important;
-            }
-        }
-
-    </style>
 </head>
 <body style="background: #F9F9F9;">
 
@@ -131,11 +93,6 @@ if (!isset($_SESSION['fb'])){
             <div id="sidebar-wrapper">
                 
                 <ul class="sidebar-nav">
-                <div class="top">
-                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
-                    <label for="photo" class="input-photo"><span class="glyphicon glyphicon-camera"></span></label>
-                    <input id="photo" type="file">
-                </div>
                 <li><a href="../home/inicial.html">Home</a></li>
                 <li><a href="../search-trip/search-trip.php">Buscar</a></li>
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
@@ -163,15 +120,39 @@ if (!isset($_SESSION['fb'])){
                     <div class="col-8 margin-top container container-offer">
                             <p> Ponto de partida</p>
 
+
                             <form autocomplete="off" action="offer-lift.php" method="post">
 
-                                <div class="autocomplete">
-                                    <label for="">De onde vai sair?</label>
-                                    <input style="width: 444px;" id="source" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form" type="text">
-                                    <label for="">Para onde vai?</label>
-                                    <input style="width: 444px;" id="destiny" name="destiny" placeholder="Exemplo: Virgem da Lapa" required="required" class="input-form" type="text">
-                                </div>
-                                <hr>
+                                <table style="width: 100%">
+                                        <tr>
+                                        <td>
+                                            <label for="">De onde vai sair?</label><br>
+                                            <input style="display: inline;  width: 20%; font-size: 18px" type="text" id="estado1" class="input-form-state"/>
+                                            <input style="display: inline; width: 60%; font-size: 18px" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form" type="text" id="cidade1"/>
+                                        </td>
+                                        <script language="JavaScript" type="text/javascript" charset="utf-8">
+                                        new dgCidadesEstados({
+                                            cidade: document.getElementById('cidade1'),
+                                            estado: document.getElementById('estado1'),
+                                            change: true
+                                        })
+                                        </script>
+                                        </tr>
+
+                                        <tr>
+                                        <td>
+                                            <label for="">Para onde vai?</label><br>
+                                            <input style="display: inline;  width: 20%; font-size: 18px" type="text" id="estado2" class="input-form-state"/>
+                                            <input style="display: inline; width: 60%; font-size: 18px"name="destiny" placeholder="Exemplo: Virgem da Lapa" required="required" class="input-form" type="text" id="cidade2"/></td>
+                                        <script language="JavaScript" type="text/javascript" charset="utf-8">
+                                        new dgCidadesEstados({
+                                            cidade: document.getElementById('cidade2'),
+                                            estado: document.getElementById('estado2'),
+                                            change: true
+                                        })
+                                        </script>
+                                        </tr>
+                                    </table>
 
                                 <p> Data e hora</p>
 
@@ -191,7 +172,11 @@ if (!isset($_SESSION['fb'])){
                                     <input id="destinyHour" name="destinyHour"  type="time" class="input-hour">
                                 </div>
 
-                                <hr>
+                                <hr> 
+
+
+                              
+
 
                                 <p>Detalhes</p>
 
