@@ -31,15 +31,113 @@ if (isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="./offer-lift.css" rel="stylesheet" />
+    <link href="./css.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script language="JavaScript" type="text/javascript" src="../cidades-estados.js"></script>
    
     <title>Oferecer Carona</title>
 
+    <style type="text/css">
+        body{
+             font-family: 'Roboto', sans-serif;
+             font-size: 16px;
+        }
+
+        .input-form-state{
+            color: rgb(129, 129, 129);
+            font-weight: bold;
+            text-indent: 10px;
+            border-radius: 18px;
+            background-color: rgb(240, 236, 236);
+            margin-top: 7px;
+            border: 1px solid rgb(126, 179, 179);
+            margin-left: 25px;
+            width: 50%;
+            height: 45px;
+        }
+
+        .container label {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #84afb9;
+        }
+
+        .btn-cyan{
+          margin-bottom: 20px;
+          background-color: #336b77;
+          color: #FFF;
+        }
+
+        .btn-cyan:hover{
+          background-color: #6198a5;
+          color: white
+        }
+
+        /* The slider itself */
+        .slider {
+          -webkit-appearance: none;
+          margin-left: 90px;
+          margin-top: -30px;
+          width: 150px;
+          display: block;
+          height: 15px;
+          border-radius: 5px;  
+          background: #d3d3d3;
+          outline: none;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+        }
+        
+        .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%; 
+          background: #336b77;
+          cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          background: rgb(0, 139, 139);
+          cursor: pointer;
+        }
+
+        .container-check input:checked ~ .checkmark {
+          background-color: #336b77;
+        }
+
+        .input-places {
+          position: absolute;
+          bottom: 10px;
+          right: 0;
+          width: 50px;
+          height: 25px;
+          text-indent: 50%;
+          background: #336b77;
+          border-radius: 8px;
+          border: none;
+          color: rgb(255, 255, 255);
+        }
+        .sair{
+            width: 250px;
+            height: 50px;
+            padding-top: 15px;
+        }
+        .sair:hover{
+            background-color: #104b77
+        }
+    </style>
+
 </head>
-<body style="background: #F9F9F9;">
+<body>
+    <div class="bg"></div>
 
 <?php 
 
@@ -55,14 +153,14 @@ if (!isset($_SESSION['fb'])){
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" style="color: rgb(126, 179, 179)">Só mais uma coisa :)</h4>
+          <h4 class="modal-title" style="color: #336b77">Só mais uma coisa :)</h4>
           <button type="button" class="close right" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
         <form action="offer-lift.php" method="post">
           <p>Informe o link do seu facebook.</p>
-          <input type="text" name="fb" required="required" placeholder="ex: breno.cota.39">
-          <input type="submit" class="btn btn-cyan margin-top right" value="OK">
+          <input type="text" name="fb" required="required" placeholder="Ex: breno.cota.39" class="input-form-state">
+          <input type="submit" class="btn btn-cyan margin-top right" value="OK" style="width: 20%;">
         </form>
         </div>
         
@@ -98,6 +196,9 @@ if (!isset($_SESSION['fb'])){
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
                 <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                 <li><a href="../profile/profile.php">Meus Dados</a></li>
+                <a style=" color: white; position: absolute; bottom: 0px;left: 0px;" href="../../sair.php">
+                    <div class="sair"><h5>Sair</h5></div>
+                </a>
                 </ul>
             </div>
             
@@ -114,21 +215,25 @@ if (!isset($_SESSION['fb'])){
 
                             <img src="../../imagens/ride.gif" alt="">
 
-                            <p class="text-center"> Vamos dar aquela carona! </p> 
+                            <p class="text-center" style="font-family: 'Roboto', sans-serif; color: #336b77"> Vamos dar aquela carona! </p> 
                            
                     </div>         
-                    <div class="col-8 margin-top container container-offer">
-                            <p> Ponto de partida</p>
+                    <div class="col-8 margin-top container container-offer" style="width: 550px;padding: 0px">
 
 
                             <form autocomplete="off" action="offer-lift.php" method="post">
 
                                 <table style="width: 100%">
                                         <tr>
-                                        <td>
-                                            <label for="">De onde vai sair?</label><br>
-                                            <input style="display: inline;  width: 20%; font-size: 18px" type="text" id="estado1" class="input-form-state"/>
-                                            <input style="display: inline; width: 60%; font-size: 18px" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form" type="text" id="cidade1"/>
+                                            <td><label for="" style="display: block;">De onde vai sair?</label></td>
+                                        </tr>
+                                        <tr>
+                                        <tr>
+                                        <td style="width: 20%">
+                                            <input style="display: inline;  width: 50%; height: 45px; font-size: 18px; padding: 0px; margin: 0px; margin-left: 30%" type="text" id="estado1" class="input-form-state"/>
+                                        </td>
+                                        <td style="padding: 0px">
+                                            <input style="display: inline; width: 100%; height: 45px; font-size: 18px; padding: 0px; margin: 0px;" name="source" placeholder="Exemplo: Praça do forúm, Araçuai" required="required" class="input-form-state" type="text" id="cidade1"/>
                                         </td>
                                         <script language="JavaScript" type="text/javascript" charset="utf-8">
                                         new dgCidadesEstados({
@@ -138,12 +243,18 @@ if (!isset($_SESSION['fb'])){
                                         })
                                         </script>
                                         </tr>
-
+                                        
                                         <tr>
+                                            <td><label for="" style="display: block;">Para onde vai?</label></td>
+                                        </tr>
+                                        <tr>
+
+                                        <td style="width: 20%;">
+                                            <input style="display: inline;  width: 50%; height: 45px; font-size: 18px; padding: 0px; margin: 0px; margin-left: 30%" type="text" id="estado2" class="input-form-state"/>
+                                        </td>
                                         <td>
-                                            <label for="">Para onde vai?</label><br>
-                                            <input style="display: inline;  width: 20%; font-size: 18px" type="text" id="estado2" class="input-form-state"/>
-                                            <input style="display: inline; width: 60%; font-size: 18px"name="destiny" placeholder="Exemplo: Virgem da Lapa" required="required" class="input-form" type="text" id="cidade2"/></td>
+                                            <input style="display: inline; width: 100%; height: 45px; font-size: 18px; padding: 0px; margin: 0px;" name="destiny" placeholder="Exemplo: Virgem da Lapa" required="required" class="input-form-state" type="text" id="cidade2"/>
+                                        </td>
                                         <script language="JavaScript" type="text/javascript" charset="utf-8">
                                         new dgCidadesEstados({
                                             cidade: document.getElementById('cidade2'),
@@ -153,30 +264,43 @@ if (!isset($_SESSION['fb'])){
                                         </script>
                                         </tr>
                                     </table>
+                                    <br>
 
-                                <p> Data e hora</p>
-
-                                <label class="container-check">ida e volta
+                                <label class="container-check">Ida e volta
                                     <input id="roundtrip" name="roundtrip" type="checkbox" checked="checked" onclick="bloqueio()">
                                     <span class="checkmark"></span>
                                 </label> 
                                 
                             
                                 <label for="">Vai sair que horas?</label>
-                                <input id="sourceDate" name="sourceDate" type="date" required="required" class="input-date">
-                                <input id="sourceHour" name="sourceHour" type="time" required="required" class="input-hour">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input style="width: 170px; height: 30px; font-size: 15px; margin-left: 25%" id="sourceDate" name="sourceDate" type="date" required="required" class="input-form-state">
+                                        </td>
+                                        <td>
+                                            <input style="width: 100px; height: 30px; font-size: 15px; margin-left: 50%" id="sourceHour" name="sourceHour" type="time" required="required" class="input-form-state">
+                                        </td>
+                                    </tr>
+                                </table>
                                 
                                 <div id="destinyDateHour">
                                     <label for="" class="destiny">Vai voltar que horas?</label>
-                                    <input id="destinyDate" name="destinyDate" type="date" class="input-date">
-                                    <input id="destinyHour" name="destinyHour"  type="time" class="input-hour">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <input style="width: 170px; height: 30px; font-size: 15px; margin-left: 25%" id="destinyDate" name="destinyDate" type="date" class="input-form-state">
+                                            </td>
+                                            <td>
+                                                <input style="width: 100px; height: 30px; font-size: 15px; margin-left: 50%" id="destinyHour" name="destinyHour"  type="time" class="input-form-state">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                    
                                 </div>
 
                                 <hr> 
-
-
-                              
-
 
                                 <p>Detalhes</p>
 
@@ -184,16 +308,16 @@ if (!isset($_SESSION['fb'])){
                                 <div class="slidecontainer">
                                     <label for="">Preço</label>
                                     <input type="range" min="10" max="100" value="30" class="slider" id="myRange" name="price" required="required" >
-                                    <p class="price">Valor: R$ <span id="demo"></span></p>
+                                    <p style="color: #336b77" class="price">Valor: R$ <span id="demo"></span></p>
                                 
                                     <label class="input-label"for="">Vagas</label>
-                                    <input  class="input-places" type="number"  min="1" value="1" name="places" id="places" required="required" >
+                                    <input  style="width: 50px" class="input-places" type="number"  min="1" value="1" name="places" id="places" required="required" >
                                 
                                 </div>
 
 
                                 <div class="right margin-top">
-                                    <input name="submit" type="submit" class="btn btn-cyan" value="continuar">    
+                                    <input style="width: 200px; height: 40px; border-radius: 10px;" type="submit" name="submit" class="btn btn-cyan" value="Continuar">    
                                 </div>
                             </form>
                            
