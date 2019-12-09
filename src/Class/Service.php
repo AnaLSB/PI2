@@ -146,12 +146,18 @@ class Service {
         
     }
 
+    public function deleteConstraint($idRide){
+        $id = $idRide;
+        $cst = $this->conn->connect()->prepare("UPDATE `carona` SET `IDUSUARIO` = '0' WHERE `IDCARONA` =:id");
+        $cst->bindParam(":id", $id);
+
+        $cst->execute();
+    }
+
     public function queryDelete($data, $id) {
         try {
 
             if($data == 1){
-            
-                echo $id . $data;
                 $this->idRide = $id;
 
                 $cst = $this->conn->connect()->prepare("DELETE * FROM `carona` WHERE `IDCARONA` =:idRide");
@@ -175,14 +181,14 @@ class Service {
 
             $this->source = $from;
             $this->destiny = $to;
-
-
+            $dataAtual = date("Y-m-d");
             $this->iduser = $id;
             
-            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO  WHERE `ORIGEM` =:source AND `DESTINO` =:destiny AND c.IDUSUARIO <> :idUser ORDER BY `DATA` ASC");
+            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO  WHERE `ORIGEM` =:source AND `DESTINO` =:destiny AND c.IDUSUARIO <> :idUser  AND `DATA` >= :dataAtual ORDER BY `DATA` ASC");
             $cst->bindParam(":source", $this->source);
             $cst->bindParam(":destiny", $this->destiny);
             $cst->bindParam(":idUser", $this->iduser);
+            $cst->bindParam(":dataAtual", $dataAtual);
 
             $cst->execute();
 

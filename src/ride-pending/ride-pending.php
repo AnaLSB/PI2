@@ -231,6 +231,9 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                                 <a target="_blank" class="wpp-icon" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Recebi%20sua%20solicitação%20para%20a%20carona!">
                                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                                 </a>
+                                                <a class="right" target="_blank" href="https://www.facebook.com/<?=$value['FACEBOOK']?>">
+                                                  <img style="width: 32; border-radius: 6px; margin-top: 9px;" src="../../imagens/facebook.png" alt="">
+                                                </a>
 
                                               
                                                 <form method="post"> 
