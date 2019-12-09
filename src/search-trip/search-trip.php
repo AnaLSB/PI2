@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="./search-trip.css" rel="stylesheet" />
     
-    <script language="JavaScript" type="text/javascript" src="../cidades-estados.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../../cidades-estados.js"></script>
    
     <title>Buscar Caronas</title>
 

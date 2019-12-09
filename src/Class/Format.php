@@ -1,6 +1,4 @@
 <?php
-
-
 class Format {
 
     public function formatDate($data) {
@@ -15,10 +13,13 @@ class Format {
         date_default_timezone_set('America/Sao_Paulo');
         $var = strftime('%A, %d de %B de %Y', strtotime($originalDate));
         $VAR = ucfirst($var); // talvez necessario fazer  o utf8_encode
-        return $VAR;     
+        return $VAR;        
+    }
 
-        
-        
+    public function formatNasc($data){
+        $originalDate = $data;
+        $newDate = date("d/m/Y", strtotime($originalDate));
+        return $newDate;
     }
 
     public function formatTime($data) {

@@ -1,8 +1,13 @@
 <?php
-    require_once '../../Classes/usuarios.php';
-    $u = new Usuario;
-    $u->conectar("integrador","localhost","root", "");
-    session_start();
+if(!isset($_SESSION)){
+  session_start();
+}
+
+require_once '../Class/Format.php';
+require_once '../../Classes/usuarios.php';
+$format = new Format();
+$u = new Usuario;
+$u->conectar("integrador","localhost","root", "");
     
 
 ?>
@@ -104,7 +109,7 @@
                           <div class="form-group row">
                             <label for="dataNasc" class="col-4 col-form-label">Data de nascimento</label> 
                             <div class="col-8">
-                              <h5 style="display: inline" id="name"><?php echo $res['DATANASC'] ?></h5>
+                              <h5 style="display: inline" id="name"><?php echo $format->formatNasc($res['DATANASC'])?></h5>
                               <div class="right">
                                 <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltData" style="background-color: #336b77">
                                   <i style="display: inline" class="far fa-edit">Editar</i>

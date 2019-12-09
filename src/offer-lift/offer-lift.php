@@ -37,7 +37,7 @@ if (isset($_POST['submit'])){
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script language="JavaScript" type="text/javascript" src="../cidades-estados.js"></script>
+    <script language="JavaScript" type="text/javascript" src="../../cidades-estados.js"></script>
    
     <title>Oferecer Carona</title>
 

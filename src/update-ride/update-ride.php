@@ -11,6 +11,7 @@ $id = $_GET['id'];
 if(isset($_POST['submit'])){
   $service->queryUpdate($_POST, $_POST['idRide']);
   header('location: /PI2-profile_branch/src/my-routes/my-routes.php');
+  exit();
 }
 
 if(isset($_POST['delete'])){
@@ -19,6 +20,8 @@ if(isset($_POST['delete'])){
         $_POST['delete'] = 1;
         echo $_POST['delete'];
        $service->queryDelete($_POST['delete'], $id);
+       header('location: /PI2-profile_branch/src/my-routes/my-routes.php');
+       exit();
     }
   }
 ?>
