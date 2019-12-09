@@ -124,16 +124,6 @@ input#delete {
         color: #686767;
     }
 
-    input {
-      font-size: 16px;
-      display: flex;
-      font-weight: bold;
-      font-size: 16px;
-      text-indent: 10px;
-      margin-top: 7px;
-      border: 1px solid rgb(0, 139, 139);
-    }
-
     input:hover{
       cursor: pointer;
     }
@@ -143,44 +133,7 @@ input#delete {
       cursor: pointer;
     }
 
-    .input-form {
-        white-space: nowrap;
-        width: 100%;
-        height: 40px;
-    }
-
-    .input-date {
-      color: #ddd;
-      width: 40%;
-      height: 35px;
-    }
-
-
-    .input-hour {
-      margin-left: 45%;
-      margin-top: -35px;
-      color: #ddd;
-      width: 20%;
-      height: 35px;
-    }
-
-
-    .input-places {
-      position: absolute;
-      bottom: 105px;
-      right: 0;
-      width: 50px;
-      height: 25px;
-      text-indent: 50%;
-      background: rgb(0, 139, 139);
-      border-radius: 8px;
-      border: none;
-      color: rgb(255, 255, 255);
-    }
-
-    .input-label {
-      padding-top: 30px;
-    }
+    
 
 
   
@@ -229,13 +182,7 @@ input#delete {
       width: 600px;
     }
   
-    .form-group input {
-      text-indent: 5px;
-      margin-top: 10px;
-      display: block;
-      border-radius: 5px;
-      border: 2px solid rgb(126, 179, 179);
-    }
+    
   
   
     .form-group label {
@@ -334,11 +281,7 @@ input#delete {
 
       /* Fin checkbox */
 
-      .btn-cyan{
-        margin-bottom: 20px;
-        background-color: rgb(0, 139, 139);
-        color: #FFF;
-      }
+      
 
       .btn-cyan:hover{
         background-color: rgb(0, 139, 139);
@@ -365,37 +308,7 @@ input#delete {
 
       
       /* The slider itself */
-      .slider {
-        -webkit-appearance: none;
-        margin-left: 90px;
-        margin-top: -30px;
-        width: 150px;
-        display: block;
-        height: 15px;
-        border-radius: 5px;  
-        background: #d3d3d3;
-        outline: none;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-      }
       
-      .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%; 
-        background: rgb(0, 139, 139);
-        cursor: pointer;
-      }
-      
-      .slider::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background: rgb(0, 139, 139);
-        cursor: pointer;
-      }
 
       .price {
         bottom: 130px;
