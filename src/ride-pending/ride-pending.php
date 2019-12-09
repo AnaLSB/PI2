@@ -59,10 +59,27 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
         <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
         <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
         <link href="./ride-pending.css" rel="stylesheet" />
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
        
         <title>Perfil</title>
 
         <style>
+
+        body{
+             font-family: 'Roboto', sans-serif;
+             font-size: 16px;
+        }
+        .bg{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          background-image: url(./bg.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+        }
 
         h4{
           color: #657F80 !important;
@@ -72,7 +89,6 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
         }
     
         .name {
-              color: rgb(126, 179, 179);
               font-size: 18px;
         }
 
@@ -154,6 +170,14 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
           margin-left: 10px;
           margin-top: 60px;
         }
+        .sair{
+            width: 250px;
+            height: 50px;
+            padding-top: 15px;
+        }
+        .sair:hover{
+            background-color: #104b77
+        }
 
 
 
@@ -166,7 +190,8 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
 
         </style>
     </head>
-    <body style="background: #F9F9F9;">
+    <body>
+      <div class="bg"></div>
         
             <div id="wrapper">
                     <!-- Sidebar -->
@@ -178,6 +203,9 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                           <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
                           <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                           <li><a href="../profile/profile.php">Meus Dados</a></li>
+                          <a style=" color: white; position: absolute; bottom: 0px;left: 0px;" href="../../sair.php">
+                              <div class="sair"><h5>Sair</h5></div>
+                          </a>
                       </ul>
                     </div>
                     
@@ -227,7 +255,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                             ?>
 
                                             <div>
-                                                <p class="name"><?=$value['NOME']?></p>
+                                                <p style="color: #336b77;" class="name"><?=$value['NOME']?></p>
                                                 <a target="_blank" class="wpp-icon" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Recebi%20sua%20solicitação%20para%20a%20carona!">
                                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                                 </a>
@@ -241,8 +269,8 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                                         <input name="id" type="hidden" value="<?=$value['IDUSUARIO']?>">   
                                                         <input name="places" type="hidden" value="<?=$value['IDCARONA']?>"> 
                                                         <input type="hidden" name="link" value="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Solicitação%20Respondida!">
-                                                        <input class="btn btn-accept" type="submit" name="accept" value="aceitar">
-                                                        <input class="btn btn-reject" type="submit" name="reject" value="rejeitar">
+                                                        <input class="btn btn-accept" type="submit" name="accept" value="Aceitar">
+                                                        <input class="btn btn-reject" type="submit" name="reject" value="Rejeitar">
                                                     </div>
                                                     
                                                 </form>

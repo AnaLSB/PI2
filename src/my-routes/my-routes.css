@@ -142,17 +142,6 @@ hr {
         font-weight: bold;
     }
 
-    .container-ride {
-      margin-top: 20px;
-      position: relative;
-      top: 100px;
-      border-radius: 18px;
-      width: 500px;
-      height: 220px;
-      -webkit-box-shadow: 0px 3px 5px 0px rgba(184,175,184,1);
-      -moz-box-shadow: 0px 3px 5px 0px rgba(184,175,184,1);
-      box-shadow: 0px 3px 5px 0px rgba(184,175,184,1);
-    }
 
     .container-ride p {
       text-align: center;
@@ -171,14 +160,7 @@ hr {
       height: 55px;
     }
 
-    .price {
-      position: absolute;
-      font-weight: bold;
-      color: rgb(1, 248, 112) !important;
-      font-size: 18px;
-      right: 15px;
-      top: 20px;
-    }
+    
 
     i {
       border: solid rgb(1, 248, 112);

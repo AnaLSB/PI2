@@ -142,17 +142,6 @@ hr {
         font-weight: bold;
     }
 
-    .container-ride {
-      margin-top: 20px;
-      position: relative;
-      top: 100px;
-      border-radius: 18px;
-      width: 500px;
-      height: 220px;
-      -webkit-box-shadow: 0px 3px 5px 0px rgba(184,175,184,1);
-      -moz-box-shadow: 0px 3px 5px 0px rgba(184,175,184,1);
-      box-shadow: 0px 3px 5px 0px rgba(184,175,184,1);
-    }
 
     .container-ride p {
       text-align: center;
@@ -163,13 +152,7 @@ hr {
     .container-ride span {
       text-align: center;
     }
-    .img-ride {
-      border: 0.9px solid rgb(126, 179, 179);
-      margin: 30px 0 0 46%;
-      border-radius: 50%;
-      width: 55px;
-      height: 55px;
-    }
+  
 
     .price {
       position: absolute;
@@ -187,11 +170,6 @@ hr {
       padding: 3px;
     }
     
-    .arrow {
-      margin-top: 50px;
-      transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
-    }
 
 
 

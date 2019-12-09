@@ -51,11 +51,27 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
     <link href="./ride-details.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
    
     <title>Caronas</title>
 
     
     <style>
+
+    body{
+         font-family: 'Roboto', sans-serif;
+         font-size: 16px;
+    }
+    .bg{
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background-image: url(./bg.png);
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
 
     .evaluate:hover{
         cursor: pointer;
@@ -91,11 +107,20 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
             }
         }
+        .sair{
+            width: 250px;
+            height: 50px;
+            padding-top: 15px;
+        }
+        .sair:hover{
+            background-color: #104b77
+        }
 
 
     </style>
 </head>
-<body style="background: #F9F9F9;">
+<body>
+    <div class="bg"></div>
     
         <div id="wrapper">
                 <!-- Sidebar -->
@@ -107,6 +132,9 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
                 <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                 <li><a href="../profile/profile.php">Meus Dados</a></li>
+                <a style=" color: white; position: absolute; bottom: 0px;left: 0px;" href="../../sair.php">
+                    <div class="sair"><h5>Sair</h5></div>
+                </a>
                 </ul>
             </div>
             
@@ -138,7 +166,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                        
                             
                                 <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
-                                <h3>Detalhes da Carona</h3>
+                                <h3 style="color: #336b77;">Detalhes da Carona</h3>
 
                                 <a target="_blank" class="right" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Gostaria%20de%20saber%20mais%20sobre%20a%20carona!">
                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
@@ -165,7 +193,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
                                 &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
 
-                                <p style="color: #657F80;">                             
+                                <p style="color: #336b77;">                             
                                     <?= $data = $format->formatDate($value['DATA']); ?>
                                 </p>
 
@@ -179,7 +207,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                             </div>  
 
                             <div class="container-especs">
-                                <p>Valor da passagem</p>
+                                <p style="color: #6198a5">Valor da passagem</p>
                                 <p style="font-size: 20px;" class="price">R$<?= $value['PRECO']?></p>
                                
 
@@ -187,15 +215,9 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
 
 
 
-                                <p style="font-size: 20px;"><?=$value['NOME']?></p>
+                                <p style="font-size: 20px; color: #6198a5"><?=$value['NOME']?></p>
 
-                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal">nivel de avaliação <p style="color: rgb(0, 139, 139); font-weight: bold;"><?= $format->formatEvaluation($value['AVALIACAO']) ?></p></span>
-
-                                
-                               
-                                
-
-                                <img class="img-circle-ride" src="../../imagens/profile-pic.png" alt="">
+                                <span style="font-size: 20px;" class="evaluate"  data-toggle="modal" data-target="#myModal">Nivel de avaliação <p style="color: rgb(0, 139, 139); font-weight: bold;"><?= $format->formatEvaluation($value['AVALIACAO']) ?></p></span>
                         
                                
                             <?php
@@ -210,7 +232,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                         <input type="hidden" name="idUser" value="<?=$value['IDUSUARIO']?>">
                                         <input type="hidden" name="idRide" value="<?=$value['IDCARONA']?>">
                                         <input type="hidden" name="link" value="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Solicitação%20Enviada!">
-                                        <input name="submit" type="submit" class="btn btn-cyan" value="solicitar carona">    
+                                        <input name="submit" type="submit" class="btn btn-cyan" value="Solicitar carona">    
                                     </div>
                                </form>
 
@@ -253,13 +275,8 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                             <input type="submit" class="btn btn-cyan margin-top right" value="OK">
                                         </form>
                                         </div>
-
                                     </div>
-                                   
-                                    
-                                    
                                 </div>
-                                
                                 </div>
                             </div>
                             
