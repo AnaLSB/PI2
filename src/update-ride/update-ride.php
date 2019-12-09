@@ -20,14 +20,6 @@ if(isset($_POST['delete'])){
     }
 
   }
-
-
-
-  
-
-
-
-
 ?>
 <html lang="pt-br">
     <head>
@@ -40,6 +32,21 @@ if(isset($_POST['delete'])){
         <title>Perfil</title>
 
         <style>
+
+        body{
+             font-family: 'Roboto', sans-serif;
+             font-size: 16px;
+        }
+        .bg{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          background-image: url(./bg.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+        }
 
         h4{
           color: #657F80 !important;
@@ -128,13 +135,53 @@ if(isset($_POST['delete'])){
           margin-left: 10px;
           margin-top: 60px;
         }
+        .slider {
+          -webkit-appearance: none;
+          margin-left: 90px;
+          margin-top: -30px;
+          width: 150px;
+          display: block;
+          height: 15px;
+          border-radius: 5px;  
+          background: #d3d3d3;
+          outline: none;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+        }
+        
+        .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 25px;
+          height: 25px;
+          border-radius: 50%; 
+          background: #336b77;
+          cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          background: rgb(0, 139, 139);
+          cursor: pointer;
+        }
+      }
+      .sair{
+          width: 250px;
+          height: 50px;
+          padding-top: 15px;
+      }
+      .sair:hover{
+          background-color: #104b77
       }
               
 
 
         </style>
     </head>
-    <body style="background: #F9F9F9;">
+    <body>
+      <div class="bg"></div>
         
             <div id="wrapper">
                     <!-- Sidebar -->
@@ -146,6 +193,9 @@ if(isset($_POST['delete'])){
                           <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
                           <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                           <li><a href="../profile/profile.php">Meus Dados</a></li>
+                          <a style=" color: white; position: absolute; bottom: 0px;left: 0px;" href="../../sair.php">
+                              <div class="sair"><h5>Sair</h5></div>
+                          </a>
                       </ul>
                     </div>
                     
@@ -165,12 +215,12 @@ if(isset($_POST['delete'])){
                                   <div class="card-body">
                                       <div class="row">
                                           <div class="col-md-12">
-                                              <a href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
-                                              <h4>Atualizar carona</h4>
+                                              <a style="color: #336b77" href="<?=$_SERVER['HTTP_REFERER']?>" class="icon-arrow glyphicon glyphicon-arrow-left"></a>
+                                              <h4 align="center" style="color: #336b77">Atualizar carona</h4>
                                               
                                           </div>
                                       </div>
-                                      <div class="row ">
+                                      <div class="row">
                                           <div class="col-md-12">
 
                                                 <?php
@@ -191,19 +241,19 @@ if(isset($_POST['delete'])){
                                                     
 
                                                     <label class="container-check">ida e volta
-                                                        <input id="roundtrip" name="roundtrip" type="checkbox" checked="checked" onclick="bloqueio()">
+                                                        <input style="background-color: #336b77" name="roundtrip" type="checkbox" checked="checked" onclick="bloqueio()">
                                                         <span class="checkmark"></span>
                                                     </label> 
                                                     
                                                 
-                                                    <label for="">Vai sair que horas?</label>
-                                                    <input id="sourceDate" name="sourceDate" type="date" required="required" class="input-date">
-                                                    <input id="sourceHour" name="sourceHour" type="time" required="required" class="input-hour">
+                                                    <label for="">Vai sair que horas?</label><br>
+                                                    <input name="sourceDate" type="date" required="required" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 31%;height: 35px;display: inline;">
+                                                    <input name="sourceHour" type="time" required="required" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 20%;height: 35px;display: inline;">
                                                     
-                                                    <div id="destinyDateHour">
-                                                        <label for="" class="destiny">Vai voltar que horas?</label>
-                                                        <input id="destinyDate" name="destinyDate" type="date" class="input-date">
-                                                        <input id="destinyHour" name="destinyHour"  type="time" class="input-hour">
+                                                    <div id="destinyDateHour"> 
+                                                        <label style="margin-top: 10px;" for="" class="destiny">Vai voltar que horas?</label><br>
+                                                        <input name="destinyDate" type="date" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 31%;height: 35px;display: inline;">
+                                                        <input id="destinyHour" name="destinyHour"  type="time" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 20%;height: 35px;display: inline;">
                                                     </div>
                     
                                                     <hr>
@@ -212,17 +262,17 @@ if(isset($_POST['delete'])){
                     
                                                     
                                                     <div class="slidecontainer">
-                                                        <label for="">Preço</label>
-                                                        <input type="range" min="10" max="100" value="30" class="slider" id="myRange" name="price" required="required" >
-                                                        <p class="price">Valor: R$ <span id="demo"></span></p>
+                                                        <label style="color: #336b77" for="">Preço</label>
+                                                        <input style="color: #336b77" type="range" min="10" max="100" value="30" class="slider" id="myRange" name="price" required="required" >
+                                                        <p style="color: #336b77; margin-right: 15px" class="price">Valor: R$ <span id="demo"></span></p>
                                                     
-                                                        <label class="input-label"for="">Vagas</label>
-                                                        <input  class="input-places" type="number"  min="1" value="1" name="places" id="places" required="required" >
+                                                        <label style="color: #336b77" class="input-label"for="">Vagas</label>
+                                                        <input style="margin-right: 15px; background-color: #336b77" class="input-places" type="number"  min="1" value="1" name="places" id="places" required="required" >
                                                     
                                                     </div>
 
                                                     <div style='margin-top: 35px; float: right;'>
-                                                            <input name="submit" type="submit" class="btn btn-cyan" value="continuar">    
+                                                            <input class="btn btn-cyan" style="width: 200px; height: 40px; border-radius: 10px; background-color: #336b77" name="submit" type="submit"  value="Continuar">    
                                                     </div>
                     
 
