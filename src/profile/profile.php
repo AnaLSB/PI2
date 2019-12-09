@@ -17,11 +17,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/b1a932bc63.js" crossorigin="anonymous"></script>
     
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../CSS/global.css">
+    <style type="text/css">
+      body{
+           font-family: 'Roboto', sans-serif;
+      }
+      .bg{
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          background-image: url(./bg.png);
+          background-size: 100%;
+          background-repeat: no-repeat;
+        }
+        .sair{
+            width: 250px;
+            height: 50px;
+            padding-top: 15px;
+        }
+        .sair:hover{
+            background-color: #104b77
+        }
+    </style>
    
     <title>Perfil</title>
 </head>
 <body>
+  <div class="bg"></div>
     
         <div id="wrapper">
           <!-- Sidebar -->
@@ -33,6 +58,9 @@
                 <li><a href="../offer-lift/offer-lift.php">Oferecer</a></li>
                 <li><a href="../my-routes/my-routes.php">Rotas</a></li>
                 <li><a href="../profile/profile.php">Meus Dados</a></li>
+                <a style=" color: white; position: absolute; bottom: 0px;left: 0px;" href="../../sair.php">
+                    <div class="sair"><h5>Sair</h5></div>
+                </a>
             </ul>
           </div>
           
@@ -52,7 +80,7 @@
                     <div class="card-body">
                       <div class="row">
                           <div class="col-md-12">
-                              <h4>Informações pessoais</h4>
+                              <h4  style="color: #336b77">Informações pessoais</h4>
                               <hr>
                           </div>
                       </div>
@@ -67,8 +95,8 @@
                             <div class="col-8">
                               <h5 style="display: inline" id="name"><?php echo $res['NOME'] ?></h5>
                               <div class="right">
-                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltNome">
-                                  <i style="display: inline" class="far fa-edit">Editar</i>
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltNome" style="background-color: #336b77">
+                                  <i style="display: inline;" class="far fa-edit">Editar</i>
                                 </button>
                               </div>
                             </div>
@@ -78,7 +106,7 @@
                             <div class="col-8">
                               <h5 style="display: inline" id="name"><?php echo $res['DATANASC'] ?></h5>
                               <div class="right">
-                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltData">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltData" style="background-color: #336b77">
                                   <i style="display: inline" class="far fa-edit">Editar</i>
                                 </button>
                               </div>
@@ -89,7 +117,7 @@
                             <div class="col-8">
                               <h5 style="display: inline" id="name"><?php echo $res['EMAIL'] ?></h5>
                               <div class="right">
-                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltEmail">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltEmail" style="background-color: #336b77">
                                   <i style="display: inline" class="far fa-edit">Editar</i>
                                 </button>
                               </div>
@@ -100,7 +128,7 @@
                             <div class="col-8">
                               <h5 style="display: inline" id="name"><?php echo $res['DDD'] ?></h5>
                               <div class="right">
-                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltDDD">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltDDD" style="background-color: #336b77">
                                   <i style="display: inline" class="far fa-edit">Editar</i>
                                 </button>
                               </div>
@@ -111,14 +139,14 @@
                             <div class="col-8">
                               <h5 style="display: inline" id="name"><?php echo $res['TELEFONE'] ?></h5>
                               <div class="right">
-                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltTel">
+                                <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltTel" style="background-color: #336b77">
                                   <i style="display: inline" class="far fa-edit">Editar</i>
                                 </button>
                               </div>
                             </div>
                           </div>
                           <div class="left">
-                            <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltSenha">
+                            <button type="button" class="btn btn-cyan" data-toggle="modal" data-target="#AltSenha" style="background-color: #336b77">
                               Alterar Senha
                             </button>
                           </div>
