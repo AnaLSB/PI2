@@ -31,7 +31,7 @@ if (isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link  href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link  href="../../node_modules/glyphicons-only-bootstrap/css/bootstrap.css" rel="stylesheet"/>
-    <link href="./css.css" rel="stylesheet" />
+    <link href="./offer-lift.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
