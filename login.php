@@ -38,7 +38,7 @@
 	            if(!empty($email) && !empty($senha)){
 	                if($u->msgErro == ""){
 		                if($u->logar($email, $senha)){
-		                    header("location: src/profile/profile.php");
+		                    exit(header("location: src/profile/profile.php"));
 		                }
 		                else{
 	                        ?>

@@ -1,5 +1,4 @@
 <?php
-
 require_once '../Class/Service.php';
 require_once '../Class/Format.php';
 require_once '../Class/RequestService.php';
@@ -11,11 +10,9 @@ $requestService = new RequestService();
 
 if(isset($_POST['accept']) || isset($_POST['reject'])){
   
-    if ($_POST['accept'] == 'aceitar'){
+    if ($_POST['accept'] == 'Aceitar'){
         $_POST['accept'] = 1;
-    } 
-
-    if ($_POST['reject'] == 'rejeitar'){
+    } elseif ($_POST['reject'] == 'Rejeitar'){
       $_POST['reject'] = 0;
     } 
   }
@@ -31,14 +28,16 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
 
         if($requestService->acceptSolicit($_POST['accept'], $_POST['id'], $places, $id) == 'ok'){
           header("Location: $sendMessage");
+          exit();
         } else {
           header("location: /PI2-profile_branch/src/SucessErrorPage/Error.php");
          }
     } else if (isset($_POST['reject']) && isset($_POST['id']) && isset($_POST['places'])){
-      
+      $sendMessage = $_POST['link'];
       $places = $requestService->getPlaces($_POST['places']);
       if($requestService->acceptSolicit($_POST['reject'], $_POST['id'], $places, $id)  == 'ok'){
         header("Location: $sendMessage");
+        exit();
       } else {
         header("location: /PI2-profile_branch/SucessErrorPage/Error.php");
        }
@@ -160,6 +159,10 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
           font-size: 14px;
         }
 
+        .right {
+          float: right;
+        }
+
 
         .search-form input {
           margin-top: 60px;
@@ -259,7 +262,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                                 <a target="_blank" class="wpp-icon" href="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Recebi%20sua%20solicitação%20para%20a%20carona!">
                                                     <img style="width: 50px;" src="../../imagens/whatsapp.png" alt="">
                                                 </a>
-                                                <a class="right" target="_blank" href="https://www.facebook.com/<?=$value['FACEBOOK']?>">
+                                                <a style="float: right" target="_blank" href="https://www.facebook.com/<?=$value['FACEBOOK']?>">
                                                   <img style="width: 32; border-radius: 6px; margin-top: 9px;" src="../../imagens/facebook.png" alt="">
                                                 </a>
 
@@ -268,7 +271,7 @@ if(isset($_POST['accept']) || isset($_POST['reject'])){
                                                     <div>
                                                         <input name="id" type="hidden" value="<?=$value['IDUSUARIO']?>">   
                                                         <input name="places" type="hidden" value="<?=$value['IDCARONA']?>"> 
-                                                        <input type="hidden" name="link" value="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Solicitação%20Respondida!">
+                                                        <input type="hidden" name="link" value="https://api.whatsapp.com/send?phone=55<?=$value['DDD'].$value['TELEFONE']?>&text=Olá%20<?=$value['NOME']?>,%20Sua%20solicitação%20foi%20respondida!">
                                                         <input class="btn btn-accept" type="submit" name="accept" value="Aceitar">
                                                         <input class="btn btn-reject" type="submit" name="reject" value="Rejeitar">
                                                     </div>

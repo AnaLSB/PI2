@@ -87,7 +87,7 @@ class Service {
               
 
 
-              $cst = $this->conn->connect()->prepare("INSERT INTO `carona`(`ORIGEM`, `DESTINO`, `DATA`, `HORARIO`, `PRECO`, `VAGAS`, `IDAVOLTA`, `IDUSUARIO`, `DATAVOLTA`, `HORAVOLTA`) VALUES (:source, :destiny, :sourceDate, :sourceHour, :price, :places, :roundtrip, :iduser, :destinyDate, :destinyHour)");
+              $cst = $this->conn->connect()->prepare("INSERT INTO `carona`(`ORIGEM`, `DESTINO`, `DATAOR`, `HORAOR`, `PRECO`, `VAGAS`, `IDAVOLTA`, `IDUSUARIO`, `DATADEST`, `HORADEST`) VALUES (:source, :destiny, :sourceDate, :sourceHour, :price, :places, :roundtrip, :iduser, :destinyDate, :destinyHour)");
               $cst->bindParam(":source", $this->source);
               $cst->bindParam(":destiny", $this->destiny);
               $cst->bindParam(":sourceDate", $this->sourceDate);
@@ -114,25 +114,24 @@ class Service {
         
         try {
 
-            
-
-            $this->source = $data['source'];
-            $this->destiny = $data['destiny'];
+            $this->destinyDate = $data['destinyDate'];
+            $this->destinyHour = $data['destinyHour'];
             $this->roundtrip = $data['roundtrip'];
             $this->sourceDate = $data['sourceDate'];
             $this->sourceHour = $data['sourceHour'];
             $this->price = $data['price'];
             $this->places = $data['places'];
-            $this->iduser = $id;
+            $idRide = $id;
 
-            $cst = $this->conn->connect()->prepare("UPDATE `carona` SET `ORIGEM`=:source,`DESTINO`=:destiny,`DATA`=:sourceDate,`HORARIO`=sourceHour,`PRECO`=:price,`VAGAS`=:places,`IDAVOLTA`=:roundtrip WHERE `IDUSUARIO` =:iduser");
-            $cst->bindParam(":source", $this->source);
-            $cst->bindParam(":destiny", $this->destiny);
+            $cst = $this->conn->connect()->prepare("UPDATE `carona` SET `DATAOR`=:sourceDate,`HORAOR`=:sourceHour,`DATADEST`=:destinyDate,`HORADEST`=:destinyHour,`PRECO`=:price,`VAGAS`=:places,`IDAVOLTA`=:roundtrip WHERE `IDCARONA` =:idRide");
             $cst->bindParam(":sourceDate", $this->sourceDate);
+            $cst->bindParam(":destinyDate", $this->destinyDate);
             $cst->bindParam(":sourceHour", $this->sourceHour);
+            $cst->bindParam(":destinyHour", $this->destinyHour);
             $cst->bindParam(":price", $this->price);
             $cst->bindParam(":places", $this->places);
             $cst->bindParam(":roundtrip", $this->roundtrip);
+            $cst->bindParam(":idRide", $idRide);
 
             if($cst->execute()){
                 return 'ok';
@@ -160,7 +159,7 @@ class Service {
             if($data == 1){
                 $this->idRide = $id;
 
-                $cst = $this->conn->connect()->prepare("DELETE * FROM `carona` WHERE `IDCARONA` =:idRide");
+                $cst = $this->conn->connect()->prepare("DELETE FROM `carona` WHERE `IDCARONA` =:idRide");
                 $cst->bindParam(":idRide", $this->idRide);
 
                 if($cst->execute()){
@@ -184,7 +183,7 @@ class Service {
             $dataAtual = date("Y-m-d");
             $this->iduser = $id;
             
-            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO  WHERE `ORIGEM` =:source AND `DESTINO` =:destiny AND c.IDUSUARIO <> :idUser  AND `DATA` >= :dataAtual ORDER BY `DATA` ASC");
+            $cst = $this->conn->connect()->prepare("SELECT * FROM `carona` AS c INNER JOIN `usuario` AS u ON c.IDUSUARIO = u.IDUSUARIO  WHERE `ORIGEM` =:source AND `DESTINO` =:destiny AND c.IDUSUARIO <> :idUser  AND `DATAOR` >= :dataAtual ORDER BY `DATAOR` ASC");
             $cst->bindParam(":source", $this->source);
             $cst->bindParam(":destiny", $this->destiny);
             $cst->bindParam(":idUser", $this->iduser);
@@ -199,13 +198,6 @@ class Service {
             }
 
             return $cst->fetchAll();
-
-            
-
-            
-            
-
-
 
         } catch (PDOException $ex ) {
             return 'erro' . $ex->getMessage();

@@ -13,9 +13,9 @@ class Format {
 
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         date_default_timezone_set('America/Sao_Paulo');
-        return strftime('%A, %d de %B de %Y', strtotime($originalDate));
-
-        
+        $var = strftime('%A, %d de %B de %Y', strtotime($originalDate));
+        $VAR = ucfirst($var); // talvez necessario fazer  o utf8_encode
+        return $VAR;     
 
         
         
@@ -100,6 +100,7 @@ class Format {
 
         }
     }
+
 
 
 

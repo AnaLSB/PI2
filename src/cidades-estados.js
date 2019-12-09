@@ -107,7 +107,7 @@ dgCidadesEstados.prototype = {
     elm.appendChild(opt);
   },
   estados : [
-    ['',''],['BA', 'Bahia'],['DF', 'Distrito Federal'],['ES', 'Espirito Santo'],['GO', 'Goiás'],['MG', 'Minas Gerais'],
+    ['',''],['BA', 'BA'],['DF', 'DF'],['ES', 'ES'],['GO', 'GO'],['MG', 'MG'],
   ],
   cidades : [
 	[''],

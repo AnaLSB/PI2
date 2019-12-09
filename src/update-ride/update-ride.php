@@ -1,24 +1,25 @@
 <?php
-
 require_once '../Class/Service.php';
 require_once '../Class/Format.php';
 require_once '../Class/RequestService.php';
-
 $service = new Service();
 $format = new Format();
 $requestService = new RequestService();
 
 $id = $_GET['id'];
 
+if(isset($_POST['submit'])){
+  $service->queryUpdate($_POST, $_POST['idRide']);
+  header('location: /PI2-profile_branch/src/my-routes/my-routes.php');
+}
 
 if(isset($_POST['delete'])){
   
     if ($_POST['delete'] == 'remover'){
         $_POST['delete'] = 1;
-        
+        echo $_POST['delete'];
        $service->queryDelete($_POST['delete'], $id);
     }
-
   }
 ?>
 <html lang="pt-br">
@@ -32,7 +33,6 @@ if(isset($_POST['delete'])){
         <title>Perfil</title>
 
         <style>
-
         body{
              font-family: 'Roboto', sans-serif;
              font-size: 16px;
@@ -47,7 +47,6 @@ if(isset($_POST['delete'])){
           background-size: 100%;
           background-repeat: no-repeat;
         }
-
         h4{
           color: #657F80 !important;
           margin-top: 10px;
@@ -59,7 +58,6 @@ if(isset($_POST['delete'])){
               color: rgb(126, 179, 179);
               font-size: 18px;
         }
-
         .img-circle-ride {
           margin-top: -20px;
           float: right;
@@ -67,28 +65,23 @@ if(isset($_POST['delete'])){
           width: 50px;
           height: 50px;
         }
-
         .btn {
           border-radius: 5px;
         }
-
         .btn-reject {
           background-color: rgb(243, 37, 18);
           color: #FFF;
         }
-
         .btn-accept {
           background-color: rgb(29, 167, 114);
           color: #FFF;
         }
-
         a {
           font-size: 14px;
         }
         a:hover {
             text-decoration: none;
         }
-
         .icon-arrow {
             top: 30;
             color: rgb(0, 139, 139);
@@ -97,13 +90,11 @@ if(isset($_POST['delete'])){
         .icon-arrow:hover{
             color: rgb(126, 179, 179);
         }
-
         @media (max-width: 768px) {
   
         #wrapper.menuDisplayed #sidebar-wrapper{
             width:220px;
         }
-
         .container {
           margin-left: -20px;
           min-width: 340px;
@@ -113,24 +104,19 @@ if(isset($_POST['delete'])){
           margin-left: 0px;
           max-width: 340px;
         }
-
         .card{
           margin-left: -120px;
         }
-
         .card-body{
           max-width: 340px;
         }
         .price {
           font-size: 14px;
         }
-
-
         .search-form input {
           margin-top: 60px;
           min-width: 260px;
         }
-
         .search-form span {
           margin-left: 10px;
           margin-top: 60px;
@@ -176,8 +162,6 @@ if(isset($_POST['delete'])){
           background-color: #104b77
       }
               
-
-
         </style>
     </head>
     <body>
@@ -224,8 +208,6 @@ if(isset($_POST['delete'])){
                                           <div class="col-md-12">
 
                                                 <?php
-
-
                                                 if(isset($id)){
                                                 $value = $service->querySelection($id);
                                                 
@@ -236,7 +218,7 @@ if(isset($_POST['delete'])){
                                                 ?>
 
                                              <p> Data e hora</p>
-                                            <form metho="post">
+                                            <form method="post">
 
                                                     
 
@@ -247,13 +229,13 @@ if(isset($_POST['delete'])){
                                                     
                                                 
                                                     <label for="">Vai sair que horas?</label><br>
-                                                    <input name="sourceDate" type="date" required="required" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 31%;height: 35px;display: inline;">
+                                                    <input name="sourceDate" type="date" min="<?=date("Y-m-d")?>" required="required" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 31%;height: 35px;display: inline;">
                                                     <input name="sourceHour" type="time" required="required" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 20%;height: 35px;display: inline;">
                                                     
                                                     <div id="destinyDateHour"> 
                                                         <label style="margin-top: 10px;" for="" class="destiny">Vai voltar que horas?</label><br>
-                                                        <input name="destinyDate" type="date" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 31%;height: 35px;display: inline;">
-                                                        <input id="destinyHour" name="destinyHour"  type="time" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 20%;height: 35px;display: inline;">
+                                                        <input name="destinyDate" type="date" min="<?=date("Y-m-d")?>" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 31%;height: 35px;display: inline;">
+                                                        <input id="destinyHour" name="destinyHour" type="time" style="color: rgb(129, 129, 129);font-weight: bold;text-indent: 10px;border-radius: 18px;background-color: rgb(240, 236, 236);margin-top: 7px;border: 1px solid rgb(126, 179, 179);margin-left: 25px;width: 20%;height: 35px;display: inline;">
                                                     </div>
                     
                                                     <hr>
@@ -272,6 +254,7 @@ if(isset($_POST['delete'])){
                                                     </div>
 
                                                     <div style='margin-top: 35px; float: right;'>
+                                                            <input type="hidden" name="idRide" value="<?=$value['IDCARONA']?>">
                                                             <input class="btn btn-cyan" style="width: 200px; height: 40px; border-radius: 10px; background-color: #336b77" name="submit" type="submit"  value="Continuar">    
                                                     </div>
                     
@@ -291,7 +274,6 @@ if(isset($_POST['delete'])){
                                                 <?php 
                                                  }
                                                 }
-
                                                 ?>
 
                                         </div>
@@ -326,31 +308,24 @@ if(isset($_POST['delete'])){
         </script>
 
 <script>
-
         $(document).ready(function(){
         $("#menu-toggle").click(function(e){
             e.preventDefault();
             $("#wrapper").toggleClass("menuDisplayed");
         });
         });
-
         var slider = document.getElementById("myRange");
         var output = document.getElementById("demo");
         output.innerHTML = slider.value; // Display the default slider value
-
         // Update the current slider value (each time you drag the slider handle)
         slider.oninput = function() {
         output.innerHTML = this.value;
         }
-
         
-
-
     </script>
 
 
     <script  type="text/javascript"> // Checkbox ida e volta
-
         
         function bloqueio() {
         	if (document.getElementById("destinyDateHour").style.display == "none"){

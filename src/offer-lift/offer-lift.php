@@ -1,10 +1,12 @@
 <?php
-
+if(!isset($_SESSION)){
+    session_start();
+}
 require_once '../Class/Service.php';
 
 $service = new Service();
 
-session_start();
+
 $id = $_SESSION['IDUSUARIO'];
 
 if (isset($_POST['fb'])){
@@ -271,21 +273,21 @@ if (!isset($_SESSION['fb'])){
                                     <span class="checkmark"></span>
                                 </label> 
                                 
-                            
-                                <label for="">Vai sair que horas?</label>
+                    
+                                <label for="">Vai sair quando?</label>
                                 <table>
                                     <tr>
                                         <td>
-                                            <input style="width: 170px; height: 30px; font-size: 15px; margin-left: 25%" id="sourceDate" name="sourceDate" type="date" required="required" class="input-form-state">
+                                            <input style="width: 170px; height: 30px; font-size: 15px; margin-left: 25%" id="sourceDate" name="sourceDate" type="date" min="<?=date("Y-m-d")?>" required="required" class="input-form-state">
                                         </td>
                                         <td>
-                                            <input style="width: 100px; height: 30px; font-size: 15px; margin-left: 50%" id="sourceHour" name="sourceHour" type="time" required="required" class="input-form-state">
+                                            <input style="width: 100px; height: 30px; font-size: 15px; margin-left: 50%" id="sourceHour" name="sourceHour" type="time" min="<?=date("Y-m-d")?>" required="required" class="input-form-state">
                                         </td>
                                     </tr>
                                 </table>
                                 
                                 <div id="destinyDateHour">
-                                    <label for="" class="destiny">Vai voltar que horas?</label>
+                                    <label for="" class="destiny">Vai voltar quando?</label>
                                     <table>
                                         <tr>
                                             <td>

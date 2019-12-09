@@ -1,11 +1,12 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+}
 
 require_once '../Class/Service.php';
 require_once '../Class/Format.php';
 require_once '../Class/RequestService.php';
 
-session_start();
-    
 $id = $_SESSION['IDUSUARIO'];
 
 $service = new Service();
@@ -181,14 +182,14 @@ if (isset($_GET['from'])){
                                         &nbsp; <?= $value['DESTINO'] ?> </p>
 
 
-                                        <p style="margin: 2% auto;color: #84afb9; font-size: 20px;"><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
+                                        <p style="margin: 2% auto;color: #84afb9; font-size: 20px;"><?= $time = $format->formatTime($value['HORAOR'])?> &nbsp;
 
                                             <span class="glyphicon glyphicon-time"></span>
 
-                                        &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
+                                        &nbsp; <?= $timetwo = $format->formatTime($value['HORADEST'])?></p>
 
                                         <p class="date" style="margin: 2% auto; color: #84afb9; font-size: 20px;">                             
-                                            <?= $data = $format->formatDate($value['DATA']); ?>
+                                            <?= $data = $format->formatDate($value['DATAOR']); ?>
                                         </p>
                                    </a>
                             </div>

@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+}
 
 require_once '../Class/Service.php';
 require_once '../Class/Format.php';
@@ -7,8 +10,6 @@ require_once '../Class/RequestService.php';
 $service = new Service();
 $format = new Format();
 $requestService = new RequestService();
-
-session_start();
 
 $idUser = $_SESSION['IDUSUARIO'];
 
@@ -187,17 +188,17 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                     <i class="arrow"></i>       
                                     &nbsp;<?= $value['DESTINO']?> </p>
 
-                                    <p><?= $time = $format->formatTime($value['HORARIO'])?> &nbsp;
+                                    <p><?= $time = $format->formatTime($value['HORAOR'])?> &nbsp;
 
                                         <span class="glyphicon glyphicon-time"></span>
 
-                                &nbsp; <?= $timetwo = $format->formatTime($value['HORAVOLTA'])?></p>
+                                &nbsp; <?= $timetwo = $format->formatTime($value['HORADEST'])?></p>
 
                                 <p style="color: #336b77;">                             
-                                    <?= $data = $format->formatDate($value['DATA']); ?>
+                                    <?= $data = $format->formatDate($value['DATAOR']); ?>
                                 </p>
 
-                                <span style="color: #657F80;"><?=$validateRoundTrip = $format->roundTripValidate($value['IDAVOLTA'], $value['DATA'], $value['DATAVOLTA'], $value['HORAVOLTA']);
+                                <span style="color: #657F80;"><?=$validateRoundTrip = $format->roundTripValidate($value['IDAVOLTA'], $value['DATAOR'], $value['DATADEST'], $value['HORADEST']);
                                 ?></span>
 
                                 <p style="color: #657F80; font-size: 18px;"><?= $format->formatPlaces($value['VAGAS'])?></p>
@@ -275,6 +276,7 @@ $stateRequest = $requestService->verifySolicit($idUser, $id);
                                             <input type="submit" class="btn btn-cyan margin-top right" value="OK">
                                         </form>
                                         </div>
+                                        <p><?=$value['AVALIACAO']." "?>Avaliações</p>
                                     </div>
                                 </div>
                                 </div>

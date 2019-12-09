@@ -11,7 +11,7 @@ if(isset($_POST['submit'])){
     $to = $_POST['to'];
 
 
-    header("location: /PI2/src/ride/ride.php?from=$from&to=$to");
+    header("location: /PI2-profile_branch/src/ride/ride.php?from=$from&to=$to");
 
 }
 ?>
