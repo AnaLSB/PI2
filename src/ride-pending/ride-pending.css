@@ -1,0 +1,174 @@
+.icon {
+    position: fixed;
+    top: 10;
+    color: rgb(0, 139, 139);
+    font-size: 23px;
+  }
+  
+  
+  #sidebar-wrapper{
+      z-index:1;
+      position: fixed;
+      width:0;
+      height:100%;
+      overflow-y:hidden;
+      background: rgb(0, 139, 139);
+      opacity:0.9;
+      transition:all .5s;
+      display:flex;
+      align-items:center;
+    }
+    
+    /* Main Content */
+    #page-content-wrapper{
+      width: 100%;	
+      position: absolute;
+      padding:15px;
+      transition:all .5s;
+    }
+    
+    #menu-toggle{
+        transition:all .3s;
+        font-size:2em;
+    }
+    /* Change the width of the sidebar to display it*/
+    #wrapper.menuDisplayed #sidebar-wrapper{
+      width:250px;
+    }
+    
+    #wrapper.menuDisplayed #page-content-wrapper{
+      padding-left:250px;
+    }
+    
+    /* Sidebar styling */
+    .sidebar-nav{
+      padding:0;
+      list-style:none; 
+      transition:all .5s;
+      width:100%;
+      text-align:center;
+    }
+    
+    .sidebar-nav li{
+      line-height:40px;  
+      width:100%;
+      transition:all .3s;
+      padding:10px;
+    }
+    
+    .sidebar-nav li a {
+      display:block;
+      text-decoration:none;
+      color:#ddd;
+    }
+    
+    .sidebar-nav li:hover{
+      background:rgb(126, 179, 179);
+    }
+  
+    .top{
+      position: absolute;
+      top: 20px;
+      left: 30%;
+  
+    }
+  
+  
+      /* Esconde o input */
+    input[type='file'] {
+      display: none
+    }
+  
+    /* Aparência que terá o seletor de arquivo */
+    .top label {
+      position: absolute;
+      left: 65px;
+      bottom: 2px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      margin: 10px;
+    }
+  
+    .img-circle {
+        max-width: 90px;
+        border-radius: 50%;
+    }
+  
+  
+    /* Profile Infos */
+  
+    .profile-info {
+      position: absolute;
+      left: 30%;
+      top: 200%;
+      display: block;
+      font-size: 16px;
+      font-weight: bold;   
+    }
+  
+    .card h4 {
+      text-decoration: none;
+      color: #969696;
+      font-size: 23px;;
+    }
+  
+    .card {
+      white-space: nowrap;
+      position: absolute;
+      left: 40%;
+      top: 100px;
+    }
+  
+    .card-body {
+      width: 600px;
+    }
+  
+    .form-group input {
+      text-indent: 5px;
+      margin-top: 10px;
+      display: block;
+      border-radius: 5px;
+      border: 2px solid rgb(126, 179, 179);
+    }
+  
+  
+    .form-group label {
+      color: rgb(126, 179, 179);
+    }
+
+
+    .btn-accept, .btn-reject {
+        color: #FFF;
+        border-radius: 4px;
+    }
+
+    .btn-accept:hover, .btn-reject:hover {
+        color: rgb(246, 235, 235);    
+    }
+    .btn-accept {
+        background-color: rgb(100, 204, 149);
+       
+    }
+
+    .btn-reject {
+        background-color: rgb(236, 55, 55);
+
+    }
+
+    
+  
+    @media (max-width: 768px) {
+  
+  
+      #wrapper.menuDisplayed #sidebar-wrapper{
+          width:220px;
+      }
+  
+    }
+  
+    
+  
+  
+  
+    

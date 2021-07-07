@@ -1,0 +1,335 @@
+::-webkit-datetime-edit { color: rgb(143, 142, 142) ;padding: 1em; }
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { background: rgb(255, 255, 255); }
+::-webkit-input-placeholder { color: rgb(197, 196, 196);}
+
+
+input#delete {
+    display: none
+  }
+
+.icon {
+    position: fixed;
+    top: 10;
+    color: rgb(0, 139, 139);
+    font-size: 23px;
+  }
+  
+  
+  #sidebar-wrapper{
+      z-index:1;
+      position: fixed;
+      width:0;
+      height:100%;
+      overflow-y:hidden;
+      background: rgb(0, 139, 139);
+      opacity:0.9;
+      transition:all .5s;
+      display:flex;
+      align-items:center;
+    }
+    
+    /* Main Content */
+    #page-content-wrapper{
+      width: 100%;	
+      position: absolute;
+      padding:15px;
+      transition:all .5s;
+    }
+    
+    #menu-toggle{
+        transition:all .3s;
+        font-size:2em;
+    }
+    /* Change the width of the sidebar to display it*/
+    #wrapper.menuDisplayed #sidebar-wrapper{
+      width:250px;
+    }
+    
+    #wrapper.menuDisplayed #page-content-wrapper{
+      padding-left:250px;
+    }
+    
+    /* Sidebar styling */
+    .sidebar-nav{
+      padding:0;
+      list-style:none; 
+      transition:all .5s;
+      width:100%;
+      text-align:center;
+    }
+    
+    .sidebar-nav li{
+      line-height:40px;  
+      width:100%;
+      transition:all .3s;
+      padding:10px;
+    }
+    
+    .sidebar-nav li a {
+      display:block;
+      text-decoration:none;
+      color:#ddd;
+    }
+    
+    .sidebar-nav li:hover{
+      background:rgb(126, 179, 179);
+    }
+  
+    .top{
+      position: absolute;
+      top: 20px;
+      left: 30%;
+  
+    }
+  
+  
+      /* Esconde o input */
+    input[type='file'] {
+      display: none
+    }
+
+     .container {
+        max-width: 50%;
+        white-space: nowrap;
+    }
+    .container-title {
+        margin-top: 58px;
+        margin-bottom: 60px;
+        font-size: 32px;
+        color: #468D8F;
+        font-family: 'Josefin Sans';
+        font-weight: bold;
+    }
+
+    .container-date {
+      margin-top: 20px;
+      color: #686767;
+      font-size: 18px;
+      font-family: 'Josefin Sans';
+      font-weight: bold;
+    }
+
+    .container label {
+        font-weight: bold;
+        margin-top: 10px;
+        font-size: 18px;
+        color: rgb(126, 179, 179);
+    }
+
+    .container-offer {
+        font-weight: bold;
+        margin-top: 10px;
+        font-size: 16px;
+        color: #686767;
+    }
+
+    input:hover{
+      cursor: pointer;
+    }
+
+    input:focus{
+      outline: 0;
+      cursor: pointer;
+    }
+
+    
+
+
+  
+    /* Aparência que terá o seletor de arquivo */
+    .top label {
+      position: absolute;
+      left: 65px;
+      bottom: 2px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      margin: 10px;
+    }
+  
+    .img-circle {
+        max-width: 90px;
+        border-radius: 50%;
+    }
+  
+  
+    /* Profile Infos */
+  
+    .profile-info {
+      position: absolute;
+      left: 30%;
+      top: 200%;
+      display: block;
+      font-size: 16px;
+      font-weight: bold;   
+    }
+  
+    .card h4 {
+      text-decoration: none;
+      color: #969696;
+      font-size: 23px;;
+    }
+  
+    .card {
+      white-space: nowrap;
+      position: absolute;
+      left: 40%;
+      top: 100px;
+    }
+  
+    .card-body {
+      width: 600px;
+    }
+  
+    
+  
+  
+    .form-group label {
+      color: rgb(126, 179, 179);
+    }
+
+
+    .btn-accept, .btn-reject {
+        color: #FFF;
+        border-radius: 4px;
+    }
+
+    .btn-accept:hover, .btn-reject:hover {
+        color: rgb(246, 235, 235);    
+    }
+    .btn-accept {
+        background-color: rgb(100, 204, 149);
+       
+    }
+
+    .btn-reject {
+        background-color: rgb(236, 55, 55);
+
+    }
+
+    .container-check {
+        float: right;
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Hide the browser's default checkbox */
+      .container-check input {
+        right: 0;
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+      
+      /* Create a custom checkbox */
+      .checkmark {
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+      }
+      
+      /* On mouse-over, add a grey background color */
+      .container-check:hover input ~ .checkmark {
+        border-radius: 50%;
+        background-color: #ccc;
+      }
+      
+      /* When the checkbox is checked, add a blue background */
+      .container-check input:checked ~ .checkmark {
+        background-color: rgb(0, 139, 139);
+      }
+      
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      
+      /* Show the checkmark when checked */
+      .container-check input:checked ~ .checkmark:after {
+        display: block;
+      }
+      
+      /* Style the checkmark/indicator */
+      .container-check .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      /* Fin checkbox */
+
+      
+
+      .btn-cyan:hover{
+        background-color: rgb(0, 139, 139);
+        color: rgb(211, 207, 207);
+      }
+
+      .right {
+       float: right;
+      }
+
+      
+
+
+      /* Details */
+
+      /* Price */
+
+      .slidecontainer {
+        width: 100%; /* Width of the outside container */
+        color: rgb(0, 139, 139);
+      }
+
+      
+
+      
+      /* The slider itself */
+      
+
+      .price {
+        bottom: 130px;
+        position: absolute;
+        right: 0;
+      }
+  
+    @media (max-width: 768px) {
+  
+  
+      #wrapper.menuDisplayed #sidebar-wrapper{
+          width:220px;
+      }
+  
+    }
+
+
+    
+  
+    
+  
+  
+  
+    
